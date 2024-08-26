@@ -5,9 +5,9 @@ use mbti;
 drop table if exists `member`;
 CREATE TABLE `member` (
 	`me_id`			varchar(30) primary key,
-	`me_pw`			varchar(30)	NOT NULL,
+	`me_pw`			varchar(255)	NOT NULL,
 	`me_fail`		int			NOT	NULL default 0,
-	`me_stopdate`	datetime	NOT	NULL,
+	`me_stopdate`	datetime	NULL,
 	`me_authority`	varchar(5)	NOT	NULL DEFAULT 'USER',
 	`me_ms_name`	varchar(10)	NOT NULL
 );
@@ -41,7 +41,7 @@ CREATE TABLE `discussion_room` (
 drop table if exists `personality_type`;
 CREATE TABLE `personality_type` (
 	`pt_code`		char(4) primary key,
-	`pt_content`	longtext	NOT	NULL
+	`pt_content`	longtext	NOT NULL
 );
 
 drop table if exists `comment`;

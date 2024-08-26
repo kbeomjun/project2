@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>메인</title>
+	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
 </head>
 <body>
 	<div class="container pt-3" style="min-height: calc(100vh - 240px)">
