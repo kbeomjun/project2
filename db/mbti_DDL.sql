@@ -9,6 +9,8 @@ CREATE TABLE `member` (
     `me_email`		varchar(50) 	NOT NULL,
 	`me_fail`		int				NOT	NULL default 0,
 	`me_stopdate`	datetime		NULL,
+    `me_cookie`	varchar(255)		NULL,
+	`me_limit`	datetime			NULL,
 	`me_authority`	varchar(5)		NOT	NULL DEFAULT 'USER',
 	`me_ms_name`	varchar(10)		NOT NULL
 );
