@@ -1,11 +1,11 @@
 INSERT INTO MEMBER_STATE(MS_NAME) VALUES('기간 정지'), ('사용');
 
-INSERT INTO MEMBER(ME_ID, ME_PW, ME_MS_NAME) VALUES
-('qwe123', 'qwe123', '사용'),
-('asd123', 'asd123', '사용'),
-('zxc123', 'zxc123', '사용');
-INSERT INTO MEMBER(ME_ID, ME_PW, ME_MS_NAME, me_authority) VALUES
-('admin123', 'admin123', '사용', 'ADMIN');
+INSERT INTO MEMBER(ME_ID, ME_PW, me_email, ME_MS_NAME) VALUES
+('qwe123', 'qwe123', 'qwe123@naver.com', '사용'),
+('asd123', 'asd123', 'asd123@naver.com', '사용'),
+('zxc123', 'zxc123', 'zxc123@naver.com', '사용');
+INSERT INTO MEMBER(ME_ID, ME_PW, me_email, ME_MS_NAME, me_authority) VALUES
+('admin123', 'admin123', 'admin123@naver.com', '사용', 'ADMIN');
 
 insert into personality_type(pt_code, pt_content) values
 ('INTJ', 'INTJ입니다.'),
