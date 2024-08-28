@@ -28,7 +28,7 @@ public class Logout extends HttpServlet {
 		request.getSession().removeAttribute("user");
 		
 		request.setAttribute("url", "/");
-		request.setAttribute("msg", "로그아웃 했습니다.");
+		request.setAttribute("msg", "로그아웃했습니다.");
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 }

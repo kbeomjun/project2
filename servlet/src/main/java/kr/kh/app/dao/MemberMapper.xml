@@ -44,4 +44,12 @@
 	<update id="updateMemberPw">
 		update member set me_pw = #{me_pw} where me_id = #{user.me_id};
 	</update>
+	
+	<update id="updateMemberEmail">
+		update member set me_email = #{me_email} where me_id = #{user.me_id};
+	</update>
+	
+	<delete id="deleteMember">
+		delete from member where me_id = #{user.me_id}
+	</delete>
 </mapper>

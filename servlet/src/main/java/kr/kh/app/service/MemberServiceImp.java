@@ -133,6 +133,11 @@ public class MemberServiceImp implements MemberService {
 	public void updateMemberCookie(MemberVO user) {
 		memberDao.updateMemberCookie(user);
 	}
+	
+	@Override
+	public MemberVO getMember(MemberVO user) {
+		return memberDao.selectMember(user.getMe_id());
+	}
 
 	@Override
 	public MemberVO getMemberBySid(String sid) {
@@ -140,16 +145,17 @@ public class MemberServiceImp implements MemberService {
 	}
 
 	@Override
-	public boolean updatePw(MemberVO user, String me_pw) {
-		if(user == null) {
-			return false;
-		}
-		if(!checkRegex(me_pw, "^[a-zA-Z0-9!@#$]{6,15}$")) {
-			return false;
-		}
-		if(user.getMe_pw().equals(me_pw)) {
-			return false;
-		}
+	public boolean updateMemberPw(MemberVO user, String me_pw) {
 		return memberDao.updateMemberPw(user, me_pw);
+	}
+
+	@Override
+	public boolean updateMemberEmail(MemberVO user, String me_email) {
+		return memberDao.updateMemberEmail(user, me_email);
+	}
+
+	@Override
+	public boolean deleteMember(MemberVO user) {
+		return memberDao.deleteMember(user);
 	}
 }

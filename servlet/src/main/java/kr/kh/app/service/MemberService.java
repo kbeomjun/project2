@@ -18,5 +18,11 @@ public interface MemberService {
 
 	MemberVO getMemberBySid(String sid);
 
-	boolean updatePw(MemberVO user, String me_pw);
+	MemberVO getMember(MemberVO user);
+
+	boolean updateMemberPw(MemberVO user, String me_pw);
+
+	boolean updateMemberEmail(MemberVO user, String me_email);
+
+	boolean deleteMember(MemberVO user);
 }

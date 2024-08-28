@@ -10,9 +10,8 @@
 	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
 	<style type="text/css">
 		.error{color:red; margin-bottom: 5px;}
-		.form-group{margin-bottom: 0;}
 		.container-body{padding: 30px; margin-top: 30px;}
-		.form-group, .form-control{height: 50px};
+		.input-group-text{width:90px;}
 	</style>
 </head>
 <body>
@@ -23,23 +22,47 @@
 	    	<div class="col-sm-4">
 	      		<ul class="nav nav-pills flex-column">
 	        		<li class="nav-item">
-	          			<a class="nav-link active" href="<c:url value="/mypage"/>">테스트 결과</a>
+	          			<a class="nav-link active member-info" href="#">회원정보</a>
 	        		</li>
 	        		<li class="nav-item">
-	          			<a class="nav-link link-update-pw" href="#">비밀번호 변경</a>
+	          			<a class="nav-link" href="<c:url value="/mypage"/>">테스트결과</a>
 	        		</li>
-	        		<li class="nav-item">
-	          			<a class="nav-link" href="#">회원탈퇴</a>
-	        		</li>
+	        		<c:if test="${user.me_authority = 'ADMIN'}">
+	        			<li class="nav-item">
+		          			<a class="nav-link" href="#">관리</a>
+		        		</li>	
+	        		</c:if>
       			</ul>
 	      	<hr class="d-sm-none">
 	    	</div>
 		    <div class="col-sm-8 container-item">
-		      	<h2>TITLE HEADING</h2>
-		      	<h5>Title description, Sep 2, 2017</h5>
-		      	<div class="fakeimg">Fake Image</div>
-		      	<p>Some text..</p>
-				<p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+		    	<div class="input-group">
+					<div class="input-group-prepend">
+			        	<span class="input-group-text">아이디</span>
+			      	</div>
+					<span class="form-control" id="me_id">${user.me_id}</span>		      	
+				</div>
+				<div class="input-group">
+					<div class="input-group-prepend input-group-prepend-pw">
+			        	<span class="input-group-text">비밀번호</span>
+			      	</div>
+					<span class="form-control input-group-pw" id="me_pw">${user.me_pw}</span>
+					<div class="input-group-append input-group-pw">
+			        	<button class="btn btn-outline-warning btn-pw">변경</button>
+			      	</div>
+				</div>
+				<div class="input-group">
+					<div class="input-group-prepend input-group-prepend-email">
+			        	<span class="input-group-text">이메일</span>
+			      	</div>
+					<span class="form-control input-group-email" id="me_email">${user.me_email}</span>
+					<div class="input-group-append input-group-email">
+			        	<button class="btn btn-outline-warning btn-email">변경</button>
+			      	</div>
+				</div>
+				<div class="input-group d-flex justify-content-end mt-3">
+		        	<button class="btn btn-outline-danger btn-delete">회원탈퇴</button>
+				</div>
 		    </div>
 		</div>
 	</div>
@@ -51,72 +74,122 @@
 			$(this).addClass('active');
 		});
 		
-		$('.link-update-pw').click(function(){
-			$('.container-item').children().remove();
+		$('.btn-pw').click(function(){
+			$('.input-group-pw').remove();
 			var str = `
-			<form action="<c:url value="/mypage"/>" method="post" id="form" style="margin-top: 30px">
-				<div class="form-group input-group">
-					<input type="password" class="form-control" id="me_pw" name="me_pw" placeholder="새 비밀번호">
-				</div>
-				<div class="error error-pw"></div>
-				<div class="form-group input-group">
-					<input type="password" class="form-control" id="me_pw2" name="me_pw2" placeholder="비밀번호 확인">
-				</div>
-				<div class="error error-pw2"></div>
-				<button type="submit" class="btn btn-outline-success col-12 mt-3">변경</button>
-			</form>
+		      	<input type="text" class="form-control input-pw" id="me_pw" name="me_pw" value=${user.me_pw}>
+				<div class="input-group-append input-group-pw">
+		        	<button class="btn btn-outline-info btn-update-pw">확인</button>
+		      	</div>
 			`;
-			$('.container-item').append(str);
+			$('.input-group-prepend-pw').after(str);
 		});
 		
-		let regexPw = /^[a-zA-Z0-9!@#$]{6,15}$/;
-		let msgPw = `<span>비번은 영어, 숫자, 특수문자(!@#$)만 포함 6~15자입니다.</span>`;
-		let msgPw2 = `<span>비번과 일치하지 않습니다.</span>`;
-		
-		$(document).on('change', '#me_pw', function(){
-			$('.error-pw').children().remove();
+		$(document).on('click', '.btn-update-pw', function(){
+			var me_pw = $('.input-pw').val();
+			let regexPw = /^[a-zA-Z0-9!@#$]{6,15}$/;
 			
-			if($('#me_pw').val() == ''){
-				$('.error-pw').append(msgRequired);
-			}else{
-				if(!regexPw.test($('#me_pw').val())){
-					$('.error-pw').append(msgPw);
-				}else{
-					$('.error-pw').children().remove();
+			if(me_pw == ''){
+				alert('변경할 비밀번호를 입력하세요.');
+				return;
+			}else if(!regexPw.test(me_pw)){
+				alert('비밀번호는 6~15자의 영문 대/소문자, 숫자, 특수문자(!@#$)만 사용가능합니다.');
+				return;
+			}else if('${user.me_pw == me_pw}'){
+				alert('동일한 비밀번호입니다.');
+				return;
+			}
+			var res = false;
+			$.ajax({
+				async : false,
+				url : '<c:url value="/mypage/update/pw"/>',
+				data : {
+					me_pw : me_pw
+				},
+				success : function(data){
+					res = data.res;
+					if(res){
+						alert('비밀번호를 변경했습니다. 다시 로그인 해주세요.');
+						location.href = '<c:url value="/login"/>';
+					}else{
+						alert('비밀번호를 변경하지 못했습니다.');
+						return;
+					}
+				},
+				error : function(xhr){
+					console.log(xhr);
 				}
-			}
+			});
 		});
 		
-		$(document).on('change', '#me_pw2', function(){
-			$('.error-pw2').children().remove();
-			
-			if($('#me_pw').val() != $('#me_pw2').val()){
-				$('.error-pw2').append(msgPw2);
-			}else{
-				$('.error-pw2').children().remove();	
-			}
+		$('.btn-email').click(function(){
+			$('.input-group-email').remove();
+			var str = `
+		      	<input type="text" class="form-control input-group-email input-email" id="me_email" name="me_email" value=${user.me_email}>
+				<div class="input-group-append input-group-email">
+		        	<button class="btn btn-outline-info btn-update-email">확인</button>
+		      	</div>
+			`;
+			$('.input-group-prepend-email').after(str);
 		});
 		
-		$(document).on('submit', '#form', function(){
-			$('.error').children().remove();
-			let flag = true;
+		$(document).on('click', '.btn-update-email', function(){
+			var me_email = $('.input-email').val();
+			let regexEmail = /^\w{6,13}@\w{4,8}.[a-z]{2,3}$/;
 			
-			if($('#me_pw').val() == ''){
-				$('.error-pw').append(msgRequired);
-				flag = false;
-			}else{
-				if(!regexPw.test($('#me_pw').val())){
-					$('.error-pw').append(msgPw);
-					flag = false;
+			if(me_email == ''){
+				alert('변경할 이메일을 입력하세요.');
+				return;
+			}else if(!regexEmail.test(me_email)){
+				alert('email 형식이 아닙니다.');
+				return;
+			}
+			
+			var res = false;
+			$.ajax({
+				async : false,
+				url : '<c:url value="/mypage/update/email"/>',
+				data : {
+					me_email : me_email
+				},
+				success : function(data){
+					res = data.res;
+					if(res){
+						alert('이메일을 변경했습니다.');
+						location.href = '<c:url value="/mypage"/>';
+					}else{
+						alert('이메일을 변경하지 못했습니다.');
+						return;
+					}
+				},
+				error : function(xhr){
+					console.log(xhr);
 				}
+			});
+		});
+		
+		$('.btn-delete').click(function(){
+			if(confirm('정말 탈퇴하시겠습니까? 탈퇴하면 다시는 복구할 수 없습니다.')){
+				$.ajax({
+					async : false,
+					url : '<c:url value="/mypage/delete"/>',
+					success : function(data){
+						res = data.res;
+						if(res){
+							alert('회원을 탈퇴했습니다.');
+							location.href = '<c:url value="/"/>';
+						}else{
+							alert('회원을 탈퇴하지 못했습니다.');
+							return;
+						}
+					},
+					error : function(xhr){
+						console.log(xhr);
+					}
+				});
+			}else{
+				return;
 			}
-			
-			if($('#me_pw').val() != $('#me_pw2').val()){
-				$('.error-pw2').append(msgPw2);
-				flag = false;
-			}
-			
-			return flag;
 		});
 	</script>
 </body>

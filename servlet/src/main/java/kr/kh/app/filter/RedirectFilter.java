@@ -19,7 +19,6 @@ import kr.kh.app.model.vo.MemberVO;
 public class RedirectFilter extends HttpFilter implements Filter {
        
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		
 		HttpServletRequest hrequest = (HttpServletRequest)request;
 		HttpSession session = hrequest.getSession();
 		MemberVO user = (MemberVO)session.getAttribute("user");
