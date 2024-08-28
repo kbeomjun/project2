@@ -6,12 +6,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인</title>
-	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
+<title>메세지</title>
 </head>
 <body>
-	<div class="container pt-3" style="min-height: calc(100vh - 240px)">
-		<h1>메인</h1>
-	</div>
+	<script type="text/javascript">
+		var msg = '${msg}';
+		if(msg != ''){
+			alert('${msg}');
+		}
+		location.href = '<c:url value="${url}"/>';
+	</script>
 </body>
 </html>
