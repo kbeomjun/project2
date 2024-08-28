@@ -6,75 +6,73 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style type="text/css">
-   .navbar .logo img {
-        width: 243.75px;
-        height: 50px;
-    }
-/* 스타일을 통해 메뉴바를 페이지 상단에 고정합니다 */
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 80px;
-        background-color: #f1f1f1;
-        padding: 20px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        z-index: 1000; /* 페이지의 다른 요소들 위에 보이도록 설정 */
-    }
-    body {
-        margin-top: 80px; /* 로그인 창 높이 만큼 페이지 내용 아래로 밀어내기 */
-    }
-    #navbar-nav{width: 320px; display: flex; justify-content: space-between;}
-    .navbar-nav li {font-weight: bold; cursor: pointer;}
-    #navbar-nav li{position: relative;}
-    #navbar-nav li ~ li::before{
-    	content: ''; position: absolute;
-		width: 1px; height: 16px; background-color: gray;
-		left: -11px; top: 12px;
-    }
-     /* 배경 어두운 부분 스타일 */
-        .overlay {
-            display: none; /* 기본적으로 숨김 */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
-            z-index: 1001; /* 로그인 팝업보다 아래 */
-        }
-        /* 로그인 팝업 스타일 */
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 350px;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1002; /* 배경 위에 표시 */
-        }
-        .popup h2 {
-            margin-top: 0;
-        }
-        .popup button.close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-        }
-        #overlay, #login-popup, #signup-popup{display: none;}
-</style>
+	<style type="text/css">
+	   .navbar .logo img {
+	        width: 243.75px;
+	        height: 50px;
+	    }
+		/* 스타일을 통해 메뉴바를 페이지 상단에 고정합니다 */
+	    .navbar {
+	        position: fixed;
+	        top: 0;
+	        left: 0;
+	        width: 100%;
+	        height: 80px;
+	        background-color: #f1f1f1;
+	        padding: 20px;
+	        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+	        z-index: 1000; /* 페이지의 다른 요소들 위에 보이도록 설정 */
+	    }
+	    body {
+	        margin-top: 80px; /* 로그인 창 높이 만큼 페이지 내용 아래로 밀어내기 */
+	    }
+	    #navbar-nav{width: 320px; display: flex; justify-content: space-between;}
+	    .navbar-nav li {font-weight: bold; cursor: pointer;}
+	    #navbar-nav li{position: relative;}
+	    #navbar-nav li ~ li::before{
+	    	content: ''; position: absolute;
+			width: 1px; height: 16px; background-color: gray;
+			left: -11px; top: 12px;
+	    }
+		/* 배경 어두운 부분 스타일 */
+	   	.overlay {
+	    	display: none; /* 기본적으로 숨김 */
+	       	position: fixed;
+	       	top: 0;
+	       	left: 0;
+	       	width: 100%;
+	       	height: 100%;
+	       	background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+	       	z-index: 1001; /* 로그인 팝업보다 아래 */
+	   	}
+		/* 로그인 팝업 스타일 */
+		.popup {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 350px;
+			padding: 20px;
+			background: #fff;
+	       	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	       	z-index: 1002; /* 배경 위에 표시 */
+	   	}
+	   	.popup h2 {
+	    	margin-top: 0;
+	   	}
+	   	.popup button.close {
+	       	position: absolute;
+	       	top: 10px;
+	       	right: 10px;
+	       	background: none;
+	       	border: none;
+	       	font-size: 18px;
+	       	cursor: pointer;
+	   	}
+	   	#overlay, #login-popup, #signup-popup{display: none;}
+	</style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/popup/login.jsp"/>
-	<jsp:include page="/WEB-INF/views/popup/signup.jsp"/>
 	<!-- 배경을 어둡게 하는 오버레이 -->
 	<div id="overlay" class="overlay" onclick="closePopup()"></div>
 		<nav class="navbar navbar-expand-sm bg-light navbar-light" style="justify-content: space-between;">
@@ -87,7 +85,7 @@
 			</ul>
 			<ul class="navbar-nav" id=navbar-nav>
 				<li class="nav-item">
-					<a class="nav-link" href="<c:url value="/test"/>">성격 유형 검사</a>
+					<a class="nav-link" href="<c:url value="/test/test"/>">성격 유형 검사</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="<c:url value="/type"/>">성격 유형</a>
@@ -97,19 +95,21 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav">
-				<c:if test="${user eq null }">
+				<c:if test="${user eq null}">
 					<li class="nav-item">
-						<div class="nav-link" onclick="openSignupPopup()">회원가입</div>
+						<a class="nav-link" href="<c:url value="/signup"/>">회원가입</a>
 					</li>
 					<li class="nav-item">
-						<div class="nav-link" onclick="openLoginPopup()">로그인</div>
+						<a class="nav-link" href="<c:url value="/login"/>">로그인</a>
 					</li>
 				</c:if>
-				<c:if test="${user ne null }">
-					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="/mypage"/>">마이페이지</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="<c:url value="/logout"/>">로그아웃</a></li>
+				<c:if test="${user ne null}">
+					<li class="nav-item">
+						<a class="nav-link" href="<c:url value="/mypage"/>">마이페이지</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="<c:url value="/logout"/>">로그아웃</a>
+					</li>
 				</c:if>
 			</ul>
 		</nav>
