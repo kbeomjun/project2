@@ -25,12 +25,12 @@
 	          			<a class="nav-link active member-info" href="#">회원정보</a>
 	        		</li>
 	        		<li class="nav-item">
-	          			<a class="nav-link" href="<c:url value="/mypage"/>">테스트결과</a>
+	          			<a class="nav-link" href="<c:url value="#"/>">테스트결과</a>
 	        		</li>
-	        		<c:if test="${user.me_authority = 'ADMIN'}">
+	        		<c:if test="${user.me_authority eq 'ADMIN'}">
 	        			<li class="nav-item">
 		          			<a class="nav-link" href="#">관리</a>
-		        		</li>	
+		        		</li>
 	        		</c:if>
       			</ul>
 	      	<hr class="d-sm-none">
@@ -46,7 +46,7 @@
 					<div class="input-group-prepend input-group-prepend-pw">
 			        	<span class="input-group-text">비밀번호</span>
 			      	</div>
-					<span class="form-control input-group-pw" id="me_pw">${user.me_pw}</span>
+					<span class="form-control input-group-pw input-pw" data-num="${user.me_pw}" id="me_pw">${user.me_pw}</span>
 					<div class="input-group-append input-group-pw">
 			        	<button class="btn btn-outline-warning btn-pw">변경</button>
 			      	</div>
@@ -74,10 +74,11 @@
 			$(this).addClass('active');
 		});
 		
+		let me_ori_pw = $('.input-pw').data('num');
 		$('.btn-pw').click(function(){
 			$('.input-group-pw').remove();
 			var str = `
-		      	<input type="text" class="form-control input-pw" id="me_pw" name="me_pw" value=${user.me_pw}>
+		      	<input type="text" class="form-control input-pw" id="me_pw" name="me_pw" value="${user.me_pw}">
 				<div class="input-group-append input-group-pw">
 		        	<button class="btn btn-outline-info btn-update-pw">확인</button>
 		      	</div>
@@ -88,14 +89,13 @@
 		$(document).on('click', '.btn-update-pw', function(){
 			var me_pw = $('.input-pw').val();
 			let regexPw = /^[a-zA-Z0-9!@#$]{6,15}$/;
-			
 			if(me_pw == ''){
 				alert('변경할 비밀번호를 입력하세요.');
 				return;
 			}else if(!regexPw.test(me_pw)){
 				alert('비밀번호는 6~15자의 영문 대/소문자, 숫자, 특수문자(!@#$)만 사용가능합니다.');
 				return;
-			}else if('${user.me_pw == me_pw}'){
+			}else if(me_pw == me_ori_pw){
 				alert('동일한 비밀번호입니다.');
 				return;
 			}
@@ -125,7 +125,7 @@
 		$('.btn-email').click(function(){
 			$('.input-group-email').remove();
 			var str = `
-		      	<input type="text" class="form-control input-group-email input-email" id="me_email" name="me_email" value=${user.me_email}>
+		      	<input type="text" class="form-control input-group-email input-email" id="me_email" name="me_email" value="${user.me_email}">
 				<div class="input-group-append input-group-email">
 		        	<button class="btn btn-outline-info btn-update-email">확인</button>
 		      	</div>
@@ -155,7 +155,6 @@
 				success : function(data){
 					res = data.res;
 					if(res){
-						alert('이메일을 변경했습니다.');
 						location.href = '<c:url value="/mypage"/>';
 					}else{
 						alert('이메일을 변경하지 못했습니다.');

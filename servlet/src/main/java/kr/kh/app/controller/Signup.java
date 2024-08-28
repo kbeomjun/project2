@@ -31,7 +31,7 @@ public class Signup extends HttpServlet {
 		
 		if(memberService.signup(member)) {
 			request.setAttribute("url", "/login");
-			request.setAttribute("msg", "회원가입을 하였습니다. 로그인페이지로 이동합니다.");
+			request.setAttribute("msg", "회원가입을 하였습니다. 로그인 페이지로 이동합니다.");
 		}else {
 			request.setAttribute("url", "/signup");
 			request.setAttribute("msg", "회원가입을 하지 못했습니다.");
