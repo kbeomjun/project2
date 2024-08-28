@@ -27,14 +27,6 @@ CREATE TABLE `question` (
 	`qu_type`		char(2)			NOT	NULL
 );
 
-drop table if exists `test_result`;
-CREATE TABLE `test_result` (
-	`tr_num`		int primary key auto_increment,
-	`tr_me_id`		varchar(30)	NOT NULL,
-	`tr_te_num`		int			NOT NULL,
-	`tr_pt_code`	char(4)		NOT NULL
-);
-
 drop table if exists `discussion_room`;
 CREATE TABLE `discussion_room` (
 	`dr_num`	int primary key auto_increment,
@@ -59,7 +51,9 @@ CREATE TABLE `comment` (
 drop table if exists `test`;
 CREATE TABLE `test` (
 	`te_num`	int primary key auto_increment,
-	`te_date`	datetime	NOT	NULL default CURRENT_TIMESTAMP
+	`te_date`	datetime	NOT	NULL default CURRENT_TIMESTAMP,
+    `te_result`	char(4)		NULL,
+	`te_me_id`	varchar(30) NOT NULL
 );
 
 drop table if exists `question_answer`;
@@ -70,32 +64,18 @@ CREATE TABLE `question_answer` (
 	`qa_qu_num`	int	NOT NULL
 );
 
-ALTER TABLE `member` ADD CONSTRAINT `FK_member_state_TO_member_1` FOREIGN KEY (
-	`me_ms_name`
-)
-REFERENCES `member_state` (
-	`ms_name`
-);
-
-ALTER TABLE `test_result` ADD CONSTRAINT `FK_member_TO_test_result_1` FOREIGN KEY (
-	`tr_me_id`
+ALTER TABLE `test` ADD CONSTRAINT `FK_member_TO_test_1` FOREIGN KEY (
+	`te_me_id`
 )
 REFERENCES `member` (
 	`me_id`
 );
 
-ALTER TABLE `test_result` ADD CONSTRAINT `FK_test_TO_test_result_1` FOREIGN KEY (
-	`tr_te_num`
+ALTER TABLE `member` ADD CONSTRAINT `FK_member_state_TO_member_1` FOREIGN KEY (
+	`me_ms_name`
 )
-REFERENCES `test` (
-	`te_num`
-);
-
-ALTER TABLE `test_result` ADD CONSTRAINT `FK_personality_type_TO_test_result_1` FOREIGN KEY (
-	`tr_pt_code`
-)
-REFERENCES `personality_type` (
-	`pt_code`
+REFERENCES `member_state` (
+	`ms_name`
 );
 
 ALTER TABLE `comment` ADD CONSTRAINT `FK_member_TO_comment_1` FOREIGN KEY (
@@ -126,11 +106,11 @@ REFERENCES `question` (
 	`qu_num`
 );
 
-ALTER TABLE `mbti`.`test_result` 
-DROP FOREIGN KEY `FK_member_TO_test_result_1`;
-ALTER TABLE `mbti`.`test_result` 
-ADD CONSTRAINT `FK_member_TO_test_result_1`
-  FOREIGN KEY (`tr_me_id`)
+ALTER TABLE `mbti`.`test` 
+DROP FOREIGN KEY `FK_member_TO_test_1`;
+ALTER TABLE `mbti`.`test` 
+ADD CONSTRAINT `FK_member_TO_test_1`
+  FOREIGN KEY (`te_me_id`)
   REFERENCES `mbti`.`member` (`me_id`)
   ON DELETE CASCADE;
   
