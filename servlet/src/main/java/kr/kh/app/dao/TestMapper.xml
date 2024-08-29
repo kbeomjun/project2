@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.kh.app.dao.TestDAO">
+	<insert id="insertTest" keyProperty="te.te_num" useGeneratedKeys="true">
+		insert into test(te_me_id) values(#{te.te_me_id});
+	</insert>
+	
+	<select id="selectQuestionTotalCount" resultType="int">
+		select count(*) from question;
+	</select>
+	
+	<select id="selectQuestionList" resultType="QuestionVO">
+		select * from question order by qu_num limit #{cri.pageStart}, #{cri.perPageNum};
+	</select>
+</mapper>
