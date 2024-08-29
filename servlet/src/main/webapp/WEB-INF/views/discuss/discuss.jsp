@@ -26,12 +26,12 @@
 	</svg>
 		
 	<div style="position: relative;">
-		<div class="container2" style="position: absolute; left: 0; right: 0; padding: 50px 0 0 30px;">
+		<div class="container2" style="position: absolute; left: 0; right: 0; padding: 50px 0 0 100px; width: 60%">
 			<div class="form-group">
 				<label for="content" style="font-weight: bold;">토론 주제 : ${dr.topic}</label>
-				<div class="form-control" style="min-height: 400px; width: 50%; background-color: transparent;">${co_content}</div>
-				<div class="input-group mb-3 " style="width: 50%">
-				  <input type="text" class="form-control " placeholder="채팅 입력" style="background-color: white">
+				<div class="form-control" style="min-height: 600px; background-color: transparent;">${co_content}</div>
+				<div class="input-group mb-3 "">
+				  <input type="text" class="form-control " placeholder="채팅 입력">
 				  <div class="input-group-append">
 				    <button class="btn" type="submit" style="background-color: rgb(255, 164, 164)">입력</button>
 				  </div>
