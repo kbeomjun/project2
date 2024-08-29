@@ -24,15 +24,99 @@
 			</mask>
 		</defs>
 	</svg>
-	
-	<div style="background: #FFE6E6; height: 350px;">
-		<div class="container" 
-			style="min-height: calc(100vh - 240px); padding: 60px 20px; display:flex; 
-				flex-direction: column; align-items: center; text-align:center;">
 		
+	<div style="position: relative;">
+		<div class="container2" style="position: absolute; left: 0; right: 0; padding: 0 30px;">
+			<div class="form-group">
+				<label for="content">토론</label>
+				<textarea class="form-control opacity-75" style="min-height: 400px; width: 50%; background-color: transparent; outline-color: black" id="content" name=""></textarea>
+				<div class="input-group mb-3 " style="width: 50%">
+				  <input type="text" class="form-control " placeholder="채팅 입력" style="background-color: white">
+				  <div class="input-group-append">
+				    <button class="btn" type="submit" style="background-color: rgb(255, 164, 164)">입력</button>
+				  </div>
+				</div>
+			</div>
 		</div>
+		<div style="background: #FFE6E6; height: 350px;">
+			<div class="container" 
+				style="min-height: calc(100vh - 240px); padding: 60px 20px; display:flex; 
+					flex-direction: column; align-items: center; text-align:center;">
+			</div>
+		</div>
+	<!-- 왼쪽 : 채팅창 / 채팅 입력칸 / 채팅 - 아이디 + mbti + 의견에 맞는 색 : 채팅 내용(hidden : 신고) -->
+	<!-- 오른쪽상단 : 토론 주제 목록 / 오른쪽 하단 : 의견(의견에 맞는 색 표시) + 의견에 속한 인원 비율[https://www.w3schools.com/bootstrap4/bootstrap_progressbars.asp] -->
+	<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="80%" viewBox="0 0 1920 479.99999999999994" preserveAspectRatio="xMaxYMax slice">
+		<g transform="scale(1.7051509769094138)">
+			<rect x="0" y="0" width="1126" height="281.5" fill="#FFE6E6"/>
+			<circle cx="35.185" cy="35.185" r="7.035" fill="#f3e2ab"/>
+			<circle cx="105.565" cy="35.185" r="7.035" fill="#d0f6e3"/>
+			<circle cx="175.935" cy="35.185" r="7.035" fill="#d0f6e3"/>
+			<circle cx="246.315" cy="35.185" r="7.035" fill="#d0f6e3"/>
+			<circle cx="316.685" cy="35.185" r="7.035" fill="#d0f6e3"/>
+			<circle cx="387.065" cy="35.185" r="7.035" fill="#d1f5f4"/>
+			<circle cx="457.435" cy="35.185" r="7.035" fill="#eee1f6"/>
+			<circle cx="527.8149999999999" cy="35.185" r="7.035" fill="#eee1f6"/>
+			<circle cx="598.185" cy="35.185" r="7.035" fill="#f3e2ab"/>
+			<circle cx="668.5649999999999" cy="35.185" r="7.035" fill="#eee1f6"/>
+			<circle cx="738.935" cy="35.185" r="7.035" fill="#eee1f6"/>
+			<circle cx="809.3149999999999" cy="35.185" r="7.035" fill="#d0f6e3"/>
+			<circle cx="879.685" cy="35.185" r="7.035" fill="#d0f6e3"/>
+			<circle cx="950.0649999999999" cy="35.185" r="7.035" fill="#f3e2ab"/>
+			<circle cx="1020.435" cy="35.185" r="7.035" fill="#eee1f6"/>
+			<circle cx="1090.815" cy="35.185" r="7.035" fill="#d0f6e3"/>
+			<circle cx="35.185" cy="105.565" r="7.035" fill="#d0f6e3"/>
+			<circle cx="105.56" cy="105.56" r="9.57" fill="#f3e2ab"/>
+			<circle cx="175.935" cy="105.565" r="12.105" fill="#eee1f6"/>
+			<circle cx="246.31" cy="105.56" r="14.64" fill="#d1f5f4"/>
+			<circle cx="316.69" cy="105.56" r="17.17" fill="#eee1f6"/>
+			<circle cx="387.065" cy="105.565" r="19.705" fill="#d1f5f4"/>
+			<circle cx="457.44" cy="105.55999999999999" r="22.24" fill="#d1f5f4"/>
+			<circle cx="527.8199999999999" cy="105.57" r="23.93" fill="#eee1f6"/>
+			<circle cx="598.1899999999999" cy="105.57" r="23.93" fill="#d1f5f4"/>
+			<circle cx="668.5699999999999" cy="105.57" r="23.93" fill="#d0f6e3"/>
+			<circle cx="738.94" cy="105.55999999999999" r="22.24" fill="#d0f6e3"/>
+			<circle cx="809.315" cy="105.565" r="19.705" fill="#f3e2ab"/>
+			<circle cx="879.6899999999999" cy="105.56" r="17.17" fill="#d0f6e3"/>
+			<circle cx="950.06" cy="105.56" r="14.64" fill="#d1f5f4"/>
+			<circle cx="1020.4350000000001" cy="105.565" r="12.105" fill="#eee1f6"/>
+			<circle cx="1090.81" cy="105.56" r="9.57" fill="#eee1f6"/>
+			<circle cx="35.185" cy="175.935" r="7.035" fill="#f3e2ab"/>
+			<circle cx="105.56" cy="175.94" r="11.26" fill="#d0f6e3"/>
+			<circle cx="175.94" cy="175.94" r="15.48" fill="#d1f5f4"/>
+			<circle cx="246.315" cy="175.935" r="19.705" fill="#d0f6e3"/>
+			<circle cx="316.69" cy="175.94" r="23.93" fill="#d0f6e3"/>
+			<circle cx="387.06" cy="175.94" r="28.15" fill="#d0f6e3"/>
+			<circle cx="457.44" cy="175.94" r="32.37" fill="#eee1f6"/>
+			<circle cx="527.8199999999999" cy="175.94" r="35.19" fill="#f3e2ab"/>
+			<circle cx="598.19" cy="175.94" r="35.19" fill="#d0f6e3"/>
+			<circle cx="668.5699999999999" cy="175.94" r="35.19" fill="#d1f5f4"/>
+			<circle cx="738.94" cy="175.94" r="32.37" fill="#f3e2ab"/>
+			<circle cx="809.31" cy="175.94" r="28.15" fill="#eee1f6"/>
+			<circle cx="879.6899999999999" cy="175.94" r="23.93" fill="#eee1f6"/>
+			<circle cx="950.065" cy="175.935" r="19.705" fill="#eee1f6"/>
+			<circle cx="1020.44" cy="175.94" r="15.48" fill="#f3e2ab"/>
+			<circle cx="1090.81" cy="175.94" r="11.26" fill="#eee1f6"/>
+			<circle cx="35.185" cy="246.315" r="7.035" fill="#d1f5f4"/>
+			<circle cx="105.56" cy="246.31" r="9.57" fill="#d1f5f4"/>
+			<circle cx="175.935" cy="246.315" r="12.105" fill="#eee1f6"/>
+			<circle cx="246.31" cy="246.31" r="14.64" fill="#d1f5f4"/>
+			<circle cx="316.69" cy="246.31" r="17.17" fill="#d0f6e3"/>
+			<circle cx="387.065" cy="246.315" r="19.705" fill="#eee1f6"/>
+			<circle cx="457.44" cy="246.31" r="22.24" fill="#eee1f6"/>
+			<circle cx="527.8199999999999" cy="246.32" r="23.93" fill="#eee1f6"/>
+			<circle cx="598.1899999999999" cy="246.32" r="23.93" fill="#eee1f6"/>
+			<circle cx="668.5699999999999" cy="246.32" r="23.93" fill="#d0f6e3"/>
+			<circle cx="738.94" cy="246.31" r="22.24" fill="#d1f5f4"/>
+			<circle cx="809.315" cy="246.315" r="19.705" fill="#f3e2ab"/>
+			<circle cx="879.6899999999999" cy="246.31" r="17.17" fill="#f3e2ab"/>
+			<circle cx="950.06" cy="246.31" r="14.64" fill="#f3e2ab"/>
+			<circle cx="1020.4350000000001" cy="246.315" r="12.105" fill="#d1f5f4"/>
+			<circle cx="1090.81" cy="246.31" r="9.57" fill="#eee1f6"/>
+		</g>
+	</svg>
 	</div>
-
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	
 </body>
 </html>
