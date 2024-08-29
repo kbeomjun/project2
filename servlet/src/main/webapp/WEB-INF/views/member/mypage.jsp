@@ -16,8 +16,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="container pt-3" style="min-height: calc(100vh - 240px)">
-		<h1>마이페이지</h1>
+	<div class="container pt-5" style="min-height: calc(100vh - 240px)">
 		<div class="row">
 	    	<div class="col-sm-4">
 	      		<ul class="nav nav-pills flex-column">
@@ -189,6 +188,31 @@
 			}else{
 				return;
 			}
+		});
+	</script>
+	
+	<script type="text/javascript">
+		// 검사버튼 눌렀을때 나타나는 기능만 구현
+		$('.test-create').click(function(){
+			if('${user.me_id}' == ''){
+				if(confirm('검사는 회원만 진행가능합니다.\n로그인 하시겠습니까?')){
+					location.href = '<c:url value="/login"/>';
+				}
+				return;
+			}
+			$.ajax({
+				async : false,
+				url : '<c:url value="/test/create"/>',
+				method : "get",
+				success : function(data){
+					var te_num = data.te_num;
+					var url = "<c:url value="/test/list?te_num="/>"+te_num;
+					location.href = url;
+				},
+				error : function(xhr){
+					console.log(xhr);
+				}
+			});
 		});
 	</script>
 </body>

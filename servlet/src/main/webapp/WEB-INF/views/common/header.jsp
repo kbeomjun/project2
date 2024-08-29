@@ -50,43 +50,43 @@
 <body>
 	<!-- 배경을 어둡게 하는 오버레이 -->
 	<div id="overlay" class="overlay" onclick="closePopup()"></div>
-		<nav class="navbar navbar-expand-sm bg-light navbar-light" style="justify-content: space-between;">
-			<ul class="navbar-nav">
-				<li class="nav-item active">
-		  			<a class="navbar-brand logo" href="<c:url value="/"/>">
-		    			<img src="https://www.16personalities.com/static/images/system/logo.svg" alt="logo">
-		  			</a>
-				</li>
-			</ul>
-			<ul class="navbar-nav" id=navbar-nav>
+	<nav class="navbar navbar-expand-sm bg-light navbar-light" style="justify-content: space-between;">
+		<ul class="navbar-nav">
+			<li class="nav-item active">
+	  			<a class="navbar-brand logo" href="<c:url value="/"/>">
+	    			<img src="https://www.16personalities.com/static/images/system/logo.svg" alt="logo">
+	  			</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav" id=navbar-nav>
+			<li class="nav-item">
+				<a class="nav-link test-create" href="#">검사 실시</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="<c:url value="/type"/>">성격 유형</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="<c:url value="/discuss"/>">토론 참여</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav">
+			<c:if test="${user eq null}">
 				<li class="nav-item">
-					<a class="nav-link" href="<c:url value="/test/test"/>">성격 유형 검사</a>
+					<a class="nav-link" href="<c:url value="/signup"/>">회원가입</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<c:url value="/type"/>">성격 유형</a>
+					<a class="nav-link" href="<c:url value="/login"/>">로그인</a>
+				</li>
+			</c:if>
+			<c:if test="${user ne null}">
+				<li class="nav-item">
+					<a class="nav-link" href="<c:url value="/mypage"/>">마이페이지</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<c:url value="/discuss"/>">토론방</a>
+					<a class="nav-link" href="<c:url value="/logout"/>">로그아웃</a>
 				</li>
-			</ul>
-			<ul class="navbar-nav">
-				<c:if test="${user eq null}">
-					<li class="nav-item">
-						<a class="nav-link" href="<c:url value="/signup"/>">회원가입</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<c:url value="/login"/>">로그인</a>
-					</li>
-				</c:if>
-				<c:if test="${user ne null}">
-					<li class="nav-item">
-						<a class="nav-link" href="<c:url value="/mypage"/>">마이페이지</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="<c:url value="/logout"/>">로그아웃</a>
-					</li>
-				</c:if>
-			</ul>
-		</nav>
+			</c:if>
+		</ul>
+	</nav>
 </body>
 </html>

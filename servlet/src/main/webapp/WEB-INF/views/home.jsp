@@ -33,7 +33,7 @@
 			<h1 class="mb-3" style="font-weight: bold">"MBTI가 어떻게 되세요?"</h1>
 			<p class="mb-3">성격 테스트를 통해 자신의 성향과 행동에 대한 정확한 분석 결과를 확인해보세요.</p>
 			<br>
-			<a href="<c:url value="/test/test"/>" class="button"
+			<a href="#" class="button test-create"
 				  style="background-color: #D0A9F5; border-color: #D0A9F5; vertical-align: middle; align-items: center; font-weight: bolder; color: white;
 				  		height: 60px; padding: 14px 40px; display: inline-flex; border: 1px solid transparent; border-radius: 30px">
 				검사 실시
@@ -112,5 +112,29 @@
 	</svg>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	
+	<script type="text/javascript">
+		$('.test-create').click(function(){
+			if('${user.me_id}' == ''){
+				if(confirm('검사는 회원만 진행가능합니다.\n로그인 하시겠습니까?')){
+					location.href = '<c:url value="/login"/>';
+				}
+				return;
+			}
+			$.ajax({
+				async : false,
+				url : '<c:url value="/test/create"/>',
+				method : "get",
+				success : function(data){
+					var te_num = data.te_num;
+					var url = "<c:url value="/test/list?te_num="/>"+te_num;
+					location.href = url;
+				},
+				error : function(xhr){
+					console.log(xhr);
+				}
+			});
+		});
+	</script>
 </body>
 </html>

@@ -7,13 +7,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Criteria {
 	protected int page = 1;
-	protected int perPageNum = 10;
-	protected String search = "";
+	protected int perPageNum = 5;
 	
-	public Criteria(int page, int perPageNum, String search) {
+	public Criteria(int page, int perPageNum) {
 		this.page = page;
 		this.perPageNum = perPageNum;
-		this.search = search;
 	}
 	
 	public int getPageStart() {

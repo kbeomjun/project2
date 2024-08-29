@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.kh.app.model.vo.MemberVO;
 
-@WebFilter({"/test/test", "/mypage"})
+@WebFilter({"/test/list", "/mypage"})
 public class MemberFilter extends HttpFilter implements Filter {
        
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
