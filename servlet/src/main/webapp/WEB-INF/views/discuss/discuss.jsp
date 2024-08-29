@@ -26,10 +26,10 @@
 	</svg>
 		
 	<div style="position: relative;">
-		<div class="container2" style="position: absolute; left: 0; right: 0; padding: 0 30px;">
+		<div class="container2" style="position: absolute; left: 0; right: 0; padding: 50px 0 0 30px;">
 			<div class="form-group">
-				<label for="content">토론</label>
-				<textarea class="form-control opacity-75" style="min-height: 400px; width: 50%; background-color: transparent; outline-color: black" id="content" name=""></textarea>
+				<label for="content" style="font-weight: bold;">토론 주제 : ${dr.topic}</label>
+				<div class="form-control" style="min-height: 400px; width: 50%; background-color: transparent;">${co_content}</div>
 				<div class="input-group mb-3 " style="width: 50%">
 				  <input type="text" class="form-control " placeholder="채팅 입력" style="background-color: white">
 				  <div class="input-group-append">
