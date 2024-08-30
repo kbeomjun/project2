@@ -44,9 +44,9 @@ public class TestServiceImp implements TestService {
 	}
 
 	@Override
-	public PageMaker getPostPageMaker(Criteria cri) {
+	public PageMaker getQuestionPageMaker(Criteria cri) {
 		int totalCount = testDao.selectQuestionTotalCount();
-		return new PageMaker(totalCount, cri.getPerPageNum(), cri);
+		return new PageMaker(totalCount, 1, cri);
 	}
 
 	@Override

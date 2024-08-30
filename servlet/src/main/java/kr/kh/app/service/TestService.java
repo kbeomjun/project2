@@ -11,7 +11,7 @@ import kr.kh.app.pagination.PageMaker;
 public interface TestService {
 	TestVO createTest(MemberVO user);
 
-	PageMaker getPostPageMaker(Criteria cri);
+	PageMaker getQuestionPageMaker(Criteria cri);
 
 	List<QuestionVO> getQuestionList(Criteria cri);
 }
