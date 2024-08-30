@@ -22,7 +22,7 @@ public class TestList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Criteria cri = new Criteria(1, 5);
-		PageMaker pm = testService.getPostPageMaker(cri);
+		PageMaker pm = testService.getQuestionPageMaker(cri);
 		List<QuestionVO> list = testService.getQuestionList(cri);
 		System.out.println(list);
 		
