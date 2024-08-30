@@ -22,13 +22,13 @@
 	</style>
 </head>
 <body>
-	<div class="container container-body col-12">
-		<div class="d-flex justify-content-center container container-inner col-6">
+	<div class="container container-body col-4">
+		<div class="d-flex justify-content-center container container-inner">
 			<a class="navbar-brand" href="<c:url value="/"/>" style="color:black;">
 				<img src="https://www.16personalities.com/static/images/system/logo.svg" alt="logo">
 			</a>
 		</div>
-		<div class="container container-inner container-inner-body col-6">
+		<div class="container container-inner container-inner-body">
 			<form action="<c:url value="/login"/>" method="post" id="form">
 				<div>
 					<div class="form-group">
@@ -43,7 +43,7 @@
 				<button type="submit" class="btn btn-outline-success col-12 mt-3">로그인</button>
 			</form>
 		</div>
-		<div class="d-flex justify-content-end container container-inner container-inner-footer col-6">
+		<div class="d-flex justify-content-end container container-inner container-inner-footer">
 			<a class="nav-link" href="<c:url value="/signup"/>">회원가입</a>
 		</div>
 	</div>
