@@ -30,7 +30,7 @@
 			<div class="container2" style="position: absolute; left: 0; padding: 50px 0 0 100px; width: 60%">
 				<div class="form-group">
 					<label for="content" style="font-weight: bold;">토론 주제 : ${dr.topic}</label>
-					<div class="form-control" style="min-height: 600px; background-color: transparent;">${co_content}</div>
+					<div class="form-control" style="min-height: 600px; background-color: white;">${co_content}</div>
 					<div class="input-group mb-3 ">
 					  <input type="text" class="form-control " placeholder="채팅 입력">
 					  <div class="input-group-append">
@@ -43,8 +43,9 @@
 				<div class="form-group">
 					<div class="form-control" style="min-height: 600px; background-color: transparent;">
 						<div>다른 토론 주제</div>
-						<br>
-						<div>의견 내용</div>
+						<button class="third col-6" style="height: 25px; background-color: rgb(255, 164, 164)">another</button>
+						<hr>
+						<div class="mb-0">의견 내용</div>
 					</div>
 				</div>
 			</div>
