@@ -55,7 +55,7 @@
 					flex-direction: column; align-items: center; text-align:center;">
 			</div>
 		</div>
-	<!-- 왼쪽 : 채팅창 / 채팅 입력칸 / 채팅 - 아이디 + mbti + 의견에 맞는 색 : 채팅 내용(hidden : 신고) -->
+	<!-- 왼쪽 : 채팅창 / 채팅 입력칸 / 채팅 - 아이디 + mbti + 의견에 맞는 색 : 채팅 내용 + 채팅 입력 시간(회색) [hidden : 신고버튼] -->
 	<!-- 오른쪽상단 : 토론 주제 목록 / 오른쪽 하단 : 의견(의견에 맞는 색 표시) + 의견에 속한 인원 비율[https://www.w3schools.com/bootstrap4/bootstrap_progressbars.asp] -->
 	<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="80%" viewBox="0 0 1920 479.99999999999994" preserveAspectRatio="xMaxYMax slice">
 		<g transform="scale(1.7051509769094138)">
