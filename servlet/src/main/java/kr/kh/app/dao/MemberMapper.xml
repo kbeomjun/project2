@@ -38,7 +38,7 @@
 	</update>
 	
 	<update id="updateMemberStop">
-		update member set me_stopdate = #{me_stopdate} where me_id = #{user.me_id};
+		update member set me_stopdate = #{user.me_stopdate}, me_ms_name = #{user.me_ms_name} where me_id = #{user.me_id};
 	</update>
 	
 	<update id="updateMemberPw">
