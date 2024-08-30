@@ -24,7 +24,6 @@ public class TestList extends HttpServlet {
 		Criteria cri = new Criteria(1, 5);
 		PageMaker pm = testService.getQuestionPageMaker(cri);
 		List<QuestionVO> list = testService.getQuestionList(cri);
-		System.out.println(list);
 		
 		request.setAttribute("pm", pm);
 		request.setAttribute("list", list);
