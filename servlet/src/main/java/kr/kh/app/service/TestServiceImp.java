@@ -114,15 +114,15 @@ public class TestServiceImp implements TestService {
 		List<String> list = new ArrayList<String>();
 		
 		int qa_te_num = Integer.parseInt(te_num);
-		int num_IE = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "IE");
-		int num_SN = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "SN");
-		int num_TF = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "TF");
-		int num_PJ = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "PJ");
+		int per_E = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "IE");
+		int per_N = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "SN");
+		int per_F = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "TF");
+		int per_J = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "PJ");
 		
-		list.add(num_IE+"%");
-		list.add(num_SN+"%");
-		list.add(num_TF+"%");
-		list.add(num_PJ+"%");
+		list.add(per_E+"%");
+		list.add(per_N+"%");
+		list.add(per_F+"%");
+		list.add(per_J+"%");
 		
 		return list;
 	}

@@ -36,7 +36,12 @@
 	<div class="container">
 		<h1>테스트 결과</h1>
 		<h2>${test.te_result}</h2>
-		<h3>${list}</h3>
+		<h3>
+			<span>E : ${list.get(0)}</span>
+			<span>N : ${list.get(1)}</span>
+			<span>F : ${list.get(2)}</span>
+			<span>J : ${list.get(3)}</span>
+		</h3>
 	</div>
 	
 	<svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.dev/svgjs" width="100%" height="200" preserveAspectRatio="none" viewBox="0 0 1440 560">
