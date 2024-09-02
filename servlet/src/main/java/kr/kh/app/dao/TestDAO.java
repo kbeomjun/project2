@@ -17,4 +17,10 @@ public interface TestDAO {
 	List<QuestionVO> selectQuestionList(@Param("cri")Criteria cri);
 
 	void insertQuestionAnswer(@Param("qa_answer")int qa_answer, @Param("qa_te_num")int qa_te_num, @Param("qa_qu_num")int qa_qu_num);
+
+	int selectQuestionAnswerSum(@Param("qa_te_num")int qa_te_num, @Param("qu_type")String qu_type);
+
+	TestVO selectTest(@Param("te_num")int te_num);
+
+	void updateTestResult(@Param("te")TestVO test);
 }

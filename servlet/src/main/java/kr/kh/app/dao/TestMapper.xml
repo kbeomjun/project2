@@ -19,4 +19,18 @@
 		insert into question_answer(qa_answer, qa_te_num, qa_qu_num)
 		values(#{qa_answer}, #{qa_te_num}, #{qa_qu_num});
 	</insert>
+	
+	<select id="selectQuestionAnswerSum" resultType="int">
+		select sum(qa_answer) from question_answer 
+		join question on qu_num = qa_qu_num 
+		where qa_te_num = #{qa_te_num} and qu_type = #{qu_type};
+	</select>
+	
+	<select id="selectTest" resultType="TestVO">
+		select * from test where te_num = #{te_num};
+	</select>
+	
+	<update id="updateTestResult">
+		update test set te_result = #{te.te_result} where te_num = #{te.te_num};
+	</update>
 </mapper>

@@ -1,7 +1,6 @@
 package kr.kh.app.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.kh.app.model.vo.QuestionVO;
-import kr.kh.app.pagination.Criteria;
-import kr.kh.app.pagination.PageMaker;
+import kr.kh.app.model.vo.TestVO;
 import kr.kh.app.service.TestService;
 import kr.kh.app.service.TestServiceImp;
 
@@ -23,7 +20,11 @@ public class TestResult extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String te_num = request.getParameter("te_num");
+		TestVO test =  testService.getTestResult(te_num);
+		List<String> list = testService.getTestResultPercentage(te_num);
 		
+		request.setAttribute("test", test);
+		request.setAttribute("list", list);
 		request.getRequestDispatcher("/WEB-INF/views/test/result.jsp").forward(request, response);
 	}
 }

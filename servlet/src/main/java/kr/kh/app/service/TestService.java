@@ -16,4 +16,8 @@ public interface TestService {
 	List<QuestionVO> getQuestionList(Criteria cri);
 
 	void insertQuestionAnswer(String te_num, List<String> namelist, List<String> answerlist);
+
+	TestVO getTestResult(String te_num);
+
+	List<String> getTestResultPercentage(String te_num);
 }

@@ -2,6 +2,7 @@ package kr.kh.app.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -70,5 +71,59 @@ public class TestServiceImp implements TestService {
 			testDao.insertQuestionAnswer(qa_answer, qa_te_num, qa_qu_num);
 		}
 		
+	}
+
+	@Override
+	public TestVO getTestResult(String te_num) {
+		int qa_te_num = Integer.parseInt(te_num);
+		int num_IE = testDao.selectQuestionAnswerSum(qa_te_num, "IE");
+		int num_SN = testDao.selectQuestionAnswerSum(qa_te_num, "SN");
+		int num_TF = testDao.selectQuestionAnswerSum(qa_te_num, "TF");
+		int num_PJ = testDao.selectQuestionAnswerSum(qa_te_num, "PJ");
+		
+		String te_result = "";
+		if(num_IE >= 0) {
+			te_result += "E";
+		}else {
+			te_result += "I";
+		}
+		if(num_SN >= 0) {
+			te_result += "N";
+		}else {
+			te_result += "S";
+		}
+		if(num_TF >= 0) {
+			te_result += "F";
+		}else {
+			te_result += "T";
+		}
+		if(num_PJ >= 0) {
+			te_result += "J";
+		}else {
+			te_result += "P";
+		}
+		
+		TestVO test = testDao.selectTest(qa_te_num);
+		test.setTe_result(te_result);
+		testDao.updateTestResult(test);
+		return test;
+	}
+
+	@Override
+	public List<String> getTestResultPercentage(String te_num) {
+		List<String> list = new ArrayList<String>();
+		
+		int qa_te_num = Integer.parseInt(te_num);
+		int num_IE = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "IE");
+		int num_SN = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "SN");
+		int num_TF = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "TF");
+		int num_PJ = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "PJ");
+		
+		list.add(num_IE+"%");
+		list.add(num_SN+"%");
+		list.add(num_TF+"%");
+		list.add(num_PJ+"%");
+		
+		return list;
 	}
 }
