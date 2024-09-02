@@ -7,63 +7,65 @@
 <head>
 <meta charset="UTF-8">
 	<style type="text/css">
-	.navbar .logo img {
-		width: 243.75px;
-		height: 50px;
-	}
-	/* 스타일을 통해 메뉴바를 페이지 상단에 고정합니다 */
-	.navbar {
-		position: sticky;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 80px;
-		background-color: #f1f1f1;
-		padding: 20px;
-		/* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
-		z-index: 1000; /* 페이지의 다른 요소들 위에 보이도록 설정 */
-	}
-	
-	.navbar-nav li {
-		font-weight: bold;
-		cursor: pointer;
-	}
-	
-	#nav-center {
-		width: 320px;
-		display: flex;
-		justify-content: space-between;
-	}
-	#nav-right {
-		width: 200px;
-		display: flex;
-		justify-content: space-between;
-	}
-	
-	#nav-center li,  #nav-right li{
-		position: relative;
-	}
-	
-	#nav-center li ~ li::before{
-		content: '';
-		position: absolute;
-		width: 1px;
-		height: 16px;
-		background-color: gray;
-		left: -11px; top: 12px;
-	}
-	#circle{
-		position: relative;
-		width: 4px; height: 4px; background-color: gray;
-		border-radius: 50%;
-		top: 17px;
-	}
+		.navbar .logo img {
+			width: 243.75px;
+			height: 50px;
+		}
+		
+		/* 스타일을 통해 메뉴바를 페이지 상단에 고정합니다 */
+		#navbar {
+			position: sticky;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 80px;
+			background-color: #f1f1f1;
+			padding: 20px;
+			/* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+			z-index: 1000; /* 페이지의 다른 요소들 위에 보이도록 설정 */
+			justify-content: space-between;
+		}
+		
+		.navbar-nav .nav-item {
+			font-weight: bold;
+			cursor: pointer;
+		}
+		
+		#nav-center {
+			width: 320px;
+			display: flex;
+			justify-content: space-between;
+		}
+		
+		#nav-right {
+			width: 200px;
+			display: flex;
+			justify-content: space-between;
+		}
+		
+		#nav-center li,  #nav-right li{
+			position: relative;
+		}
+		
+		#nav-center li ~ li::before{
+			content: '';
+			position: absolute;
+			width: 1px;
+			height: 16px;
+			background-color: gray;
+			left: -11px; top: 12px;
+		}
+		
+		#circle{
+			position: relative;
+			width: 4px; height: 4px; background-color: gray;
+			border-radius: 50%;
+			top: 17px;
+		}
 	</style>
 </head>
 <body>
-	<!-- 배경을 어둡게 하는 오버레이 -->
-	<div id="overlay" class="overlay" onclick="closePopup()"></div>
-	<nav class="navbar navbar-expand-sm bg-white navbar-light" style="justify-content: space-between;">
+	<nav class="navbar navbar-expand-sm bg-white navbar-light" id="navbar">
 		<ul class="navbar-nav">
 			<li class="nav-item active">
 				<a class="navbar-brand logo" href="<c:url value="/"/>"> 
