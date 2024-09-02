@@ -21,7 +21,7 @@ public class TestResult extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String te_num = request.getParameter("te_num");
 		TestVO test =  testService.getTestResult(te_num);
-		List<String> list = testService.getTestResultPercentage(te_num);
+		List<Integer> list = testService.getTestResultPercentage(te_num);
 		
 		request.setAttribute("test", test);
 		request.setAttribute("list", list);

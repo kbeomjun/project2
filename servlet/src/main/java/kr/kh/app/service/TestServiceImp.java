@@ -110,8 +110,8 @@ public class TestServiceImp implements TestService {
 	}
 
 	@Override
-	public List<String> getTestResultPercentage(String te_num) {
-		List<String> list = new ArrayList<String>();
+	public List<Integer> getTestResultPercentage(String te_num) {
+		List<Integer> list = new ArrayList<Integer>();
 		
 		int qa_te_num = Integer.parseInt(te_num);
 		int per_E = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "IE");
@@ -119,10 +119,10 @@ public class TestServiceImp implements TestService {
 		int per_F = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "TF");
 		int per_J = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "PJ");
 		
-		list.add(per_E+"%");
-		list.add(per_N+"%");
-		list.add(per_F+"%");
-		list.add(per_J+"%");
+		list.add(per_E);
+		list.add(per_N);
+		list.add(per_F);
+		list.add(per_J);
 		
 		return list;
 	}

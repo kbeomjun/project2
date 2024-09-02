@@ -8,6 +8,13 @@
 <meta charset="UTF-8">
 <title>테스트 결과</title>
 	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
+	<style type="text/css">
+		.progress{width:90%; height:30px;}
+		.progress-bar{height: 30px;}
+		.mbti-code{
+			margin:0 10px; width:2%; height:30px; line-height: 30px; text-align:center;
+		}
+	</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -33,15 +40,44 @@
 		</defs>
 	</svg>
 	
-	<div class="container">
-		<h1>테스트 결과</h1>
-		<h2>${test.te_result}</h2>
-		<h3>
-			<span>E : ${list.get(0)}</span>
-			<span>N : ${list.get(1)}</span>
-			<span>F : ${list.get(2)}</span>
-			<span>J : ${list.get(3)}</span>
-		</h3>
+	<div class="container col-12">
+		<h2 class="d-flex justify-content-center mt-3">당신은 ${test.te_result}입니다.</h2>
+		
+		<div class="d-flex justify-content-center mt-3" style="height: 30px;">
+			<h3 class="mbti-code">I</h3>
+			<div class="progress">
+				<div class="progress-bar bg-info" style="width:${100 - list.get(0)}%;">${100 - list.get(0)}%</div>
+				<div class="progress-bar" style="width:${list.get(0)}%;">${list.get(0)}%</div>
+			</div>
+			<h3 class="mbti-code">E</h3>
+		</div>
+		
+		<div class="d-flex justify-content-center mt-3">
+			<h3 class="mbti-code">S</h3>
+			<div class="progress">
+				<div class="progress-bar bg-info" style="width:${100 - list.get(1)}%;">${100 - list.get(1)}%</div>
+				<div class="progress-bar" style="width:${list.get(1)}%;">${list.get(1)}%</div>
+			</div>
+			<h3 class="mbti-code">N</h3>
+		</div>
+		
+		<div class="d-flex justify-content-center mt-3">
+			<h3 class="mbti-code">T</h3>
+			<div class="progress">
+				<div class="progress-bar bg-info" style="width:${100 - list.get(2)}%;">${100 - list.get(2)}%</div>
+				<div class="progress-bar" style="width:${list.get(2)}%;">${list.get(2)}%</div>
+			</div>
+			<h3 class="mbti-code">F</h3>
+		</div>
+		
+		<div class="d-flex justify-content-center mt-3">
+			<h3 class="mbti-code">P</h3>
+			<div class="progress">
+				<div class="progress-bar bg-info" style="width:${100 - list.get(3)}%;">${100 - list.get(3)}%</div>
+				<div class="progress-bar" style="width:${list.get(3)}%;">${list.get(3)}%</div>
+			</div>
+			<h3 class="mbti-code">J</h3>
+		</div>
 	</div>
 	
 	<svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.dev/svgjs" width="100%" height="200" preserveAspectRatio="none" viewBox="0 0 1440 560">

@@ -19,5 +19,5 @@ public interface TestService {
 
 	TestVO getTestResult(String te_num);
 
-	List<String> getTestResultPercentage(String te_num);
+	List<Integer> getTestResultPercentage(String te_num);
 }
