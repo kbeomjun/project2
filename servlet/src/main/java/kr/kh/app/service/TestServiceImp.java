@@ -2,6 +2,7 @@ package kr.kh.app.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -52,5 +53,77 @@ public class TestServiceImp implements TestService {
 	@Override
 	public List<QuestionVO> getQuestionList(Criteria cri) {
 		return testDao.selectQuestionList(cri);
+	}
+
+	@Override
+	public void insertQuestionAnswer(String te_num, List<String> namelist, List<String> answerlist) {
+		for(int i = 0; i < namelist.size(); i++) {
+			String answer = answerlist.get(i);
+			int qa_answer = Integer.parseInt(answer);
+			
+			int qa_te_num = Integer.parseInt(te_num);
+			
+			String name = namelist.get(i);
+			int index = name.indexOf('r');
+			String qaQuNumStr = name.substring(index + 1);
+			int qa_qu_num = Integer.parseInt(qaQuNumStr);
+			
+			testDao.insertQuestionAnswer(qa_answer, qa_te_num, qa_qu_num);
+		}
+		
+	}
+
+	@Override
+	public TestVO getTestResult(String te_num) {
+		int qa_te_num = Integer.parseInt(te_num);
+		int num_IE = testDao.selectQuestionAnswerSum(qa_te_num, "IE");
+		int num_SN = testDao.selectQuestionAnswerSum(qa_te_num, "SN");
+		int num_TF = testDao.selectQuestionAnswerSum(qa_te_num, "TF");
+		int num_PJ = testDao.selectQuestionAnswerSum(qa_te_num, "PJ");
+		
+		String te_result = "";
+		if(num_IE >= 0) {
+			te_result += "E";
+		}else {
+			te_result += "I";
+		}
+		if(num_SN >= 0) {
+			te_result += "N";
+		}else {
+			te_result += "S";
+		}
+		if(num_TF >= 0) {
+			te_result += "F";
+		}else {
+			te_result += "T";
+		}
+		if(num_PJ >= 0) {
+			te_result += "J";
+		}else {
+			te_result += "P";
+		}
+		
+		TestVO test = testDao.selectTest(qa_te_num);
+		test.setTe_result(te_result);
+		testDao.updateTestResult(test);
+		return test;
+	}
+
+	@Override
+	public List<Integer> getTestResultPercentage(String te_num) {
+		List<Integer> list = new ArrayList<Integer>();
+		
+		int qa_te_num = Integer.parseInt(te_num);
+		int per_E = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "IE");
+		int per_N = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "SN");
+		int per_F = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "TF");
+		int per_J = 50 + testDao.selectQuestionAnswerSum(qa_te_num, "PJ");
+		
+		list.add(per_E);
+		list.add(per_N);
+		list.add(per_F);
+		list.add(per_J);
+		
+		return list;
 	}
 }

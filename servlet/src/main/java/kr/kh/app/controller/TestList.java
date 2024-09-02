@@ -1,6 +1,7 @@
 package kr.kh.app.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -21,16 +22,47 @@ public class TestList extends HttpServlet {
 	private TestService testService = new TestServiceImp();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String te_num = request.getParameter("te_num");
+		String page = request.getParameter("page");
 		Criteria cri = new Criteria(1, 5);
+		if(page != null) {
+			cri.setPage(Integer.parseInt(page));
+		}
 		PageMaker pm = testService.getQuestionPageMaker(cri);
 		List<QuestionVO> list = testService.getQuestionList(cri);
 		
+		request.setAttribute("te_num", te_num);
 		request.setAttribute("pm", pm);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/WEB-INF/views/test/list.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String te_num = request.getParameter("te_num");
+		String pageStr = request.getParameter("page");
+		String perPageNumStr = request.getParameter("perPageNum");
+		String next = request.getParameter("next");
+		if(pageStr != null) {
+			List<String> namelist = new ArrayList<String>();
+			List<String> answerlist = new ArrayList<String>();
+			int page = Integer.parseInt(pageStr);
+			int perPageNum = Integer.parseInt(perPageNumStr);
+			for(int i = 1; i <= perPageNum; i++) {
+				int num = i + perPageNum * (page - 1);
+				String name = "answer" + num;
+				namelist.add(name);
+				answerlist.add(request.getParameter(name));
+			}
+			testService.insertQuestionAnswer(te_num, namelist, answerlist);
+			
+			if(next.equals("next")) {
+				request.setAttribute("msg", "next");
+				request.setAttribute("url", "/test/list?te_num="+te_num+"&page="+(page + 1));
+			}else if(next.equals("end")) {
+				request.setAttribute("msg", "테스트를 모두 진행하였습니다.");
+				request.setAttribute("url", "/test/result?te_num="+te_num);
+			}
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
+		}
 	}
 }

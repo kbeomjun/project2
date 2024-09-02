@@ -5,18 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<style type="text/css">
- .jumbotron{
- 	background-color: white; border-top: 1px solid #c8c8c8; 
- 	}
-</style>
+	<style type="text/css">
+		#jumbotron{
+			background-color: white; border-top: 1px solid #c8c8c8; 
+		}
+	</style>
 </head>
 <body>
-<div class="jumbotron jumbotron-fluid mb-0">
+<div class="jumbotron jumbotron-fluid mb-0" id="jumbotron">
   <div class="container">
     <h4>Team 1 Project MBTI Test</h4>
-    <p>Team leader </p><p>KIMBEOMJUN</p>
-    <p>Team member </p><p>OHJAEYEONG, LEEHYEOGWON, KIMHYEONJUNG, CHOIYEONU</p>
+    <p>Team leader</p><p>KIMBEOMJUN</p>
+    <p>Team member</p><p>OHJAEYEONG, LEEHYEOGWON, KIMHYEONJUNG, CHOIYEONU</p>
   </div>
 </div>
 </body>
