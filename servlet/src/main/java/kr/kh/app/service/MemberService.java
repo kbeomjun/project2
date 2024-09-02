@@ -1,9 +1,12 @@
 package kr.kh.app.service;
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 import kr.kh.app.model.vo.MemberVO;
+import kr.kh.app.model.vo.Personality_typeVO;
 
 public interface MemberService {
 	boolean signup(MemberVO member);
@@ -25,4 +28,10 @@ public interface MemberService {
 	boolean updateMemberEmail(MemberVO user, String me_email);
 
 	boolean deleteMember(MemberVO user);
+	
+	List<Personality_typeVO> getPersonality_typeList();
+
+	Personality_typeVO getPersonality_type(String pt_code);
+
+	boolean updatePersonality_type(Personality_typeVO pt);
 }

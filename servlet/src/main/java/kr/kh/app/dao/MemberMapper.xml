@@ -52,4 +52,16 @@
 	<delete id="deleteMember">
 		delete from member where me_id = #{user.me_id}
 	</delete>
+	
+	<select id="selectPersonality_typeList" resultType="Personality_typeVO">
+		select * from personality_type
+	</select>
+	
+	<select id="selectPersonality_type" resultType="Personality_typeVO">
+		select * from personality_type where pt_code = #{pt_code}
+	</select>
+	
+	<update id="updatePersonality_type">
+		update personality_type set pt_content = #{pt.pt_content} where pt_code = #{pt.pt_code}
+	</update>
 </mapper>
