@@ -58,12 +58,11 @@ public class TestList extends HttpServlet {
 			if(next.equals("next")) {
 				request.setAttribute("msg", "next");
 				request.setAttribute("url", "/test/list?te_num="+te_num+"&page="+(page + 1));
-				request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 			}else if(next.equals("end")) {
 				request.setAttribute("msg", "테스트를 모두 진행하였습니다.");
 				request.setAttribute("url", "/test/result?te_num="+te_num);
-				request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 			}
+			request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 		}
 	}
 }
