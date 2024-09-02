@@ -33,7 +33,12 @@
 		</defs>
 	</svg>
 	
-	<div class="container">
+	<div class="container" style="margin-top: 80px;">
+		<div class="progress" style="height:30px">
+	    	<div class="progress-bar" style="width:${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%; height:30px;">>
+	    		${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%
+    		</div>
+	  	</div>
 		<form action="<c:url value="/test/list"/>" method="post" class="col-12 form">
 			<c:forEach items="${list}" var="qu">
 				<div class="d-flex justify-content-center" style="font-size: 27px; color: #576071; font-weight: bold; margin-top: 80px;">${qu.qu_content}</div>
