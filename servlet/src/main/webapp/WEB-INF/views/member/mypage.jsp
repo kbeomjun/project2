@@ -7,70 +7,298 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
 	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
 	<style type="text/css">
 		.error{color:red; margin-bottom: 5px;}
 		.container-body{padding: 30px; margin-top: 30px;}
-		.input-group-text{width:90px;}
+		.input-group-text{width:90px;} 
+		.update{width: 450px;}
+		.nav-pills li {cursor: pointer; font-weight: bold;}
+		.container-item{display: none; margin: 0 auto;}
+		.pt-code{display: flex; justify-content: space-between; flex-wrap: wrap; height: 100px;}
+		.pt-content{width: 100%; min-height: 400px; border-top: 1px solid #17A2B8; }
+		.pt-content-text{width: 100%; min-height: 400px; margin-top: 20px; display: none;}
+		.btn-pt{width: 12%; height: 40px;}
+		.sub-title{color: blue; }
+		#btn-update-pt{margin: 10px 0; display: none;}
+		
+		.description{
+	        margin: 0 auto;         
+	        font-size: 1.125rem;
+	        line-height: 1.33333333;
+	        letter-spacing: -.1px;
+	    }
+	    .description h1, h2{
+			font-weight: 800;
+		}	
+	    .description hr{
+	        border: 0; height: 1px; background-color: rgb(235, 233, 233);
+	    }
+	    .description blockquote{
+	        margin: 20px 0;
+	        border-left: 3px solid #4298B4;
+	        padding: 5px 0 5px 10px;   
+	        display: block;       
+	    }
+	    .description blockquote p, footer{
+	        margin-block-start: 1em;
+	        margin-block-end: 1em;
+	        margin-inline-start: 20px;
+	        margin-inline-end: 20px;
+	    }
+	    .description blockquote p {                   
+	        font-style: normal;        
+	        font-weight: 680;
+	        font-size: 1.375rem;
+	        line-height: 1.27272727;
+	        letter-spacing: -.05px;
+	    }
+	    .description blockquote footer {             
+	        color: #787f8d;
+	        font-size: 1rem;
+	        line-height: 1.375;
+	        letter-spacing: -.1px;
+	        margin-top: 10px;
+	    }
+	    .description-pullout{        
+	        border-left: 3px solid #88619a;
+	        font-size: 1.125rem;
+	        line-height: 1.33333333;
+	        letter-spacing: -.1px;
+	        padding: 10px 20px;
+	        margin-top: 20px;
+	        margin-bottom: 20px;
+	        background-color: #f3eff5;       
+	    }
 	</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-	<div class="container pt-5" style="min-height: calc(100vh - 240px)">
+	<div class="container pt-3" style="min-height: calc(100vh - 240px)">
+		<h3 class="title text-center mt-3 mb-4">마이페이지</h3>
 		<div class="row">
-	    	<div class="col-sm-4">
+	    	<div class="col-sm-2">
 	      		<ul class="nav nav-pills flex-column">
 	        		<li class="nav-item">
-	          			<a class="nav-link active member-info" href="#">회원정보</a>
+	          			<div class="nav-link item-link active" data-target="update" id="update">회원정보</div>
 	        		</li>
 	        		<li class="nav-item">
-	          			<a class="nav-link" href="<c:url value="#"/>">테스트결과</a>
+	          			<div class="nav-link item-link" data-target="result" id="result">테스트결과</div>
 	        		</li>
 	        		<c:if test="${user.me_authority eq 'ADMIN'}">
 	        			<li class="nav-item">
-		          			<a class="nav-link" href="#">관리</a>
+		          			<!-- <div class="nav-link" data-target="manage" id="manage">관리</div> -->
+		          			<div class="dropdown">
+							    <div class="nav-link dropdown-toggle" data-toggle="dropdown">관리</div>
+							    <div class="dropdown-menu">
+							      <div class="dropdown-item item-link" data-target="p-type">성격 유형</div>
+							      <div class="dropdown-item item-link" data-target="question">질문</div>
+							      <div class="dropdown-item item-link" data-target="topic">토론</div>
+							    </div>
+							 </div>
 		        		</li>
 	        		</c:if>
-      			</ul>
+	     			</ul>
 	      	<hr class="d-sm-none">
 	    	</div>
-		    <div class="col-sm-8 container-item">
-		    	<div class="input-group">
-					<div class="input-group-prepend">
-			        	<span class="input-group-text">아이디</span>
-			      	</div>
-					<span class="form-control" id="me_id">${user.me_id}</span>		      	
-				</div>
-				<div class="input-group">
-					<div class="input-group-prepend input-group-prepend-pw">
-			        	<span class="input-group-text">비밀번호</span>
-			      	</div>
-					<span class="form-control input-group-pw input-pw" data-num="${user.me_pw}" id="me_pw">${user.me_pw}</span>
-					<div class="input-group-append input-group-pw">
-			        	<button class="btn btn-outline-warning btn-pw">변경</button>
-			      	</div>
-				</div>
-				<div class="input-group">
-					<div class="input-group-prepend input-group-prepend-email">
-			        	<span class="input-group-text">이메일</span>
-			      	</div>
-					<span class="form-control input-group-email" id="me_email">${user.me_email}</span>
-					<div class="input-group-append input-group-email">
-			        	<button class="btn btn-outline-warning btn-email">변경</button>
-			      	</div>
-				</div>
-				<div class="input-group d-flex justify-content-end mt-3">
-		        	<button class="btn btn-outline-danger btn-delete">회원탈퇴</button>
-				</div>
+	    	<div id="content" class="col-sm-10">
+	    		<!-- 회원정보 -->	
+			    <div class="container-item update">
+			    	<div class="input-group">
+						<div class="input-group-prepend">
+				        	<span class="input-group-text">아이디</span>
+				      	</div>
+						<span class="form-control" id="me_id">${user.me_id}</span>		      	
+					</div>
+					<div class="input-group">
+						<div class="input-group-prepend input-group-prepend-pw">
+				        	<span class="input-group-text">비밀번호</span>
+				      	</div>
+						<span class="form-control input-group-pw input-pw" data-num="${user.me_pw}" id="me_pw">${user.me_pw}</span>
+						<div class="input-group-append input-group-pw">
+				        	<button class="btn btn-outline-dark btn-pw">변경</button>
+				      	</div>
+					</div>
+					<div class="input-group">
+						<div class="input-group-prepend input-group-prepend-email">
+				        	<span class="input-group-text">이메일</span>
+				      	</div>
+						<span class="form-control input-group-email" id="me_email">${user.me_email}</span>
+						<div class="input-group-append input-group-email">
+				        	<button class="btn btn-outline-dark btn-email">변경</button>
+				      	</div>
+					</div>
+					<div class="input-group d-flex justify-content-end mt-3">
+			        	<button class="btn btn-outline-danger btn-delete">회원탈퇴</button>
+					</div>
+			    </div>
+			    <!-- 테스트 결과 -->
+				<div class="container-item result">
+				
+			    </div>
+			    <!-- 성격 유형 -->
+			    <div class="container-item p-type">
+					<div class="pt-code">
+						<c:forEach items="${ptList}" var="pt">
+							<a href="#" class="btn btn-outline-info btn-pt">${pt.pt_code}</a>
+						</c:forEach>
+					</div>
+					<div class="pt-content">
+						<div class="pt-content-text" id="pt-content"></div>
+						<div class="pt-content-text" id="pt-content-update"></div>
+					</div>
+					<button class="btn btn-outline-info update-pt" id="btn-update-pt">수정</button>
+			    </div>
+			    <!-- 질문 -->
+			    <div class="container-item question">
+					<div class="pt-code">
+						<c:forEach items="${ptList}" var="pt">
+							<a href="#" class="btn btn-outline-info btn-pt">${pt.pt_code}</a>
+						</c:forEach>
+					</div>
+					<div class="pt-content">
+						<div class="pt-content-text" id="pt-content" ></div>
+					</div>
+					<button class="btn btn-outline-info" id="btn-update-pt">수정</button>
+			    </div>
+			    <!-- 토론 -->
+			    <div class="container-item topic">
+					<div class="pt-code">
+						<c:forEach items="${ptList}" var="pt">
+							<a href="#" class="btn btn-outline-info btn-pt">${pt.pt_code}</a>
+						</c:forEach>
+					</div>
+					<div class="pt-content">
+						<textarea class="pt-content-text" id="pt-content"></textarea>
+					</div>
+					<button class="btn btn-outline-info" id="btn-update-pt">수정</button>
+			    </div>
 		    </div>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	
 	<script type="text/javascript">
+	// 유형 설명 수정
+	var pt_code = '';
+		$('#btn-update-pt').click(function(){
+			/* $('#pt-content').hide(); */
+			//썸머노트
+			$('#pt-content').summernote({
+			  placeholder: '성격 유형 설명',
+			  tabsize: 2,
+			  heigth: 400,		  
+			  minHeight: 300
+			});
+			var btnStr = `<button class="btn btn-outline-danger update-pt" id="btn-update-c-pt" data-code="\${pt_code}">수정 완료</button>`;
+			$('#btn-update-pt').hide();
+			$('#btn-update-pt').after(btnStr);
+		});
+		
+		$(document).on('click', '#btn-update-c-pt', function(){
+			var pt_code = $(this).data('code');
+			var pt_content = $('#pt-content').summernote('code');
+			$.ajax({
+				url : '<c:url value="/mypage/update/pt"/>',
+				method: 'post',
+				data : {
+					pt_code : pt_code,
+					pt_content : pt_content
+				},
+				success : function(data){
+					if(data.result){
+						alert('수정하였습니다.');
+					}else {
+						alert('수정하지 못했습니다.');
+					}
+				},
+				error : function(xhr){
+					console.log(xhr);
+				}
+			});
+			$('#btn-update-c-pt').remove();
+			$('#btn-update-pt').show();
+			$('#pt-content').summernote('destroy');		
+		});
+	
+		// 선택한 유형 설명 불러오는 기능
+		$('.btn-pt').click(function(){
+			$('#pt-content').summernote('destroy');
+			$('#btn-update-pt').show();
+			$('#btn-update-c-pt').remove();
+			if($('.btn-pt').hasClass('btn-info')){
+				$('.btn-pt').removeClass('btn-info');
+				$('.btn-pt').addClass('btn-outline-info');
+				$('#btn-update-pt').show();
+			}
+			if($(this).hasClass('btn-outline-info')){
+				$(this).removeClass('btn-outline-info');
+				$(this).addClass('btn-info');
+			}		
+			pt_code = $(this).text();
+			$.ajax({
+				async : false,
+				url : '<c:url value="/mypage/manage/pt"/>',
+				data : {
+					pt_code : pt_code
+				},
+				success : function(data){
+					let pt = JSON.parse(data.pt);
+					$('#pt-content').html(pt.pt_content);
+					$('#pt-content').show();
+				},
+				error : function(xhr){
+					console.log(xhr);
+				}
+			}); 
+		});
+		
+		$('.dropdown-item').click(function(){
+			$('.dropdown-item').removeClass('active');
+			$(this).addClass('active');
+		});
 		$('.nav-link').click(function(){
+			if($(this).data('toggle') != 'dropdown'){
+				$('.dropdown-item').removeClass('active');
+			}
 			$('.nav-link').removeClass('active');
 			$(this).addClass('active');
+		});
+		//마이페이지 메뉴 선택시 화면 전환
+		$('.item-link').click(function(){
+			var sm = $(this).data('target');
+			switch (sm){
+			case 'update' : 
+				$('.title').text($(this).text());
+				$('.container-item').css('display', 'none');
+				$('.update').css('display', 'block');
+				break;
+			case 'result' :
+				$('.title').text($(this).text());
+				$('.container-item').css('display', 'none');
+				$('.result').css('display', 'block');
+				break;
+			case 'p-type' :
+				$('.title').text($(this).text());
+				$('.container-item').css('display', 'none');
+				$('.p-type').css('display', 'block');
+				break;
+			case 'question' :
+				$('.title').text($(this).text());
+				$('.container-item').css('display', 'none');
+				$('.question').css('display', 'block');
+				break;
+			case 'topic' :
+				$('.title').text($(this).text());
+				$('.container-item').css('display', 'none');
+				$('.topic').css('display', 'block');
+				break;
+			default :
+				break;
+			}
 		});
 		
 		let me_ori_pw = $('.input-pw').data('num');
@@ -189,31 +417,7 @@
 				return;
 			}
 		});
-	</script>
-	
-	<script type="text/javascript">
-		// 검사버튼 눌렀을때 나타나는 기능만 구현
-		$('.test-create').click(function(){
-			if('${user.me_id}' == ''){
-				if(confirm('검사는 회원만 진행가능합니다.\n로그인 하시겠습니까?')){
-					location.href = '<c:url value="/login"/>';
-				}
-				return;
-			}
-			$.ajax({
-				async : false,
-				url : '<c:url value="/test/create"/>',
-				method : "get",
-				success : function(data){
-					var te_num = data.te_num;
-					var url = "<c:url value="/test/list?te_num="/>"+te_num;
-					location.href = url;
-				},
-				error : function(xhr){
-					console.log(xhr);
-				}
-			});
-		});
+		$('.active').trigger('click');
 	</script>
 </body>
 </html>
