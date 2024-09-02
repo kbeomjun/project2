@@ -11,7 +11,7 @@
 <body>
 	<script type="text/javascript">
 		var msg = '${msg}';
-		if(msg != ''){
+		if(msg != '' && msg != 'next'){
 			alert('${msg}');
 		}
 		location.href = '<c:url value="${url}"/>';

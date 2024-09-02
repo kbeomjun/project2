@@ -15,4 +15,6 @@ public interface TestDAO {
 	int selectQuestionTotalCount();
 
 	List<QuestionVO> selectQuestionList(@Param("cri")Criteria cri);
+
+	void insertQuestionAnswer(@Param("qa_answer")int qa_answer, @Param("qa_te_num")int qa_te_num, @Param("qa_qu_num")int qa_qu_num);
 }

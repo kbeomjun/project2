@@ -14,4 +14,6 @@ public interface TestService {
 	PageMaker getQuestionPageMaker(Criteria cri);
 
 	List<QuestionVO> getQuestionList(Criteria cri);
+
+	void insertQuestionAnswer(String te_num, List<String> namelist, List<String> answerlist);
 }

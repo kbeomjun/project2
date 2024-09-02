@@ -53,4 +53,22 @@ public class TestServiceImp implements TestService {
 	public List<QuestionVO> getQuestionList(Criteria cri) {
 		return testDao.selectQuestionList(cri);
 	}
+
+	@Override
+	public void insertQuestionAnswer(String te_num, List<String> namelist, List<String> answerlist) {
+		for(int i = 0; i < namelist.size(); i++) {
+			String answer = answerlist.get(i);
+			int qa_answer = Integer.parseInt(answer);
+			
+			int qa_te_num = Integer.parseInt(te_num);
+			
+			String name = namelist.get(i);
+			int index = name.indexOf('r');
+			String qaQuNumStr = name.substring(index + 1);
+			int qa_qu_num = Integer.parseInt(qaQuNumStr);
+			
+			testDao.insertQuestionAnswer(qa_answer, qa_te_num, qa_qu_num);
+		}
+		
+	}
 }

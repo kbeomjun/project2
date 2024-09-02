@@ -14,4 +14,9 @@
 	<select id="selectQuestionList" resultType="QuestionVO">
 		select * from question order by qu_num limit #{cri.pageStart}, #{cri.perPageNum};
 	</select>
+	
+	<insert id="insertQuestionAnswer">
+		insert into question_answer(qa_answer, qa_te_num, qa_qu_num)
+		values(#{qa_answer}, #{qa_te_num}, #{qa_qu_num});
+	</insert>
 </mapper>
