@@ -18,9 +18,6 @@ public class MyPageUpdatePt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService memberService = new MemberServiceImp();
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pt_code = request.getParameter("pt_code");
 		String pt_content = request.getParameter("pt_content");
