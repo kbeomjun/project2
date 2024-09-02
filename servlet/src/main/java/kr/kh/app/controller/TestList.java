@@ -39,15 +39,16 @@ public class TestList extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String te_num = request.getParameter("te_num");
-		String page = request.getParameter("page");
-		String perPageNum = request.getParameter("perPageNum");
+		String pageStr = request.getParameter("page");
+		String perPageNumStr = request.getParameter("perPageNum");
 		String next = request.getParameter("next");
-		if(page != null) {
+		if(pageStr != null) {
 			List<String> namelist = new ArrayList<String>();
 			List<String> answerlist = new ArrayList<String>();
-			int pageNum = Integer.parseInt(page);
-			for(int i = 1; i <= 5; i++) {
-				int num = i + Integer.parseInt(perPageNum) * (pageNum - 1);
+			int page = Integer.parseInt(pageStr);
+			int perPageNum = Integer.parseInt(perPageNumStr);
+			for(int i = 1; i <= perPageNum; i++) {
+				int num = i + perPageNum * (page - 1);
 				String name = "answer" + num;
 				namelist.add(name);
 				answerlist.add(request.getParameter(name));
@@ -56,7 +57,7 @@ public class TestList extends HttpServlet {
 			
 			if(next.equals("next")) {
 				request.setAttribute("msg", "next");
-				request.setAttribute("url", "/test/list?te_num="+te_num+"&page="+(pageNum + 1));
+				request.setAttribute("url", "/test/list?te_num="+te_num+"&page="+(page + 1));
 				request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 			}else if(next.equals("end")) {
 				request.setAttribute("msg", "테스트를 모두 진행하였습니다.");
