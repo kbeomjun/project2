@@ -52,6 +52,7 @@
 				<div class="form-group">
 					<label for="content" style="font-weight: bold;">토론 주제 : ${discussion.dr_topic}</label>
 					<div class="form-control chat-list">${co_content}</div>
+					<!-- 본인이 작성한 채팅은 오른쪽정렬 -->
 					<div class="input-group mb-3 chat-box">
 					  <input type="text" class="form-control " placeholder="채팅 입력">
 					  <div class="input-group-append">
