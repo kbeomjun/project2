@@ -17,6 +17,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.MemberDAO;
+import kr.kh.app.model.vo.DiscussionRoomVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.Personality_typeVO;
 
@@ -181,5 +182,21 @@ public class MemberServiceImp implements MemberService {
 			return false;
 		}
 		return memberDao.updatePersonality_type(pt);
+	}
+
+	@Override
+	public List<DiscussionRoomVO> getDiscussionRoomList() {
+		return memberDao.selectDiscussionRoomList();
+	}
+
+	@Override
+	public boolean insertDiscussionRoom(String dr_topic) {
+		DiscussionRoomVO discussionRoom = new DiscussionRoomVO(dr_topic);
+		return memberDao.insertDiscussionRoom(discussionRoom);
+	}
+
+	@Override
+	public boolean deleteDiscussionRoom(int dr_num) {
+		 return memberDao.deleteDiscussionRoom(dr_num);
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import kr.kh.app.model.vo.DiscussionRoomVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.Personality_typeVO;
 
@@ -34,4 +35,10 @@ public interface MemberService {
 	Personality_typeVO getPersonality_type(String pt_code);
 
 	boolean updatePersonality_type(Personality_typeVO pt);
+	
+	List<DiscussionRoomVO> getDiscussionRoomList();
+
+	boolean insertDiscussionRoom(String dr_topic);
+
+	boolean deleteDiscussionRoom(int dr_num);
 }
