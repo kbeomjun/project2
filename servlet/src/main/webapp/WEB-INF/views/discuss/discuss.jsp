@@ -50,8 +50,8 @@
 		<div class="box">
 			<div class="container2">
 				<div class="form-group">
-					<label for="content" style="font-weight: bold;">토론 주제 : ${dr.topic}</label>
-					<div class="form-control chat-list" style="">${co_content}</div>
+					<label for="content" style="font-weight: bold;">토론 주제 : ${discussion.dr_topic}</label>
+					<div class="form-control chat-list">${co_content}</div>
 					<div class="input-group mb-3 chat-box">
 					  <input type="text" class="form-control " placeholder="채팅 입력">
 					  <div class="input-group-append">
