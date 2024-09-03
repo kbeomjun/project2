@@ -7,13 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>테스트 결과</title>
+	<link rel="stylesheet" href="https://www.16personalities.com/build/assets/dhlwzs1saxn0--BNRGEd8c.css" />
+	<link rel="stylesheet" href="https://www.16personalities.com/build/assets/c3r5bgnvcmu---1n4ZUfs.css" />
 	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
 	<style type="text/css">
 		.progress{width:90%; height:50px; border-radius: 30px;}
 		.progress-bar{height: 50px; color: #576071; font-size: 20px;}
 		.mbti-code{margin:0 10px; width:2%; height:30px; line-height: 30px; text-align:center;}
 		.d-flex{align-items: center;}
-		.content{width: 800px; margin: 0 auto;}
+		.content{width: 800px; margin: 50px auto;}
 	</style>
 </head>
 <body>
@@ -46,12 +48,14 @@
 		<div class="d-flex justify-content-center mt-5">
 			<h3 class="mbti-code">I</h3>
 			<div class="progress">
-				<c:if test= "${100 - list.get(0)} > ${list.get(0)}">
+				<c:if test= "${100 - list.get(0) > list.get(0)}">
 					<div class="progress-bar" style="width:${100 - list.get(0)}%; background-color:#d1f5f4;">${100 - list.get(0)}%</div>
 					<div class="progress-bar" style="width:${list.get(0)}%; background-color: #E9ECEF;">${list.get(0)}%</div>
 				</c:if>
-				<div class="progress-bar" style="width:${100 - list.get(0)}%; background-color: #E9ECEF;">${100 - list.get(0)}%</div>
-				<div class="progress-bar" style="width:${list.get(0)}%; background-color:#d1f5f4;">${list.get(0)}%</div>
+				<c:if test="${100 - list.get(0) <= list.get(0)}">
+					<div class="progress-bar" style="width:${100 - list.get(0)}%; background-color: #E9ECEF;">${100 - list.get(0)}%</div>
+					<div class="progress-bar" style="width:${list.get(0)}%; background-color:#d1f5f4;">${list.get(0)}%</div>
+				</c:if>
 			</div>
 			<h3 class="mbti-code">E</h3>
 		</div>
@@ -59,12 +63,14 @@
 		<div class="d-flex justify-content-center mt-5">
 			<h3 class="mbti-code">S</h3>
 			<div class="progress">
-				<c:if test= "${100 - list.get(1)} > ${list.get(1)}">
+				<c:if test= "${100 - list.get(1) > list.get(1)}">
 					<div class="progress-bar" style="width:${100 - list.get(1)}%; background-color:#f3e2ab;">${100 - list.get(1)}%</div>
 					<div class="progress-bar" style="width:${list.get(1)}%; background-color: #E9ECEF;">${list.get(1)}%</div>
 				</c:if>
-				<div class="progress-bar" style="width:${100 - list.get(1)}%; background-color: #E9ECEF;">${100 - list.get(1)}%</div>
-				<div class="progress-bar" style="width:${list.get(1)}%; background-color:#f3e2ab;">${list.get(1)}%</div>
+				<c:if test= "${100 - list.get(1) <= list.get(1)}">
+					<div class="progress-bar" style="width:${100 - list.get(1)}%; background-color: #E9ECEF;">${100 - list.get(1)}%</div>
+					<div class="progress-bar" style="width:${list.get(1)}%; background-color:#f3e2ab;">${list.get(1)}%</div>
+				</c:if>
 			</div>
 			<h3 class="mbti-code">N</h3>
 		</div>
@@ -72,12 +78,14 @@
 		<div class="d-flex justify-content-center mt-5">
 			<h3 class="mbti-code">T</h3>
 			<div class="progress">
-				<c:if test= "${100 - list.get(2)} > ${list.get(2)}">
+				<c:if test= "${100 - list.get(2) > list.get(2)}">
 					<div class="progress-bar" style="width:${100 - list.get(2)}%; background-color:#d0f6e3;">${100 - list.get(2)}%</div>
 					<div class="progress-bar" style="width:${list.get(2)}%; background-color: #E9ECEF;">${list.get(2)}%</div>
 				</c:if>
-				<div class="progress-bar" style="width:${100 - list.get(2)}%; background-color: #E9ECEF;">${100 - list.get(2)}%</div>
-				<div class="progress-bar" style="width:${list.get(2)}%; background-color:#d0f6e3;">${list.get(2)}%</div>
+				<c:if test= "${100 - list.get(2) <= list.get(2)}">
+					<div class="progress-bar" style="width:${100 - list.get(2)}%; background-color: #E9ECEF;">${100 - list.get(2)}%</div>
+					<div class="progress-bar" style="width:${list.get(2)}%; background-color:#d0f6e3;">${list.get(2)}%</div>
+				</c:if>
 			</div>
 			<h3 class="mbti-code">F</h3>
 		</div>
@@ -85,18 +93,20 @@
 		<div class="d-flex justify-content-center mt-5">
 			<h3 class="mbti-code">P</h3>
 			<div class="progress">
-				<c:if test= "${100 - list.get(3)} > ${list.get(3)}">
+				<c:if test= "${100 - list.get(3) > list.get(3)}">
 					<div class="progress-bar" style="width:${100 - list.get(3)}%; background-color:#eee1f6;">${100 - list.get(3)}%</div>
 					<div class="progress-bar" style="width:${list.get(3)}%; background-color: #E9ECEF;">${list.get(3)}%</div>
 				</c:if>
-				<div class="progress-bar" style="width:${100 - list.get(3)}%; background-color: #E9ECEF;">${100 - list.get(3)}%</div>
-				<div class="progress-bar" style="width:${list.get(3)}%; background-color:#eee1f6;">${list.get(3)}%</div>
+				<c:if test= "${100 - list.get(3) <= list.get(3)}">
+					<div class="progress-bar" style="width:${100 - list.get(3)}%; background-color: #E9ECEF;">${100 - list.get(3)}%</div>
+					<div class="progress-bar" style="width:${list.get(3)}%; background-color:#eee1f6;">${list.get(3)}%</div>
+				</c:if>
 			</div>
 			<h3 class="mbti-code">J</h3>
 		</div>
 	</div>
 	
-	<main class="content mt-3 mb-3">
+	<main class="content">
 		${result.pt_content}
 	</main>
 	
