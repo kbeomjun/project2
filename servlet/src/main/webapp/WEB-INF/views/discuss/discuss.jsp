@@ -8,6 +8,27 @@
 <meta charset="UTF-8">
 <title>토론방</title>
 	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
+	<style type="text/css">
+	.box{
+		position: absolute; top: 0; bottom : 0; left :0; right:0;
+	}
+	.container2{
+		position: absolute; left: 100px; right: 40%; bottom: 30px; top: 50px;
+		/*position: absolute; left: 0; padding: 50px 0 0 100px; width: 60% */
+	}
+	.container3{
+		position: absolute; right: 100px; left: 60%; bottom: 30px; top: 50px; border: 0;
+	}
+	.container2>div, .container3>div{
+		height: 100%; position: relative;
+	}
+	.container2 .chat-list{
+		position: absolute; left: 0; right: 0; top: 24px; bottom : 29px; background-color: white; height: auto;
+	}
+	.container2 .chat-box{
+		position: absolute; bottom: 0;
+	}
+	</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -27,11 +48,11 @@
 		
 	<div style="position: relative;">
 		<div class="box">
-			<div class="container2" style="position: absolute; left: 0; padding: 50px 0 0 100px; width: 60%">
+			<div class="container2">
 				<div class="form-group">
 					<label for="content" style="font-weight: bold;">토론 주제 : ${dr.topic}</label>
-					<div class="form-control" style="min-height: 600px; background-color: white;">${co_content}</div>
-					<div class="input-group mb-3 ">
+					<div class="form-control chat-list" style="">${co_content}</div>
+					<div class="input-group mb-3 chat-box">
 					  <input type="text" class="form-control " placeholder="채팅 입력">
 					  <div class="input-group-append">
 					    <button class="btn" type="submit" style="background-color: rgb(255, 164, 164)">입력</button>
@@ -41,7 +62,7 @@
 			</div>
 			<div class="container3" style="position: absolute; right: 0; padding: 74px 100px 0 0; width: 40%">
 				<div class="form-group">
-					<div class="form-control" style="min-height: 600px; background-color: transparent;">
+					<div class="form-control" style="height: auto; bottom: 0; background-color: transparent;">
 						<div>다른 토론 주제</div>
 						<button class="third col-6" style="height: 25px; background-color: rgb(255, 164, 164)">another</button>
 						<hr>
