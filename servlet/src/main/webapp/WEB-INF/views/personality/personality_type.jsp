@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>성격 유형</title>
+<title>mbti</title>
 	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
     <link rel="stylesheet" href="https://www.16personalities.com/build/assets/dhlwzs1saxn0--BNRGEd8c.css" />
 </head>

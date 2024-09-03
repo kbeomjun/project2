@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>테스트</title>
+<title>검사</title>
 	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
 	<style type="text/css">
 		.progress{width:90%; height:20px; border-radius: 30px;}

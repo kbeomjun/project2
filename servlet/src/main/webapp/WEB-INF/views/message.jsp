@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메세지</title>
 </head>
 <body>
 	<script type="text/javascript">
