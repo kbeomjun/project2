@@ -53,13 +53,13 @@
 				<div class="d-flex" style="align-items: center; margin: 80px 0 100px;">
 					<div style="font-size: 25px; color: #576071; font-weight: bold">전혀 아니다</div>
 					<div class="form-check-inline flex-fill" style="display: flex; justify-content: space-between; margin: 0px 30px;">
-				    	<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="-5" style="width: 60px; height: 60px; margin:0px 20px;">
-				    	<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="-3" style="width: 55px; height: 55px; margin:0px 20px;">
-				    	<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="-2" style="width: 50px; height: 50px; margin:0px 20px;">
-			    		<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="1" style="width: 45px; height: 45px; margin:0px 20px;">
-			    		<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="2" style="width: 50px; height: 50px; margin:0px 20px;">
-			    		<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="3" style="width: 55px; height: 55px; margin:0px 20px;">
-			    		<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="5" style="width: 60px; height: 60px; margin:0px 20px;">
+				    	<input type="radio" class="form-check-input" name="answer${qu.qu_num}" value="-5" style="width: 60px; height: 60px; margin:0px 20px;">
+				    	<input type="radio" class="form-check-input" name="answer${qu.qu_num}" value="-3" style="width: 55px; height: 55px; margin:0px 20px;">
+				    	<input type="radio" class="form-check-input" name="answer${qu.qu_num}" value="-2" style="width: 50px; height: 50px; margin:0px 20px;">
+			    		<input type="radio" class="form-check-input" name="answer${qu.qu_num}" value="1" style="width: 45px; height: 45px; margin:0px 20px;">
+			    		<input type="radio" class="form-check-input" name="answer${qu.qu_num}" value="2" style="width: 50px; height: 50px; margin:0px 20px;">
+			    		<input type="radio" class="form-check-input" name="answer${qu.qu_num}" value="3" style="width: 55px; height: 55px; margin:0px 20px;">
+			    		<input type="radio" class="form-check-input" name="answer${qu.qu_num}" value="5" style="width: 60px; height: 60px; margin:0px 20px;">
 					</div>
 				   	<div style="font-size: 25px; color: #576071; font-weight: bold">매우 그렇다</div>
 				</div>
@@ -120,9 +120,30 @@
 			var answer4 = $('input[name=answer${4 + pm.cri.perPageNum * (pm.cri.page - 1)}]:checked').val();
 			var answer5 = $('input[name=answer${5 + pm.cri.perPageNum * (pm.cri.page - 1)}]:checked').val();
 			
-			if(answer1 == null || answer2 == null || answer3 == null || answer4 == null || answer5 == null){
-				alert("답변을 모두 선택해주세요.");
+			if(answer1 == null){
+				alert("답변을 선택해주세요.");
 				submit = false;
+				$('[name=answer${1 + pm.cri.perPageNum * (pm.cri.page - 1)}]').focus();
+				return false;
+			}else if(answer2 == null){
+				alert("답변을 선택해주세요.");
+				submit = false;
+				$('[name=answer${2 + pm.cri.perPageNum * (pm.cri.page - 1)}]').focus();
+				return false;
+			}else if(answer3 == null){
+				alert("답변을 선택해주세요.");
+				submit = false;
+				$('[name=answer${3 + pm.cri.perPageNum * (pm.cri.page - 1)}]').focus();
+				return false;
+			}else if(answer4 == null){
+				alert("답변을 선택해주세요.");
+				submit = false;
+				$('[name=answer${4 + pm.cri.perPageNum * (pm.cri.page - 1)}]').focus();
+				return false;
+			}else if(answer5 == null){
+				alert("답변을 선택해주세요.");
+				submit = false;
+				$('[name=answer${5 + pm.cri.perPageNum * (pm.cri.page - 1)}]').focus();
 				return false;
 			}else{
 				submit = true;
