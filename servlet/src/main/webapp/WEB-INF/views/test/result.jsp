@@ -23,8 +23,11 @@
 	
 	<div style="background-color: #FFE6E6; padding: 30px;">
 		<div style="align-items: center; text-align:center;">
-			<h1 style="font-size: 65px; color: #576071; font-weight: bold; align-items: center; text-align:center; margin: 20px;">무료 성격 테스트</h1>
-			<div class="trademark" style="font-size: 30px; color: #576071; font-weight: bold; align-items: center; text-align:center;">NERIS Type Explorer
+			<h1 style="font-size: 65px; color: #576071; font-weight: bold; align-items: center; text-align:center; margin: 20px;">
+				무료 성격 테스트
+			</h1>
+			<div class="trademark" style="font-size: 30px; color: #576071; font-weight: bold; align-items: center; text-align:center;">
+				NERIS Type Explorer
 				<sup>®</sup>
 				참고
             </div>
