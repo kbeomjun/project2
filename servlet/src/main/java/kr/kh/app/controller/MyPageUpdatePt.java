@@ -1,35 +1,31 @@
 package kr.kh.app.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.kh.app.model.vo.MemberVO;
+import org.json.JSONObject;
+
 import kr.kh.app.model.vo.Personality_typeVO;
 import kr.kh.app.service.MemberService;
 import kr.kh.app.service.MemberServiceImp;
 
-@WebServlet("/mypage")
-public class MyPage extends HttpServlet {
+@WebServlet("/mypage/update/pt")
+public class MyPageUpdatePt extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService memberService = new MemberServiceImp();
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		if(user != null && user.getMe_authority().equals("ADMIN")) {
-			List<Personality_typeVO> ptList = memberService.getPersonality_typeList();
-			request.setAttribute("ptList", ptList);
-		}
-		
-		request.getRequestDispatcher("/WEB-INF/views/member/mypage.jsp").forward(request, response);
-	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String pt_code = request.getParameter("pt_code");
+		String pt_content = request.getParameter("pt_content");
+		JSONObject jobj = new JSONObject();
+		Personality_typeVO pt = new Personality_typeVO(pt_code, pt_content);
+		boolean res = memberService.updatePersonality_type(pt);
+		jobj.put("result", res);
+		response.setContentType("application/json; charset=utf-8");
+		response.getWriter().print(jobj);
 	}
 }

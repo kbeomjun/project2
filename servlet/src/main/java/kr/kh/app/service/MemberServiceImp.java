@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.Cookie;
@@ -17,6 +18,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.MemberDAO;
 import kr.kh.app.model.vo.MemberVO;
+import kr.kh.app.model.vo.Personality_typeVO;
 
 public class MemberServiceImp implements MemberService {
 	private MemberDAO memberDao;
@@ -161,5 +163,23 @@ public class MemberServiceImp implements MemberService {
 	@Override
 	public boolean deleteMember(MemberVO user) {
 		return memberDao.deleteMember(user);
+	}
+	
+	@Override
+	public List<Personality_typeVO> getPersonality_typeList() {
+		return memberDao.selectPersonality_typeList();
+	}
+
+	@Override
+	public Personality_typeVO getPersonality_type(String pt_code) {
+		return memberDao.selectPersonality_type(pt_code);
+	}
+
+	@Override
+	public boolean updatePersonality_type(Personality_typeVO pt) {
+		if(pt == null) {
+			return false;
+		}
+		return memberDao.updatePersonality_type(pt);
 	}
 }
