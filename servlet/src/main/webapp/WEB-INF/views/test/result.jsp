@@ -127,5 +127,29 @@
 	</svg>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	
+	<script type="text/javascript">
+		$('.test-create').click(function(){
+			if('${user.me_id}' == ''){
+				if(confirm('검사는 회원만 진행가능합니다.\n로그인 하시겠습니까?')){
+					location.href = '<c:url value="/login"/>';
+				}
+				return;
+			}
+			$.ajax({
+				async : false,
+				url : '<c:url value="/test/create"/>',
+				method : "get",
+				success : function(data){
+					var te_num = data.te_num;
+					var url = "<c:url value="/test/list?te_num="/>"+te_num;
+					location.href = url;
+				},
+				error : function(xhr){
+					console.log(xhr);
+				}
+			});
+		});
+	</script>
 </body>
 </html>
