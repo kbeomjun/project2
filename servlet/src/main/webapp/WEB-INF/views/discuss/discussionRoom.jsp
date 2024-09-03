@@ -17,7 +17,7 @@
 		/*position: absolute; left: 0; padding: 50px 0 0 100px; width: 60% */
 	}
 	.container3{
-		position: absolute; right: 100px; left: 60%; bottom: 30px; top: 50px; border: 0;
+		position: absolute; right: 100px; left: 60%; bottom: 30px; top: 0; border: 1px;
 	}
 	.container2>div, .container3>div{
 		height: 100%; position: relative;
