@@ -66,7 +66,7 @@
 					<a class="nav-link" href="<c:url value="/type"/>">성격 유형</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<c:url value="/discuss"/>">토론방</a>
+					<a class="nav-link" href="<c:url value="/discussion"/>">토론방</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav">

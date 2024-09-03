@@ -3,9 +3,9 @@ package kr.kh.app.model.vo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@data
+@Data
 @NoArgsConstructor
-public class DiscussVO {
+public class DiscussionVO {
 	private int dr_num; 
 	private String dr_topic;
 }
