@@ -77,6 +77,24 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	
+	<div style="background-color: #FFE6E6; padding: 30px;">
+		<div style="align-items: center; text-align:center;">
+			
+		</div>
+	</div>
+	
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.dev/svgjs" width="100%" height="40" preserveAspectRatio="none" viewBox="0 0 1440 560">
+		<g mask="url(&quot;#SvgjsMask1091&quot;)" fill="none">
+			<rect width="1440" height="560" x="0" y="0" fill="#FFE6E6" />
+			<path d="M 0,405 C 57.6,424.6 172.8,510.4 288,503 C 403.2,495.6 460.8,374.4 576,368 C 691.2,361.6 748.8,463.6 864,471 C 979.2,478.4 1036.8,409.8 1152,405 C 1267.2,400.2 1382.4,438.6 1440,447L1440 560L0 560z" fill="#ffffff"/>
+		<defs>
+			<mask id="SvgjsMask1091">
+				<rect width="1440" height="560" fill="#FFE6E6"/>
+			</mask>
+		</defs>
+	</svg>
+	
 	<div class="container pt-3" style="min-height: calc(100vh - 240px)">
 		<h3 class="title text-center mt-3 mb-4">마이페이지</h3>
 		<div class="row">
@@ -94,15 +112,15 @@
 		          			<div class="dropdown">
 							    <div class="nav-link dropdown-toggle" data-toggle="dropdown">관리</div>
 							    <div class="dropdown-menu">
-							      <div class="dropdown-item item-link" data-target="p-type">성격 유형</div>
+							      <div class="dropdown-item item-link" data-target="p-type">성격유형</div>
 							      <div class="dropdown-item item-link" data-target="question">질문</div>
 							      <div class="dropdown-item item-link" data-target="topic">토론</div>
 							    </div>
 							 </div>
 		        		</li>
 	        		</c:if>
-	     			</ul>
-	      	<hr class="d-sm-none">
+     			</ul>
+	      		<hr class="d-sm-none">
 	    	</div>
 	    	<div id="content" class="col-sm-10">
 	    		<!-- 회원정보 -->	
@@ -154,31 +172,28 @@
 			    </div>
 			    <!-- 질문 -->
 			    <div class="container-item question">
-					<div class="pt-code">
-						<c:forEach items="${ptList}" var="pt">
-							<a href="#" class="btn btn-outline-info btn-pt">${pt.pt_code}</a>
-						</c:forEach>
-					</div>
-					<div class="pt-content">
-						<div class="pt-content-text" id="pt-content" ></div>
-					</div>
-					<button class="btn btn-outline-info" id="btn-update-pt">수정</button>
+					
 			    </div>
 			    <!-- 토론 -->
 			    <div class="container-item topic">
-					<div class="pt-code">
-						<c:forEach items="${ptList}" var="pt">
-							<a href="#" class="btn btn-outline-info btn-pt">${pt.pt_code}</a>
-						</c:forEach>
-					</div>
-					<div class="pt-content">
-						<textarea class="pt-content-text" id="pt-content"></textarea>
-					</div>
-					<button class="btn btn-outline-info" id="btn-update-pt">수정</button>
+					
 			    </div>
 		    </div>
 		</div>
 	</div>
+	
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.dev/svgjs" width="100%" height="200" preserveAspectRatio="none" viewBox="0 0 1440 560">
+		<g mask="url(&quot;#SvgjsMask1091&quot;)" fill="none">
+			<rect width="1440" height="560" x="0" y="0" fill="rgba(255, 255, 255, 1)" />
+			<path d="M 0,158 C 96,142.4 288,74.2 480,80 C 672,85.8 768,185.2 960,187 C 1152,188.8 1344,108.6 1440,89L1440 560L0 560z" fill="rgba(255, 230, 230, 1)"/>
+		</g>
+		<defs>
+			<mask id="SvgjsMask1091">
+				<rect width="1440" height="560" fill="#ffffff"/>
+			</mask>
+		</defs>
+	</svg>
+	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	
 	<script type="text/javascript">
