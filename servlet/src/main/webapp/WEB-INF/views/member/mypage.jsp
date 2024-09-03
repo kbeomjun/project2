@@ -96,7 +96,7 @@
 	</svg>
 	
 	<div class="container pt-3" style="min-height: calc(100vh - 240px)">
-		<h3 class="title text-center mt-3 mb-4">마이페이지</h3>
+		<h3 class="title text-center mt-3 mb-4">회원정보</h3>
 		<div class="row">
 	    	<div class="col-sm-2">
 	      		<ul class="nav nav-pills flex-column">
@@ -123,7 +123,7 @@
 	    	</div>
 	    	<div id="content" class="col-sm-10">
 	    		<!-- 회원정보 -->	
-			    <div class="container-item update">
+			    <div class="container-item update" style="display: block;">
 			    	<div class="input-group">
 						<div class="input-group-prepend">
 				        	<span class="input-group-text">아이디</span>
