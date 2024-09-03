@@ -443,7 +443,6 @@
 				return;
 			}
 		});
-		$('.active').trigger('click');
 		
 		$(document).ready(function() {
 		    loadDiscussionRooms();
