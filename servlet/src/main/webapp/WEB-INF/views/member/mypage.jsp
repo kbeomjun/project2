@@ -15,7 +15,7 @@
 		.error{color:red; margin-bottom: 5px;}
 		.container-body{padding: 30px; margin-top: 30px;}
 		.input-group-text{width:90px;} 
-		.update{width: 450px;}
+		.update{width: 770px;}
 		.nav-pills li {cursor: pointer; font-weight: bold;}
 		.container-item{display: none; margin: 0 auto;}
 		.pt-code{display: flex; justify-content: space-between; flex-wrap: wrap; height: 100px;}
@@ -108,14 +108,13 @@
 	        		</li>
 	        		<c:if test="${user.me_authority eq 'ADMIN'}">
 	        			<li class="nav-item">
-		          			<!-- <div class="nav-link" data-target="manage" id="manage">관리</div> -->
 		          			<div class="dropdown">
 							    <div class="nav-link dropdown-toggle" data-toggle="dropdown">관리</div>
 							    <div class="dropdown-menu">
-							      <div class="dropdown-item item-link" data-target="p-type">성격유형</div>
-							      <div class="dropdown-item item-link" data-target="question">질문</div>
-							      <div class="dropdown-item item-link" data-target="topic">토론방</div>
-							    </div>
+							      	<div class="dropdown-item item-link" data-target="p-type">성격유형</div>
+							      	<div class="dropdown-item item-link" data-target="question">질문</div>
+							    	<div class="dropdown-item item-link" data-target="topic">토론방</div>
+							 	</div>
 							 </div>
 		        		</li>
 	        		</c:if>
@@ -154,9 +153,7 @@
 					</div>
 			    </div>
 			    <!-- 테스트 결과 -->
-				<div class="container-item result">
 				
-			    </div>
 			    <!-- 성격 유형 -->
 			    <div class="container-item p-type">
 					<div class="pt-code">
@@ -171,9 +168,7 @@
 					<button class="btn btn-outline-info update-pt" id="btn-update-pt">수정</button>
 			    </div>
 			    <!-- 질문 -->
-			    <div class="container-item question">
-					
-			    </div>
+			    
 			    <!-- 토론 -->
 			    <div class="container-item topic">
                 	<ul class="list-group mt-3 mb-3 discussion-list">
@@ -208,8 +203,10 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	
 	<script type="text/javascript">
-	// 유형 설명 수정
-	var pt_code = '';
+		//질문 관리
+		
+		// 유형 설명 수정
+		var pt_code = '';
 		$('#btn-update-pt').click(function(){
 			/* $('#pt-content').hide(); */
 			//썸머노트
@@ -219,7 +216,7 @@
 			  heigth: 400,		  
 			  minHeight: 300
 			});
-			var btnStr = `<button class="btn btn-outline-danger update-pt" id="btn-update-c-pt" data-code="\${pt_code}">수정 완료</button>`;
+			var btnStr = `<button class="btn btn-outline-danger update-pt" id="btn-update-c-pt" data-code="\${pt_code}">수정완료</button>`;
 			$('#btn-update-pt').hide();
 			$('#btn-update-pt').after(btnStr);
 		});
@@ -263,7 +260,7 @@
 			if($(this).hasClass('btn-outline-info')){
 				$(this).removeClass('btn-outline-info');
 				$(this).addClass('btn-info');
-			}		
+			}
 			pt_code = $(this).text();
 			$.ajax({
 				async : false,
@@ -279,7 +276,7 @@
 				error : function(xhr){
 					console.log(xhr);
 				}
-			}); 
+			});
 		});
 		
 		$('.dropdown-item').click(function(){
@@ -293,6 +290,7 @@
 			$('.nav-link').removeClass('active');
 			$(this).addClass('active');
 		});
+		
 		//마이페이지 메뉴 선택시 화면 전환
 		$('.item-link').click(function(){
 			var sm = $(this).data('target');
@@ -444,80 +442,78 @@
 			}
 		});
 		
-		$(document).ready(function() {
-		    loadDiscussionRooms();
+		// 토론 관리
+	    loadDiscussionRooms();
+	    
+	    $('.form-topic-insert').submit(function(e) {
+	        e.preventDefault();
+	        var dr_topic = $('#new-topic').val();
+	        
+	        $.ajax({
+	            url: '<c:url value="/mypage/manage/dr/insert"/>',
+	            method: 'POST',
+	            data: {dr_topic : dr_topic},
+	            success: function(data) {
+	                if(data) {
+	                	loadDiscussionRooms();
+	                    $('#new-topic').val(''); // 입력창 초기화
+	                }else {
+	                    alert('토론방을 추가하지 못했습니다.');
+	                }
+	            },
+	            error: function(xhr) {
+	                console.error('Error:', xhr);
+	            }
+	        });
+	    });
 
-		    // 토론 추가
-		    $('.form-topic-insert').submit(function(e) {
-		        e.preventDefault();
-		        var dr_topic = $('#new-topic').val();
-		        
-		        $.ajax({
-		            url: '<c:url value="/mypage/manage/dr/insert"/>',
-		            method: 'POST',
-		            data: {dr_topic : dr_topic},
-		            success: function(data) {
-		                if(data) {
-		                	loadDiscussionRooms();
-		                    $('#new-topic').val(''); // 입력창 초기화
-		                }else {
-		                    alert('토론방을 추가하지 못했습니다.');
-		                }
-		            },
-		            error: function(xhr) {
-		                console.error('Error:', xhr);
-		            }
-		        });
-		    });
+	    $(document).on('click', '.btn-delete-topic', function() {
+	        var dr_num = $(this).data('num');
+	    
+	        if(confirm('정말 삭제하시겠습니까?')) {
+	            $.ajax({
+	                url: '<c:url value="/mypage/manage/dr/delete"/>',
+	                method: 'POST',
+	                data: { dr_num: dr_num },
+	                success: function(data) {
+	                    if (data.result) {
+	                        loadDiscussionRooms();
+	                    } else {
+	                        alert('토론방을 삭제하지 못했습니다.');
+	                    }
+	                },
+	                error: function(xhr) {
+	                    console.error('Error:', xhr);
+	                }
+	            });
+	        }
+	    });
 
-		    $(document).on('click', '.btn-delete-topic', function() {
-		        var dr_num = $(this).data('num');
-		    
-		        if(confirm('정말 삭제하시겠습니까?')) {
-		            $.ajax({
-		                url: '<c:url value="/mypage/manage/dr/delete"/>',
-		                method: 'POST',
-		                data: { dr_num: dr_num },
-		                success: function(data) {
-		                    if (data.result) {
-		                        loadDiscussionRooms();
-		                    } else {
-		                        alert('토론방을 삭제하지 못했습니다.');
-		                    }
-		                },
-		                error: function(xhr) {
-		                    console.error('Error:', xhr);
-		                }
-		            });
-		        }
-		    });
-
-		    function loadDiscussionRooms() {
-		        $.ajax({
-		            url: '<c:url value="/mypage/manage/dr"/>',
-		            method: 'GET',
-		            success: function(data) {
-		            	let list = data.list;
-		                var str  = '';
-		            	for(dr of list){
-		            		str += `
-		            			<li class="list-group-item d-flex justify-content-between align-items-center">
-								    <span>\${dr.dr_topic}</span>
-								    <span>
-									    <span class="badge badge-primary badge-pill">\${dr.commentCount}</span>
-									    <button class="btn btn-outline-danger btn-delete-topic" data-num=\${dr.dr_num}>삭제</button>
-								    </span>
-							  	</li>
-		    		        `;
-		            	}
-		                $('.discussion-list').html(str);
-		            },
-		            error: function(xhr) {
-		                console.log('Error fetching discussion list:', xhr);
-		            }
-		        });
-		    }
-		});
+	    function loadDiscussionRooms() {
+	        $.ajax({
+	            url: '<c:url value="/mypage/manage/dr"/>',
+	            method: 'GET',
+	            success: function(data) {
+	            	let list = data.list;
+	                var str  = '';
+	            	for(dr of list){
+	            		str += `
+	            			<li class="list-group-item d-flex justify-content-between align-items-center">
+							    <span>\${dr.dr_topic}</span>
+							    <span>
+								    <span class="badge badge-primary badge-pill">\${dr.commentCount}</span>
+								    <button class="btn btn-outline-danger btn-delete-topic" data-num=\${dr.dr_num}>삭제</button>
+							    </span>
+						  	</li>
+	    		        `;
+	            	}
+	                $('.discussion-list').html(str);
+	            },
+	            error: function(xhr) {
+	                console.log('Error fetching discussion list:', xhr);
+	       		}
+	       });
+	    }
 	</script>
 </body>
 </html>
