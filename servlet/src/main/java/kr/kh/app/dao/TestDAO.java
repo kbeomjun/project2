@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
-import kr.kh.app.model.vo.MemberVO;
+import kr.kh.app.model.vo.Personality_typeVO;
 import kr.kh.app.model.vo.QuestionVO;
 import kr.kh.app.model.vo.TestVO;
 import kr.kh.app.pagination.Criteria;
@@ -23,4 +23,6 @@ public interface TestDAO {
 	TestVO selectTest(@Param("te_num")int te_num);
 
 	void updateTestResult(@Param("te")TestVO test);
+
+	Personality_typeVO selectResult(@Param("te")TestVO test);
 }

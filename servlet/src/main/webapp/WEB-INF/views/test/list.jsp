@@ -6,8 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>테스트</title>
+<title>검사</title>
 	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
+	<style type="text/css">
+		.progress{width:90%; height:20px; border-radius: 30px;}
+		.progress-bar{height:30px; background-color: #D0A9F5;}
+	</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
@@ -34,27 +38,34 @@
 	</svg>
 	
 	<div class="container" style="margin-top: 80px;">
-		<div class="progress" style="height:30px">
-	    	<div class="progress-bar" style="width:${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%; height:30px;">>
-	    		${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%
-    		</div>
-	  	</div>
+		<!-- 바 툴 -->
+		<div style="display: flex; align-items: center; justify-content:center;">
+		    <div style="margin: 0 20px; font-size: 30px; font-weight: bolder; color: #576071;">${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%</div>
+			<div class="progress">
+		    	<div class="progress-bar" style="width:${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%; height:30px;">
+	    		</div>
+		  	</div>
+		</div>
+	  	
 		<form action="<c:url value="/test/list"/>" method="post" class="col-12 form">
 			<c:forEach items="${list}" var="qu">
 				<div class="d-flex justify-content-center" style="font-size: 27px; color: #576071; font-weight: bold; margin-top: 80px;">${qu.qu_content}</div>
 				<div class="d-flex" style="align-items: center; margin: 80px 0 100px;">
 					<div style="font-size: 25px; color: #576071; font-weight: bold">전혀 아니다</div>
 					<div class="form-check-inline flex-fill" style="display: flex; justify-content: space-between; margin: 0px 30px;">
-				    	<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="-5" style="width: 60px; height: 60px; margin:0px 30px;">
-				    	<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="-2" style="width: 50px; height: 50px; margin:0px 30px;">
-			    		<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="0" style="width: 45px; height: 45px; margin:0px 30px;">
-			    		<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="2" style="width: 50px; height: 50px; margin:0px 30px;">
-			    		<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="5" style="width: 60px; height: 60px; margin:0px 30px;">
+				    	<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="-5" style="width: 60px; height: 60px; margin:0px 20px;">
+				    	<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="-3" style="width: 55px; height: 55px; margin:0px 20px;">
+				    	<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="-2" style="width: 50px; height: 50px; margin:0px 20px;">
+			    		<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="1" style="width: 45px; height: 45px; margin:0px 20px;">
+			    		<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="2" style="width: 50px; height: 50px; margin:0px 20px;">
+			    		<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="3" style="width: 55px; height: 55px; margin:0px 20px;">
+			    		<input type="radio" class="form-check-input" id="answer${qu.qu_num}" name="answer${qu.qu_num}" value="5" style="width: 60px; height: 60px; margin:0px 20px;">
 					</div>
 				   	<div style="font-size: 25px; color: #576071; font-weight: bold">매우 그렇다</div>
 				</div>
 				<hr>
 			</c:forEach>
+			
 			<input type="hidden" name="te_num" value="${te_num}">
 			<input type="hidden" name="page" value="${pm.cri.page}">
 			<input type="hidden" name="perPageNum" value="${pm.cri.perPageNum}">

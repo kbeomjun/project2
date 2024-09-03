@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.kh.app.model.vo.Personality_typeVO;
 import kr.kh.app.model.vo.TestVO;
 import kr.kh.app.service.TestService;
 import kr.kh.app.service.TestServiceImp;
@@ -23,8 +24,11 @@ public class TestResult extends HttpServlet {
 		TestVO test =  testService.getTestResult(te_num);
 		List<Integer> list = testService.getTestResultPercentage(te_num);
 		
+		Personality_typeVO result = testService.selectResult(test);
+		
 		request.setAttribute("test", test);
 		request.setAttribute("list", list);
+		request.setAttribute("result", result);
 		request.getRequestDispatcher("/WEB-INF/views/test/result.jsp").forward(request, response);
 	}
 }

@@ -33,4 +33,8 @@
 	<update id="updateTestResult">
 		update test set te_result = #{te.te_result} where te_num = #{te.te_num};
 	</update>
+	
+	<select id="selectResult" resultType="Personality_typeVO">
+		select * from personality_type where pt_code = #{te.te_result};
+	</select>
 </mapper>

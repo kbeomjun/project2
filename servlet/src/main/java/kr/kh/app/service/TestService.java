@@ -3,6 +3,7 @@ package kr.kh.app.service;
 import java.util.List;
 
 import kr.kh.app.model.vo.MemberVO;
+import kr.kh.app.model.vo.Personality_typeVO;
 import kr.kh.app.model.vo.QuestionVO;
 import kr.kh.app.model.vo.TestVO;
 import kr.kh.app.pagination.Criteria;
@@ -20,4 +21,6 @@ public interface TestService {
 	TestVO getTestResult(String te_num);
 
 	List<Integer> getTestResultPercentage(String te_num);
+
+	Personality_typeVO selectResult(TestVO test);
 }

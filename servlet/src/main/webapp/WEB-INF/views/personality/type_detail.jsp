@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>성격 유형 상세</title>
+<title>${pt.pt_code}</title>
 	<link rel="stylesheet" href="https://www.16personalities.com/build/assets/dhlwzs1saxn0--BNRGEd8c.css" />
 	<link rel="stylesheet" href="https://www.16personalities.com/build/assets/c3r5bgnvcmu---1n4ZUfs.css" />
 	<jsp:include page="/WEB-INF/views/common/head.jsp" />
