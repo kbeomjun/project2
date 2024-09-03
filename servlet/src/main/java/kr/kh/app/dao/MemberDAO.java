@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import kr.kh.app.model.vo.DiscussionRoomVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.Personality_typeVO;
 
@@ -31,4 +32,10 @@ public interface MemberDAO {
 	Personality_typeVO selectPersonality_type(@Param("pt_code")String pt_code);
 
 	boolean updatePersonality_type(@Param("pt")Personality_typeVO pt);
+
+	List<DiscussionRoomVO> selectDiscussionRoomList();
+
+	boolean insertDiscussionRoom(@Param("dr")DiscussionRoomVO discussionRoom);
+
+	boolean deleteDiscussionRoom(@Param("dr_num")int dr_num);
 }

@@ -114,7 +114,7 @@
 							    <div class="dropdown-menu">
 							      <div class="dropdown-item item-link" data-target="p-type">성격유형</div>
 							      <div class="dropdown-item item-link" data-target="question">질문</div>
-							      <div class="dropdown-item item-link" data-target="topic">토론</div>
+							      <div class="dropdown-item item-link" data-target="topic">토론방</div>
 							    </div>
 							 </div>
 		        		</li>
@@ -176,7 +176,18 @@
 			    </div>
 			    <!-- 토론 -->
 			    <div class="container-item topic">
-					
+                	<ul class="list-group mt-3 mb-3 discussion-list">
+		            	
+				  	</ul>
+	                <!-- 토론방 추가 폼 -->
+	                <form class="mb-3 form-topic-insert">
+	                    <div class="input-group">
+	                        <input type="text" id="new-topic" class="form-control" placeholder="새로운 토론 주제" required>
+	                        <div class="input-group-append">
+	                            <button class="btn btn-outline-info" type="submit">추가</button>
+	                        </div>
+	                    </div>
+	                </form>
 			    </div>
 		    </div>
 		</div>
@@ -432,7 +443,81 @@
 				return;
 			}
 		});
-		$('.active').trigger('click');
+		
+		$(document).ready(function() {
+		    loadDiscussionRooms();
+
+		    // 토론 추가
+		    $('.form-topic-insert').submit(function(e) {
+		        e.preventDefault();
+		        var dr_topic = $('#new-topic').val();
+		        
+		        $.ajax({
+		            url: '<c:url value="/mypage/manage/dr/insert"/>',
+		            method: 'POST',
+		            data: {dr_topic : dr_topic},
+		            success: function(data) {
+		                if(data) {
+		                	loadDiscussionRooms();
+		                    $('#new-topic').val(''); // 입력창 초기화
+		                }else {
+		                    alert('토론방을 추가하지 못했습니다.');
+		                }
+		            },
+		            error: function(xhr) {
+		                console.error('Error:', xhr);
+		            }
+		        });
+		    });
+
+		    $(document).on('click', '.btn-delete-topic', function() {
+		        var dr_num = $(this).data('num');
+		    
+		        if(confirm('정말 삭제하시겠습니까?')) {
+		            $.ajax({
+		                url: '<c:url value="/mypage/manage/dr/delete"/>',
+		                method: 'POST',
+		                data: { dr_num: dr_num },
+		                success: function(data) {
+		                    if (data.result) {
+		                        loadDiscussionRooms();
+		                    } else {
+		                        alert('토론방을 삭제하지 못했습니다.');
+		                    }
+		                },
+		                error: function(xhr) {
+		                    console.error('Error:', xhr);
+		                }
+		            });
+		        }
+		    });
+
+		    function loadDiscussionRooms() {
+		        $.ajax({
+		            url: '<c:url value="/mypage/manage/dr"/>',
+		            method: 'GET',
+		            success: function(data) {
+		            	let list = data.list;
+		                var str  = '';
+		            	for(dr of list){
+		            		str += `
+		            			<li class="list-group-item d-flex justify-content-between align-items-center">
+								    <span>\${dr.dr_topic}</span>
+								    <span>
+									    <span class="badge badge-primary badge-pill">\${dr.commentCount}</span>
+									    <button class="btn btn-outline-danger btn-delete-topic" data-num=\${dr.dr_num}>삭제</button>
+								    </span>
+							  	</li>
+		    		        `;
+		            	}
+		                $('.discussion-list').html(str);
+		            },
+		            error: function(xhr) {
+		                console.log('Error fetching discussion list:', xhr);
+		            }
+		        });
+		    }
+		});
 	</script>
 </body>
 </html>

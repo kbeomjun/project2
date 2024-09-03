@@ -64,4 +64,19 @@
 	<update id="updatePersonality_type">
 		update personality_type set pt_content = #{pt.pt_content} where pt_code = #{pt.pt_code}
 	</update>
+	
+	<select id="selectDiscussionRoomList" resultType="DiscussionRoomVO">
+        select discussion_room.*, count(co_dr_num) as commentCount from discussion_room
+		left join comment on co_dr_num = dr_num
+		group by dr_num
+		order by dr_num;
+    </select>
+	
+	<insert id="insertDiscussionRoom">
+        insert into discussion_room(dr_topic) values(#{dr.dr_topic});
+    </insert>
+    
+	<delete id="deleteDiscussionRoom" >
+	    delete from discussion_room where dr_num = #{dr_num};
+	</delete>
 </mapper>
