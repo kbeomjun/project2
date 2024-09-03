@@ -65,7 +65,9 @@
 				<div class="form-group">
 					<div class="form-control" style="height: auto; bottom: 0; background-color: transparent;">
 						<div>다른 토론 주제</div>
-						<button class="third col-6" style="height: 25px; background-color: rgb(255, 164, 164)">another</button>
+						<c:forEach items="${list}" var="dr">
+							<a href="<c:url" class="third col-6" style="height: 25px; background-color: rgb(255, 164, 164)">${dr.dr_topic}</a>
+						</c:forEach>
 						<hr>
 						<div class="mb-0">의견 내용</div>
 					</div>

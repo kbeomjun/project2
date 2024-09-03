@@ -14,12 +14,14 @@ import kr.kh.app.service.MemberService;
 import kr.kh.app.service.MemberServiceImp;
 
 @WebServlet("/discuss")
-public class discuss extends HttpServlet {
+public class Discuss extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private MemberService memberService = new MemberServiceImp();
+	private DiscussService discussService = new DiscussServiceImp();
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/discuss/discuss.jsp").forward(request, response);
+		List<DiscussVO> list = discussService.getDiscussList();
+		request.setAttribute("list", list);
+		request.getRequestDispatchar("/WEB-INF/views/discuss/discuss.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
