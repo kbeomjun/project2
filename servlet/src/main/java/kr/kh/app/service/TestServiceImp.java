@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.TestDAO;
 import kr.kh.app.model.vo.MemberVO;
+import kr.kh.app.model.vo.Personality_typeVO;
 import kr.kh.app.model.vo.QuestionVO;
 import kr.kh.app.model.vo.TestVO;
 import kr.kh.app.pagination.Criteria;
@@ -125,5 +126,10 @@ public class TestServiceImp implements TestService {
 		list.add(per_J);
 		
 		return list;
+	}
+
+	@Override
+	public Personality_typeVO selectResult(TestVO test) {
+		return testDao.selectResult(test);
 	}
 }
