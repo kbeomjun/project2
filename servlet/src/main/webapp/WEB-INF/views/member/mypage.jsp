@@ -438,7 +438,6 @@
 					$('.btn-qu').removeClass('active');
 					$('.'+qu_type).addClass('active');
 					$('.btn-ins-qu').click();
-					
 				},
 				error : function(xhr){
 					console.log(xhr);
@@ -447,7 +446,7 @@
 		});
 		//추가
 		//등록 버튼 이벤트
-		$('#insert-qu').click(function(){
+		$(document).on('click', '#insert-qu', function(){
 			var qu_type = $('[name="qu_type"]').val();
 			var qu_content = $('[name="qu_content"]').val();
 			if(qu_type == null || qu_type == ''){
@@ -493,7 +492,9 @@
 			  heigth: 400,		  
 			  minHeight: 300
 			});
-			var btnStr = `<button class="btn btn-outline-success mt-3 update-pt" id="btn-update-c-pt" data-code="\${pt_code}">확인</button>`;
+			var btnStr = `
+				<button class="btn btn-outline-success mt-3 update-pt" id="btn-update-c-pt" data-code="\${pt_code}">확인</button>
+			`;
 			$('#btn-update-pt').hide();
 			$('#btn-update-pt').after(btnStr);
 		});
@@ -502,7 +503,7 @@
 			var pt_code = $(this).data('code');
 			var pt_content = $('#pt-content').summernote('code');
 			$.ajax({
-				url : '<c:url value="/mypage/update/pt"/>',
+				url : '<c:url value="/mypage/manage/pt/update"/>',
 				method: 'post',
 				data : {
 					pt_code : pt_code,

@@ -33,11 +33,12 @@
 			<h1 class="mb-3" style="font-weight: bold">"MBTI가 어떻게 되세요?"</h1>
 			<p class="mb-3">성격 테스트를 통해 자신의 성향과 행동에 대한 정확한 분석 결과를 확인해보세요.</p>
 			<br>
-			<a href="#" class="button test-create"
-				  style="background-color: #D0A9F5; border-color: #D0A9F5; vertical-align: middle; align-items: center; font-weight: bolder; color: white;
-				  		height: 60px; padding: 14px 40px; display: inline-flex; border: 1px solid transparent; border-radius: 30px">
+			<button type="button" class="btn btn-primary test-create"
+					style="background-color: #D0A9F5; border-color: #D0A9F5; vertical-align: middle; align-items: center; font-weight: bolder; color: white; 
+	   						width: 200px; height: 100px; padding: 15px 40px; border: 1px solid transparent; border-radius: 60px; font-size: 27px;">
+  					
 				검사 실시
-	  		</a>
+	  		</button>
 		</div>
 	</div>
 

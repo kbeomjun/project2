@@ -13,8 +13,8 @@ import kr.kh.app.model.vo.Personality_typeVO;
 import kr.kh.app.service.MemberService;
 import kr.kh.app.service.MemberServiceImp;
 
-@WebServlet("/mypage/update/pt")
-public class MyPageUpdatePt extends HttpServlet {
+@WebServlet("/mypage/manage/pt/update")
+public class MyPageManagePtUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService memberService = new MemberServiceImp();
 	
