@@ -71,7 +71,6 @@ public class TestServiceImp implements TestService {
 			
 			testDao.insertQuestionAnswer(qa_answer, qa_te_num, qa_qu_num);
 		}
-		
 	}
 
 	@Override

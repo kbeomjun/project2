@@ -20,11 +20,7 @@ public class MyPageManageQuInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService memberService = new MemberServiceImp();
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String qu_type = request.getParameter("qu_type");
 		String qu_content = request.getParameter("qu_content");
 		JSONObject jobj = new JSONObject();
@@ -38,5 +34,4 @@ public class MyPageManageQuInsert extends HttpServlet {
 		response.setContentType("application/json; charset=utf-8");
 		response.getWriter().print(jobj);
 	}
-
 }

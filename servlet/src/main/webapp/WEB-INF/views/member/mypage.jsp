@@ -211,7 +211,19 @@
 					</div>
 					<div>
 						<ul class="list-group mt-3 mb-3 question-list">
-						
+							<c:forEach items="${quList}" var="qu">
+								<li class="list-group-item d-flex justify-content-between align-items-center ${qu.qu_type}">
+									<span>${qu.qu_content}</span>
+								    <span>
+								    	<c:if test="${qu.qu_answerCount == 0}">
+									    	<button class="btn btn-outline-danger btn-del-qu" 
+												data-num="${qu.qu_num}" data-type="${qu.qu_type}">
+												삭제
+											</button>
+								    	</c:if>
+								    </span>
+							  	</li>
+							</c:forEach>
 						</ul>
 					</div>
 					<div class="insert-qu-box mt-3">
@@ -278,12 +290,20 @@
 				success : function(data){
 					var str = '';
 					for(qu of data.quList){
+						var btn = '';
+						if(qu.qu_answerCount == 0){
+							btn = `
+								<button class="btn btn-outline-danger btn-del-qu" 
+									data-num="\${qu.qu_num}" data-type="\${qu.qu_type}">
+									삭제
+								</button>
+							`;
+						}
 						str += `
 							<li class="list-group-item d-flex justify-content-between align-items-center \${qu.qu_type}">
 								<span>\${qu.qu_content}</span>
 							    <span>
-							    	<button class="btn btn-outline-danger btn-del-qu" 
-							    		data-num="\${qu.qu_num}" data-type="\${qu.qu_type}">삭제</button>
+							    	\${btn}	
 							    </span>
 						  	</li>
 						`;

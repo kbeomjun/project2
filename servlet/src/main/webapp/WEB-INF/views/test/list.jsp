@@ -45,8 +45,7 @@
 		<div style="display: flex; align-items: center; justify-content:center;">
 		    <div style="margin: 0 20px; font-size: 30px; font-weight: bolder; color: #576071;">${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%</div>
 			<div class="progress">
-		    	<div class="progress-bar" style="width:${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%; height:30px;">
-	    		</div>
+		    	<div class="progress-bar" style="width:${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%; height:30px;"></div>
 		  	</div>
 		</div>
 	  	
@@ -122,7 +121,7 @@
 			var answer3 = $('input[name=answer${3 + pm.cri.perPageNum * (pm.cri.page - 1)}]:checked').val();
 			var answer4 = $('input[name=answer${4 + pm.cri.perPageNum * (pm.cri.page - 1)}]:checked').val();
 			var answer5 = $('input[name=answer${5 + pm.cri.perPageNum * (pm.cri.page - 1)}]:checked').val();
-			
+
 			if(answer1 == null){
 				alert("답변을 선택해주세요.");
 				submit = false;

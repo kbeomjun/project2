@@ -81,15 +81,25 @@
 	</delete>
 	
 	<select id="selectQuestionList" resultType="QuestionVO">
-		select * from question
+		select question.*, count(qa_num) as qu_answerCount from question 
+		left join question_answer on qa_qu_num = qu_num 
+		group by qu_num;
 	</select>
 	
 	<insert id="insertQuestion">
-		insert into question(qu_type, qu_content) values(#{qu.qu_type}, #{qu.qu_content})
+		insert into question(qu_num, qu_type, qu_content) 
+		select
+			IFNULL(MAX(qu_num), 0) + 1, 
+			#{qu.qu_type},
+			#{qu.qu_content}
+		from question;
 	</insert>
 	
 	<select id="selectQuestionListByType" resultType="QuestionVO">
-		select * from question where qu_type = #{qu_type}
+		select question.*, count(qa_num) as qu_answerCount from question 
+		left join question_answer on qa_qu_num = qu_num
+		where qu_type = #{qu_type} 
+		group by qu_num;
 	</select>
 	
 	<delete id="deleteQuestion">
