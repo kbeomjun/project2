@@ -212,12 +212,19 @@ public class MemberServiceImp implements MemberService {
 		if(qu == null) {
 			return false;
 		}
-		try {
-			return memberDao.insertQuestion(qu);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
+		List<QuestionVO> list = memberDao.selectQuestionList();
+		boolean flag = false;
+		for(int i = 0; i < list.size() - 1; i++) {
+			if(list.get(i).getQu_num() + 1 != list.get(i+1).getQu_num()) {
+				qu.setQu_num(list.get(i).getQu_num() + 1);
+				flag = true;
+				break;
+			}
 		}
+		if(!flag) {
+			qu.setQu_num(list.get(list.size() - 1).getQu_num() + 1);
+		}
+		return memberDao.insertQuestion(qu);
 	}
 
 	@Override

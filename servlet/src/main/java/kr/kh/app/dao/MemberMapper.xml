@@ -88,11 +88,7 @@
 	
 	<insert id="insertQuestion">
 		insert into question(qu_num, qu_type, qu_content) 
-		select
-			IFNULL(MAX(qu_num), 0) + 1, 
-			#{qu.qu_type},
-			#{qu.qu_content}
-		from question;
+		values(#{qu.qu_num}, #{qu.qu_type}, #{qu.qu_content});
 	</insert>
 	
 	<select id="selectQuestionListByType" resultType="QuestionVO">
