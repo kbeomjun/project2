@@ -330,6 +330,12 @@
 		}
 		//타입 
 		$('.btn-qu').click(function(){
+			if($(this).hasClass('active')){
+				$(this).removeClass('active');
+				$('[name="qu_content"]').val('');
+				displayQuTypeList('all');
+				return;
+			}
 			$('.btn-qu').removeClass('active');
 			$(this).addClass('active');
 			var qu_type = $(this).text();		
@@ -432,6 +438,7 @@
 					$('.btn-qu').removeClass('active');
 					$('.'+qu_type).addClass('active');
 					$('.btn-ins-qu').click();
+					
 				},
 				error : function(xhr){
 					console.log(xhr);
@@ -465,6 +472,7 @@
 						alert("등록하지 못했습니다.");
 					}
 					displayQuTypeList(qu_type);
+					$('.btn-qu').removeClass('active');
 					$('.'+qu_type).addClass('active');
 					$('.btn-ins-qu').click();
 				},
