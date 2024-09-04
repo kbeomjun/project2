@@ -28,12 +28,17 @@ public class TestList extends HttpServlet {
 		if(page != null) {
 			cri.setPage(Integer.parseInt(page));
 		}
+		String diff = "n";
 		PageMaker pm = testService.getQuestionPageMaker(cri);
 		List<QuestionVO> list = testService.getQuestionList(cri);
+		if(list.size() != cri.getPerPageNum()) {
+			diff = "y";
+		}
 		
 		request.setAttribute("te_num", te_num);
 		request.setAttribute("pm", pm);
 		request.setAttribute("list", list);
+		request.setAttribute("diff", diff);
 		request.getRequestDispatcher("/WEB-INF/views/test/list.jsp").forward(request, response);
 	}
 
@@ -53,7 +58,9 @@ public class TestList extends HttpServlet {
 				namelist.add(name);
 				answerlist.add(request.getParameter(name));
 			}
-			testService.insertQuestionAnswer(te_num, namelist, answerlist);
+			
+			Criteria cri = new Criteria(page, 5);
+			testService.insertQuestionAnswer(te_num, namelist, answerlist, cri);
 			
 			if(next.equals("next")) {
 				request.setAttribute("msg", "next");

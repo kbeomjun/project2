@@ -53,4 +53,6 @@ public interface MemberService {
 	boolean deleteQuestion(String qu_num);
 
 	List<TestVO> getTestList(MemberVO user);
+
+	boolean updateQuestion(QuestionVO qu);
 }

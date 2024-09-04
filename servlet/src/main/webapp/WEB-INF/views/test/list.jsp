@@ -43,10 +43,11 @@
 	<div class="container" style="margin-top: 80px;">
 		<!-- 바 툴 -->
 		<div style="display: flex; align-items: center; justify-content:center;">
-		    <div style="margin: 0 20px; font-size: 30px; font-weight: bolder; color: #576071;">${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%</div>
+		    <div class="progress-percent" style="margin: 0 20px; font-size: 30px; font-weight: bolder; color: #576071;">
+
+	    	</div>
 			<div class="progress">
-		    	<div class="progress-bar" style="width:${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%; height:30px;">
-	    		</div>
+		    	<div class="progress-bar" style="width:${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)}%; height:30px;"></div>
 		  	</div>
 		</div>
 	  	
@@ -115,6 +116,10 @@
 			return;
 		});
 		
+		var progressPercent = ${100 / (pm.totalCount / pm.cri.perPageNum) * (pm.cri.page - 1)};
+		var percent = Math.round(progressPercent) + '%';
+		$('.progress-percent').text(percent);
+		
 		var submit = false;
 		$('.form').submit(function(){
 			var answer1 = $('input[name=answer${1 + pm.cri.perPageNum * (pm.cri.page - 1)}]:checked').val();
@@ -122,28 +127,28 @@
 			var answer3 = $('input[name=answer${3 + pm.cri.perPageNum * (pm.cri.page - 1)}]:checked').val();
 			var answer4 = $('input[name=answer${4 + pm.cri.perPageNum * (pm.cri.page - 1)}]:checked').val();
 			var answer5 = $('input[name=answer${5 + pm.cri.perPageNum * (pm.cri.page - 1)}]:checked').val();
-			
+
 			if(answer1 == null){
 				alert("답변을 선택해주세요.");
 				submit = false;
 				$('[name=answer${1 + pm.cri.perPageNum * (pm.cri.page - 1)}]').focus();
 				return false;
-			}else if(answer2 == null){
+			}else if(answer2 == null && '${diff}' == 'n'){
 				alert("답변을 선택해주세요.");
 				submit = false;
 				$('[name=answer${2 + pm.cri.perPageNum * (pm.cri.page - 1)}]').focus();
 				return false;
-			}else if(answer3 == null){
+			}else if(answer3 == null && '${diff}' == 'n'){
 				alert("답변을 선택해주세요.");
 				submit = false;
 				$('[name=answer${3 + pm.cri.perPageNum * (pm.cri.page - 1)}]').focus();
 				return false;
-			}else if(answer4 == null){
+			}else if(answer4 == null && '${diff}' == 'n'){
 				alert("답변을 선택해주세요.");
 				submit = false;
 				$('[name=answer${4 + pm.cri.perPageNum * (pm.cri.page - 1)}]').focus();
 				return false;
-			}else if(answer5 == null){
+			}else if(answer5 == null && '${diff}' == 'n'){
 				alert("답변을 선택해주세요.");
 				submit = false;
 				$('[name=answer${5 + pm.cri.perPageNum * (pm.cri.page - 1)}]').focus();
