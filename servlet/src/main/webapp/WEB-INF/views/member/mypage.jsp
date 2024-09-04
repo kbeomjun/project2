@@ -215,6 +215,12 @@
 								<li class="list-group-item d-flex justify-content-between align-items-center ${qu.qu_type}">
 									<span>${qu.qu_content}</span>
 								    <span>
+								    	<c:if test="${qu.qu_answerCount != 0}">
+									    	<button class="btn btn-outline-info btn-update-qu" 
+												data-num="${qu.qu_num}" data-type="${qu.qu_type}" data-content="${qu.qu_content}">
+												수정
+											</button>
+								    	</c:if>
 								    	<c:if test="${qu.qu_answerCount == 0}">
 									    	<button class="btn btn-outline-danger btn-del-qu" 
 												data-num="${qu.qu_num}" data-type="${qu.qu_type}">
@@ -227,14 +233,14 @@
 						</ul>
 					</div>
 					<div class="insert-qu-box mt-3">
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
+						<div class="input-group mb-3 input-box">
+							<div class="input-group-prepend" id="qu_type-select-box">
 							  	<select class="input-group-text bg-light" name="qu_type" id="qu_type-select" style="width: 110px;">
-							  	  <option value="" selected disabled hidden>질문유형</option>
-							      <option class="op-ie" value=IE>IE</option>
-							      <option class="op-sn" value="SN">SN</option>
-							      <option class="op-tf" value="TF">TF</option>
-							      <option class="op-pj" value="PJ">PJ</option>
+							  	  	<option value="" selected disabled hidden>질문유형</option>
+							      	<option class="op-ie" value="IE">IE</option>
+							      	<option class="op-sn" value="SN">SN</option>
+							      	<option class="op-tf" value="TF">TF</option>
+							      	<option class="op-pj" value="PJ">PJ</option>
 						    	</select>
 							</div>
 							<input type="text" class="form-control" placeholder="등록할 질문" name="qu_content">
@@ -298,6 +304,13 @@
 									삭제
 								</button>
 							`;
+						}else{
+							btn = `
+								<button class="btn btn-outline-info btn-update-qu" 
+									data-num="\${qu.qu_num}" data-type="\${qu.qu_type}" data-content="\${qu.qu_content}">
+									수정
+								</button>
+							`;
 						}
 						str += `
 							<li class="list-group-item d-flex justify-content-between align-items-center \${qu.qu_type}">
@@ -321,6 +334,7 @@
 			$(this).addClass('active');
 			var qu_type = $(this).text();		
 			$('#qu_type-select').val(qu_type);
+			$('[name="qu_content"]').val('');
 			displayQuTypeList(qu_type);
 		});
 		//삭제 
@@ -348,6 +362,82 @@
 				});
 			}
 		});
+		//수정
+		$(document).on('click', '.btn-update-qu', function(){
+			var qu_num = $(this).data('num');
+			var qu_type = $(this).data('type');
+			var qu_content = $(this).data('content');
+			var str = `
+				<div class="input-group-prepend" id="qu_type-select-box">
+				  	<select class="input-group-text bg-light" name="qu_type" id="qu_type-select" style="width: 110px;">
+				  		<option value="" selected disabled hidden>질문유형</option>
+				      	<option class="op-ie" value="IE">IE</option>
+				      	<option class="op-sn" value="SN">SN</option>
+				      	<option class="op-tf" value="TF">TF</option>
+				      	<option class="op-pj" value="PJ">PJ</option>
+			    	</select>
+				</div>
+				<input type="text" class="form-control" placeholder="수정할 질문" name="qu_content" value="\${qu_content}">
+				<div class="input-group-append">
+					<button class="btn btn-outline-info" id="update-qu" data-num="\${qu_num}">수정</button>
+				</div>
+			`;
+			$('.input-box').children().remove();
+			$('.input-box').append(str);
+			$('#qu_type-select').val(qu_type);
+		});
+		$(document).on('click', '#update-qu', function(){
+			var qu_num = $(this).data("num");
+			var qu_type = $('[name="qu_type"]').val();
+			var qu_content = $('[name="qu_content"]').val();
+			if(qu_type == null || qu_type == ''){
+				alert('질문유형을 선택하세요.');
+				return;
+			}
+			if(qu_content == ''){
+				alert('질문을 입력하세요.');
+				return;
+			}
+			$.ajax({
+				url : '<c:url value="/mypage/manage/qu/update"/>',
+				method: 'post',
+				data : {
+					qu_num : qu_num,
+					qu_type : qu_type,
+					qu_content : qu_content
+				},
+				success : function(data){
+					if(data.result){
+						var str = `
+							<div class="input-group-prepend" id="qu_type-select-box">
+							  	<select class="input-group-text bg-light" name="qu_type" id="qu_type-select" style="width: 110px;">
+							  	  <option value="" selected disabled hidden>질문유형</option>
+							      <option class="op-ie" value="IE">IE</option>
+							      <option class="op-sn" value="SN">SN</option>
+							      <option class="op-tf" value="TF">TF</option>
+							      <option class="op-pj" value="PJ">PJ</option>
+						    	</select>
+							</div>
+							<input type="text" class="form-control" placeholder="등록할 질문" name="qu_content">
+							<div class="input-group-append">
+								<button class="btn btn-outline-success" id="insert-qu">등록</button>
+							</div>
+						`;
+						$('.input-box').children().remove();
+						$('.input-box').append(str);
+					}else{
+						alert("수정하지 못했습니다.");
+					}
+					displayQuTypeList(qu_type);
+					$('.btn-qu').removeClass('active');
+					$('.'+qu_type).addClass('active');
+					$('.btn-ins-qu').click();
+				},
+				error : function(xhr){
+					console.log(xhr);
+				}
+			});
+		});
 		//추가
 		//등록 버튼 이벤트
 		$('#insert-qu').click(function(){
@@ -371,6 +461,8 @@
 				success : function(data){
 					if(data.result){
 						$('[name="qu_content"]').val('');
+					}else{
+						alert("등록하지 못했습니다.");
 					}
 					displayQuTypeList(qu_type);
 					$('.'+qu_type).addClass('active');

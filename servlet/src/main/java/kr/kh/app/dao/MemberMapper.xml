@@ -109,4 +109,8 @@
 	<select id="selectTestList" resultType="TestVO">
 		select * from test where te_me_id = #{user.me_id} and te_result is not null order by te_num desc;
 	</select>
+	
+	<update id="updateQuestion">
+		update question set qu_content = #{qu.qu_content}, qu_type = #{qu.qu_type} where qu_num = #{qu.qu_num};
+	</update>
 </mapper>

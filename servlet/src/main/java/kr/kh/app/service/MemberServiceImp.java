@@ -239,4 +239,12 @@ public class MemberServiceImp implements MemberService {
 	public List<TestVO> getTestList(MemberVO user) {
 		return memberDao.selectTestList(user);
 	}
+
+	@Override
+	public boolean updateQuestion(QuestionVO qu) {
+		if(qu == null) {
+			return false;
+		}
+		return memberDao.updateQuestion(qu);
+	}
 }

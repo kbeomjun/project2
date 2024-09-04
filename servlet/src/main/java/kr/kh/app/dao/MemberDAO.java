@@ -50,4 +50,6 @@ public interface MemberDAO {
 	boolean deleteQuestion(@Param("qu_num")String qu_num);
 
 	List<TestVO> selectTestList(@Param("user")MemberVO user);
+
+	boolean updateQuestion(@Param("qu")QuestionVO qu);
 }
