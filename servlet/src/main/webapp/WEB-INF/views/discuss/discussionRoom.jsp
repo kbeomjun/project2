@@ -54,7 +54,7 @@
 					<div class="form-control chat-list">${co_content}</div>
 					<!-- 본인이 작성한 채팅은 오른쪽정렬 --> 
 					<div class="input-group mb-3 chat-box">
-					  <input type="text" class="form-control " placeholder="채팅 입력">
+					  <input type="text" class="form-control " placeholder="채팅 입력" id="input-comment">
 					  <div class="input-group-append">
 					    <button class="btn" type="submit" style="background-color: rgb(255, 164, 164)">입력</button>
 					  </div>

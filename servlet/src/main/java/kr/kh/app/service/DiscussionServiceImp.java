@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.DiscussionDAO;
+import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.DiscussionVO;
 
 public class DiscussionServiceImp implements DiscussionService {
@@ -32,5 +33,16 @@ public class DiscussionServiceImp implements DiscussionService {
 	@Override
 	public List<DiscussionVO> getDiscussionList(){
 		return discussionDao.selectDiscussionList();
+	}
+
+	@Override
+	public boolean insertComment(CommentVO comment) {
+		if(comment == null) {
+			return false;
+		}
+		if(comment.getCo_content() == null || comment.getCo_content().trim().length() == 0) {
+			return false;
+		}
+		return discussionDao.insertComment(comment);
 	}
 }
