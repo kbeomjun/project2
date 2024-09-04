@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.DiscussionDAO;
-import kr.kh.app.model.vo.DiscussionVO;
+import kr.kh.app.model.vo.DiscussionRoomVO;
 
 public class DiscussionServiceImp implements DiscussionService {
 	private DiscussionDAO discussionDao;
@@ -30,7 +30,7 @@ public class DiscussionServiceImp implements DiscussionService {
 	}
 	
 	@Override
-	public List<DiscussionVO> getDiscussionList(){
+	public List<DiscussionRoomVO> getDiscussionList(){
 		return discussionDao.selectDiscussionList();
 	}
 }

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.kh.app.model.vo.DiscussionVO;
+import kr.kh.app.model.vo.DiscussionRoomVO;
 import kr.kh.app.service.DiscussionService;
 import kr.kh.app.service.DiscussionServiceImp;
 
@@ -19,7 +19,7 @@ public class Discussion extends HttpServlet {
 	private DiscussionService discussionService = new DiscussionServiceImp();
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<DiscussionVO> list = discussionService.getDiscussionList();
+		List<DiscussionRoomVO> list = discussionService.getDiscussionList();
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/WEB-INF/views/discuss/discussionRoom.jsp").forward(request, response);
 	}

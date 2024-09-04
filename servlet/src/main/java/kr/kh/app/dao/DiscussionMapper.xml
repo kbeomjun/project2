@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.kh.app.dao.DiscussionDAO">
-	<select id="selectDiscussionList" resultType="DiscussionVO">
+	<select id="selectDiscussionList" resultType="DiscussionRoomVO">
 		select * from discussion_room order by dr_num
 	</select>
 </mapper>
