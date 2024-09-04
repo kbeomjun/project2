@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -24,6 +25,7 @@
 		.btn-pt{width: 12%; height: 40px;}
 		.sub-title{color: blue; }
 		#btn-update-pt{margin: 10px 0; display: none;}
+		.btn-qu{width: 47px;}
 		
 		.description{
 	        margin: 0 auto;         
@@ -104,7 +106,7 @@
 	          			<div class="nav-link item-link active" data-target="update" id="update">회원정보</div>
 	        		</li>
 	        		<li class="nav-item">
-	          			<div class="nav-link item-link" data-target="result" id="result">테스트결과</div>
+	          			<div class="nav-link item-link" data-target="result" id="result">검사결과</div>
 	        		</li>
 	        		<c:if test="${user.me_authority eq 'ADMIN'}">
 	        			<li class="nav-item">
@@ -112,7 +114,7 @@
 							    <div class="nav-link dropdown-toggle" data-toggle="dropdown">관리</div>
 							    <div class="dropdown-menu">
 							      	<div class="dropdown-item item-link" data-target="p-type">성격유형</div>
-							      	<div class="dropdown-item item-link" data-target="question">질문</div>
+							      	<div class="dropdown-item item-link" data-target="question">검사문항</div>
 							    	<div class="dropdown-item item-link" data-target="topic">토론방</div>
 							 	</div>
 							 </div>
@@ -136,7 +138,7 @@
 				      	</div>
 						<span class="form-control input-group-pw input-pw" data-num="${user.me_pw}" id="me_pw">${user.me_pw}</span>
 						<div class="input-group-append input-group-pw">
-				        	<button class="btn btn-outline-dark btn-pw">변경</button>
+				        	<button class="btn btn-outline-info btn-pw">변경</button>
 				      	</div>
 					</div>
 					<div class="input-group">
@@ -145,7 +147,7 @@
 				      	</div>
 						<span class="form-control input-group-email" id="me_email">${user.me_email}</span>
 						<div class="input-group-append input-group-email">
-				        	<button class="btn btn-outline-dark btn-email">변경</button>
+				        	<button class="btn btn-outline-info btn-email">변경</button>
 				      	</div>
 					</div>
 					<div class="input-group d-flex justify-content-end mt-3">
@@ -153,7 +155,39 @@
 					</div>
 			    </div>
 			    <!-- 테스트 결과 -->
-				
+				<div class="container-item result">
+					<table class="table table-hover mt-3">
+				    	<thead>
+				      		<tr>
+				        		<th>검사일</th>
+				        		<th>검사결과</th>
+				        		<th></th>
+				      		</tr>
+				    	</thead>
+				    	<tbody>
+				    		<c:if test="${testList.size() > 0}">
+					    		<c:forEach items="${testList}" var="te">
+							      	<tr>
+								        <td>
+									        <fmt:formatDate value="${te.te_date}" pattern="yyyy.MM.dd HH:mm:ss"/>
+								        </td>
+								        <td>
+											${te.te_result}							        	
+							        	</td>
+								        <td>
+								        	<a href="<c:url value="/test/result?te_num=${te.te_num}"/>">결과보기</a>
+							        	</td>
+							      	</tr>
+					    		</c:forEach>
+				    		</c:if>
+				    		<c:if test="${testList.size() == 0}">
+				    			<tr>
+					        		<th class="text-center" colspan="3">검사결과가 없습니다.</th>
+					      		</tr>
+				    		</c:if>
+				    	</tbody>
+					</table>
+		    	</div>
 			    <!-- 성격 유형 -->
 			    <div class="container-item p-type">
 					<div class="pt-code">
@@ -168,7 +202,36 @@
 					<button class="btn btn-outline-info update-pt" id="btn-update-pt">수정</button>
 			    </div>
 			    <!-- 질문 -->
-			    
+			    <div class="container-item question">
+					<div class="qu-type">
+						<div class="btn btn-outline-info btn-qu IE">IE</div>
+						<div class="btn btn-outline-info btn-qu SN">SN</div>
+						<div class="btn btn-outline-info btn-qu TF">TF</div>
+						<div class="btn btn-outline-info btn-qu PJ">PJ</div>
+					</div>
+					<div>
+						<ul class="list-group mt-3 mb-3 question-list">
+						
+						</ul>
+					</div>
+					<div class="insert-qu-box mt-3">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+							  	<select class="input-group-text bg-light" name="qu_type" id="qu_type-select" style="width: 110px;">
+							  	  <option value="" selected disabled hidden>질문유형</option>
+							      <option class="op-ie" value=IE>IE</option>
+							      <option class="op-sn" value="SN">SN</option>
+							      <option class="op-tf" value="TF">TF</option>
+							      <option class="op-pj" value="PJ">PJ</option>
+						    	</select>
+							</div>
+							<input type="text" class="form-control" placeholder="등록할 질문" name="qu_content">
+							<div class="input-group-append">
+								<button class="btn btn-outline-success" id="insert-qu">등록</button>
+							</div>
+						</div>
+					</div>
+			    </div>
 			    <!-- 토론 -->
 			    <div class="container-item topic">
                 	<ul class="list-group mt-3 mb-3 discussion-list">
@@ -177,9 +240,9 @@
 	                <!-- 토론방 추가 폼 -->
 	                <form class="mb-3 form-topic-insert">
 	                    <div class="input-group">
-	                        <input type="text" id="new-topic" class="form-control" placeholder="새로운 토론 주제" required>
+	                        <input type="text" id="new-topic" class="form-control" placeholder="등록할 토론 주제" required>
 	                        <div class="input-group-append">
-	                            <button class="btn btn-outline-info" type="submit">추가</button>
+	                            <button class="btn btn-outline-success" type="submit">등록</button>
 	                        </div>
 	                    </div>
 	                </form>
@@ -204,6 +267,100 @@
 	
 	<script type="text/javascript">
 		//질문 관리
+		//타입별 질문 리스트 불러오는 함수
+		function displayQuTypeList(qu_type){
+			$.ajax({
+				url : '<c:url value="/mypage/manage/qu"/>',
+				method: 'post',
+				data : {
+					qu_type : qu_type,
+				},
+				success : function(data){
+					var str = '';
+					for(qu of data.quList){
+						str += `
+							<li class="list-group-item d-flex justify-content-between align-items-center \${qu.qu_type}">
+								<span>\${qu.qu_content}</span>
+							    <span>
+							    	<button class="btn btn-outline-danger btn-del-qu" 
+							    		data-num="\${qu.qu_num}" data-type="\${qu.qu_type}">삭제</button>
+							    </span>
+						  	</li>
+						`;
+					}
+					$('.question-list').html(str);
+				},
+				error : function(xhr){
+					console.log(xhr);
+				}
+			});
+		}
+		//타입 
+		$('.btn-qu').click(function(){
+			$('.btn-qu').removeClass('active');
+			$(this).addClass('active');
+			var qu_type = $(this).text();		
+			$('#qu_type-select').val(qu_type);
+			displayQuTypeList(qu_type);
+		});
+		//삭제 
+		$(document).on('click', '.btn-del-qu', function(){
+			if(confirm("정말 삭제하시겠습니까?")){
+				var qu_num = $(this).data('num');
+				var qu_type = $(this).data('type');
+				$.ajax({
+					url : '<c:url value="/mypage/manage/qu/delete"/>',
+					method: 'post',
+					data : {
+						qu_num : qu_num,
+					},
+					success : function(data){
+						if(data.result){
+							
+						}else{
+							alert('질문을 삭제하지 못했습니다.');
+						}
+						displayQuTypeList(qu_type);
+					},
+					error : function(xhr){
+						console.log(xhr);
+					}
+				});
+			}
+		});
+		//추가
+		//등록 버튼 이벤트
+		$('#insert-qu').click(function(){
+			var qu_type = $('[name="qu_type"]').val();
+			var qu_content = $('[name="qu_content"]').val();
+			if(qu_type == null || qu_type == ''){
+				alert('질문유형을 선택하세요.');
+				return;
+			}
+			if(qu_content == ''){
+				alert('질문을 입력하세요.');
+				return;
+			}
+			$.ajax({
+				url : '<c:url value="/mypage/manage/qu/insert"/>',
+				method: 'post',
+				data : {
+					qu_type : qu_type,
+					qu_content : qu_content
+				},
+				success : function(data){
+					if(data.result){
+						$('[name="qu_content"]').val('');
+					}
+					displayQuTypeList(qu_type);
+					$('.'+qu_type).addClass('active');
+					$('.btn-ins-qu').click();
+				},
+				error : function(xhr){
+					console.log(xhr);
+				}
+			});
+		});
 		
 		// 유형 설명 수정
 		var pt_code = '';
@@ -216,7 +373,7 @@
 			  heigth: 400,		  
 			  minHeight: 300
 			});
-			var btnStr = `<button class="btn btn-outline-danger update-pt" id="btn-update-c-pt" data-code="\${pt_code}">수정완료</button>`;
+			var btnStr = `<button class="btn btn-outline-success mt-3 update-pt" id="btn-update-c-pt" data-code="\${pt_code}">확인</button>`;
 			$('#btn-update-pt').hide();
 			$('#btn-update-pt').after(btnStr);
 		});
@@ -233,9 +390,9 @@
 				},
 				success : function(data){
 					if(data.result){
-						alert('수정하였습니다.');
+
 					}else {
-						alert('수정하지 못했습니다.');
+						alert('설명을 수정하지 못했습니다.');
 					}
 				},
 				error : function(xhr){
@@ -331,7 +488,7 @@
 			var str = `
 		      	<input type="text" class="form-control input-pw" id="me_pw" name="me_pw" value="${user.me_pw}">
 				<div class="input-group-append input-group-pw">
-		        	<button class="btn btn-outline-info btn-update-pw">확인</button>
+		        	<button class="btn btn-outline-success btn-update-pw">확인</button>
 		      	</div>
 			`;
 			$('.input-group-prepend-pw').after(str);
@@ -378,7 +535,7 @@
 			var str = `
 		      	<input type="text" class="form-control input-group-email input-email" id="me_email" name="me_email" value="${user.me_email}">
 				<div class="input-group-append input-group-email">
-		        	<button class="btn btn-outline-info btn-update-email">확인</button>
+		        	<button class="btn btn-outline-success btn-update-email">확인</button>
 		      	</div>
 			`;
 			$('.input-group-prepend-email').after(str);
@@ -462,7 +619,7 @@
 	                }
 	            },
 	            error: function(xhr) {
-	                console.error('Error:', xhr);
+	                console.error(xhr);
 	            }
 	        });
 	    });
@@ -483,7 +640,7 @@
 	                    }
 	                },
 	                error: function(xhr) {
-	                    console.error('Error:', xhr);
+	                    console.error(xhr);
 	                }
 	            });
 	        }
@@ -510,7 +667,7 @@
 	                $('.discussion-list').html(str);
 	            },
 	            error: function(xhr) {
-	                console.log('Error fetching discussion list:', xhr);
+	                console.log(xhr);
 	       		}
 	       });
 	    }

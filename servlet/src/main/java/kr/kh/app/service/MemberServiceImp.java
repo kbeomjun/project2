@@ -20,6 +20,8 @@ import kr.kh.app.dao.MemberDAO;
 import kr.kh.app.model.vo.DiscussionRoomVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.Personality_typeVO;
+import kr.kh.app.model.vo.QuestionVO;
+import kr.kh.app.model.vo.TestVO;
 
 public class MemberServiceImp implements MemberService {
 	private MemberDAO memberDao;
@@ -198,5 +200,43 @@ public class MemberServiceImp implements MemberService {
 	@Override
 	public boolean deleteDiscussionRoom(int dr_num) {
 		 return memberDao.deleteDiscussionRoom(dr_num);
+	}
+
+	@Override
+	public List<QuestionVO> getQuestionList() {
+		return memberDao.selectQuestionList();
+	}
+
+	@Override
+	public boolean insertQuestion(QuestionVO qu) {
+		if(qu == null) {
+			return false;
+		}
+		try {
+			return memberDao.insertQuestion(qu);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public List<QuestionVO> getQuestionListByType(String qu_type) {
+		try {
+			return memberDao.selectQuestionListByType(qu_type);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public boolean deleteQuestion(String qu_num) {
+		return memberDao.deleteQuestion(qu_num);
+	}
+
+	@Override
+	public List<TestVO> getTestList(MemberVO user) {
+		return memberDao.selectTestList(user);
 	}
 }
