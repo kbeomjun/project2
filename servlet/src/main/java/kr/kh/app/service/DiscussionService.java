@@ -2,8 +2,13 @@ package kr.kh.app.service;
 
 import java.util.List;
 
-import kr.kh.app.model.vo.DiscussionRoomVO;
+import kr.kh.app.model.vo.CommentVO;
+import kr.kh.app.model.vo.DiscussionVO;
 
 public interface DiscussionService {
-	List<DiscussionRoomVO> getDiscussionList();
+	
+	List<DiscussionVO> getDiscussionList();
+
+	boolean insertComment(CommentVO comment);
+	
 }
