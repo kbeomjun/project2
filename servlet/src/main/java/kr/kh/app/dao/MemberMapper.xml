@@ -79,4 +79,24 @@
 	<delete id="deleteDiscussionRoom" >
 	    delete from discussion_room where dr_num = #{dr_num};
 	</delete>
+	
+	<select id="selectQuestionList" resultType="QuestionVO">
+		select * from question
+	</select>
+	
+	<insert id="insertQuestion">
+		insert into question(qu_type, qu_content) values(#{qu.qu_type}, #{qu.qu_content})
+	</insert>
+	
+	<select id="selectQuestionListByType" resultType="QuestionVO">
+		select * from question where qu_type = #{qu_type}
+	</select>
+	
+	<delete id="deleteQuestion">
+		delete from question where qu_num = #{qu_num}
+	</delete>
+	
+	<select id="selectTestList" resultType="TestVO">
+		select * from test where te_me_id = #{user.me_id} and te_result is not null order by te_num desc;
+	</select>
 </mapper>

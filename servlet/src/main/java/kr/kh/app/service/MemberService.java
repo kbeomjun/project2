@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import kr.kh.app.model.vo.DiscussionRoomVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.Personality_typeVO;
+import kr.kh.app.model.vo.QuestionVO;
+import kr.kh.app.model.vo.TestVO;
 
 public interface MemberService {
 	boolean signup(MemberVO member);
@@ -41,4 +43,14 @@ public interface MemberService {
 	boolean insertDiscussionRoom(String dr_topic);
 
 	boolean deleteDiscussionRoom(int dr_num);
+	
+	List<QuestionVO> getQuestionList();
+
+	boolean insertQuestion(QuestionVO qu);
+
+	List<QuestionVO> getQuestionListByType(String qu_type);
+
+	boolean deleteQuestion(String qu_num);
+
+	List<TestVO> getTestList(MemberVO user);
 }

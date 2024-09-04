@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.Param;
 import kr.kh.app.model.vo.DiscussionRoomVO;
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.model.vo.Personality_typeVO;
+import kr.kh.app.model.vo.QuestionVO;
+import kr.kh.app.model.vo.TestVO;
 
 public interface MemberDAO {
 	boolean insertMember(@Param("me")MemberVO member);
@@ -38,4 +40,14 @@ public interface MemberDAO {
 	boolean insertDiscussionRoom(@Param("dr")DiscussionRoomVO discussionRoom);
 
 	boolean deleteDiscussionRoom(@Param("dr_num")int dr_num);
+	
+	List<QuestionVO> selectQuestionList();
+
+	boolean insertQuestion(@Param("qu")QuestionVO qu);
+
+	List<QuestionVO> selectQuestionListByType(@Param("qu_type")String qu_type);
+
+	boolean deleteQuestion(@Param("qu_num")String qu_num);
+
+	List<TestVO> selectTestList(@Param("user")MemberVO user);
 }
