@@ -57,8 +57,10 @@ public class TestServiceImp implements TestService {
 	}
 
 	@Override
-	public void insertQuestionAnswer(String te_num, List<String> namelist, List<String> answerlist) {
-		for(int i = 0; i < namelist.size(); i++) {
+	public void insertQuestionAnswer(String te_num, List<String> namelist, List<String> answerlist, Criteria cri) {
+		List<QuestionVO> list = testDao.selectQuestionList(cri);
+		
+		for(int i = 0; i < list.size(); i++) {
 			String answer = answerlist.get(i);
 			int qa_answer = Integer.parseInt(answer);
 			

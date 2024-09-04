@@ -16,7 +16,7 @@ public interface TestService {
 
 	List<QuestionVO> getQuestionList(Criteria cri);
 
-	void insertQuestionAnswer(String te_num, List<String> namelist, List<String> answerlist);
+	void insertQuestionAnswer(String te_num, List<String> namelist, List<String> answerlist, Criteria cri);
 
 	TestVO getTestResult(String te_num);
 
