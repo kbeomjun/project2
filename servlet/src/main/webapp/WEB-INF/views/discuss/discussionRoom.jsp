@@ -50,9 +50,9 @@
 		<div class="box">
 			<div class="container2">
 				<div class="form-group">
-					<label for="content" style="font-weight: bold;">토론 주제 : ${discussion.dr_topic}</label>
+					<label for="content" style="font-weight: bold;">토론 주제 : ${dr.dr_topic}</label>
 					<div class="form-control chat-list">${co_content}</div>
-					<!-- 본인이 작성한 채팅은 오른쪽정렬 -->
+					<!-- 본인이 작성한 채팅은 오른쪽정렬 --> 
 					<div class="input-group mb-3 chat-box">
 					  <input type="text" class="form-control " placeholder="채팅 입력">
 					  <div class="input-group-append">
@@ -61,7 +61,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="container3" style="position: absolute; right: 0; padding: 74px 100px 0 0; width: 40%">
+			<div class="container3" style="position: absolute; right: 0; padding: 74px 50px 0 0;">
 				<div class="form-group">
 					<div class="form-control" style="height: auto; bottom: 0; background-color: transparent;">
 						<div>다른 토론 주제</div>
