@@ -16,13 +16,13 @@
 		}
 		.container-comment{width: 55%; border-right: 0;}
 		.container-dr{width: 45%;}
-		.comment-list{height:100%; overflow-y: auto;}
+		.comment-list{height:100%; overflow: auto;}
 		.comment{
-			max-width: 120px; color:black; padding: 8px;
+			max-width: fit-content; color:black; padding: 8px;
 			display: inline-block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9;
 			text-decoration:none; margin: 0px 0px 3px 0px; word-break:keep-all;
 		}
-		.comment-other{background: white; border-radius: 0px 15px 15px 15px; text-align:right; line-height:1.3;}
+		.comment-other{background: white; border-radius: 0px 15px 15px 15px; text-align:right;}
 		.comment-mine{background: #FFEB33; border-radius: 15px 0px 15px 15px; text-align:left;}
 	</style>
 </head>
@@ -34,6 +34,7 @@
 			
 		</div>
 	</div>
+	<!-- ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 24개 -->
 	
 	<svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.dev/svgjs" width="100%" height="40" preserveAspectRatio="none" viewBox="0 0 1440 560">
 		<g mask="url(&quot;#SvgjsMask1091&quot;)" fill="none">
@@ -64,6 +65,7 @@
 									</div>
 									<div class="comment comment-other">
 										${co.co_content}
+										
 									</div>
 								</div>
 							</c:if>
@@ -138,11 +140,18 @@
 	
 	<script type="text/javascript">
 		$('#form').submit(function(){
-			// 회원만 가능하게
-			
-			// 입력값이 없으면 전송 안되게
-			
-			
+			if('${user.me_id}' == ''){
+				if(confirm('채팅은 회원만 가능합니다.\n로그인 하시겠습니까?')){
+					location.href = '<c:url value="/login"/>';
+				}
+				return false;
+			}
+			var content = $('.input-comment-insert').val();
+			if(content.trim() == ''){
+				alert('채팅을 입력하세요');
+				$('.input-comment-insert').focus();
+				return false;
+			}
 		});
 	</script>
 	

@@ -37,11 +37,15 @@ public class Discussion extends HttpServlet {
 		int co_dr_num = Integer.parseInt(dr_num);	
 			
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
-		String co_me_id = user.getMe_id();
 		
-		CommentVO comment = new CommentVO(co_content, co_me_id, co_dr_num);
+		CommentVO comment = new CommentVO(co_content, user.getMe_id(), co_dr_num);
 		boolean res = discussionService.insertComment(comment);
-		
+		if(res) {
+			request.setAttribute("msg", "next");
+		}else {
+			request.setAttribute("msg", "댓글을 추가하지 못했습니다.");
+		}
+		request.setAttribute("url", "/discussion?dr_num="+dr_num);
 		request.getRequestDispatcher("/WEB-INF/views/message.jsp").forward(request, response);
 	}
 }

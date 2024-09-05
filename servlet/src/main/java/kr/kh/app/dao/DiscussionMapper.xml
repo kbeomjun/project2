@@ -9,7 +9,7 @@
 	
 	<insert id="insertComment">
 		insert into comment(co_content, co_me_id, co_dr_num)
-		values(#{co.co_content},#{co.co_me_id},},#{co.co_dr_num})
+		values(#{co.co_content}, #{co.co_me_id}, #{co.co_dr_num})
 	</insert>
 	
 	<select id="selectDiscussionRoom" resultType="DiscussionRoomVO">
