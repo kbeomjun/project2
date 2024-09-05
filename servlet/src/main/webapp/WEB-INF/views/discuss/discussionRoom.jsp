@@ -18,7 +18,7 @@
 		.container-dr{width: 45%;}
 		.comment-list{height:100%; overflow-y: auto;}
 		.comment{
-			max-width: 150px; color:black; padding: 8px; 
+			max-width: 120px; color:black; padding: 8px;
 			display: inline-block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9;
 			text-decoration:none; margin: 0px 0px 3px 0px; word-break:keep-all;
 		}
@@ -46,12 +46,14 @@
 		</defs>
 	</svg>
 	
-	<!-- 왼쪽 : 채팅창 / 채팅 입력칸 / 채팅 - 아이디 + mbti + 의견에 맞는 색 : 채팅 내용 + 채팅 입력 시간(회색) [hidden : 신고버튼] -->
-	<!-- 오른쪽상단 : 토론 주제 목록 / 오른쪽 하단 : 의견(의견에 맞는 색 표시) + 의견에 속한 인원 비율[https://www.w3schools.com/bootstrap4/bootstrap_progressbars.asp] -->
 	<div class="container d-flex col-12">
 		<div class="container-comment">
 			<div class="list-group" style="height: 100%;">
-				<div class="list-group-item" style="font-weight: bold;">토론 주제 : ${dr.dr_topic}</div>
+				<div class="list-group-item form-group pb-0">
+			    	<label for="topic" style="font-weight: bold;">토론 주제:</label>
+			      	<div class="form-control p-0" id="topic" style="font-weight: bold; border: 0;">${dr.dr_topic}</div>
+			    </div>
+				<div class="" ></div>
 				<div class="list-group list-group-item comment-list">
 					<c:if test="${colist ne null}">
 						<c:forEach items="${colist}" var="co">
@@ -75,14 +77,22 @@
 						</c:forEach>
 					</c:if>
 					<c:if test="${colist eq null}">
+					
 					</c:if>
 				</div>
 				<form action="<c:url value="/discussion"/>" method="post" style="height: 38px;" id="form">
 					<input type="hidden" name="dr_num" value="${dr.dr_num}">
 					<div class="input-group mb-3">
-				    	<input type="text" class="form-control" placeholder="채팅" name="co_content">
+						<div class="input-group-prepend">
+					    	<span class="input-group-text" style="line-height: 16px;">
+					    		<i class="fi fi-sr-comment-alt"></i>
+				    		</span>
+					    </div>
+				    	<input type="text" class="form-control" name="co_content">
 				    	<div class="input-group-append">
-				      		<button class="btn btn-outline-success" type="submit">입력</button>
+				      		<button class="btn btn-outline-success" type="submit" style="line-height: 16px;">
+				      			<i class="fi fi-sr-paper-plane"></i>
+				      		</button>
 				    	</div>
 				  	</div>
 				</form>
@@ -90,21 +100,23 @@
 		</div>
 		<div class="container-dr">
 			<ul class="list-group">
-				<li class="list-group-item" style="font-weight: bold;">토론방 목록</li>
-				<c:if test="${drlist ne null}">
-					<c:forEach items="${drlist}" var="dr">
-						<a href="<c:url value="/discussion?dr_num=${dr.dr_num}"/>" class="list-group-item list-group-item-action">
-							${dr.dr_topic}
-						</a>
-					</c:forEach>
-				</c:if>
-				<c:if test="${drlist eq null}">
-					<li class="list-group-item" style="font-weight: bold;">등록된 토론방이 없습니다.</li>
+				<li class="list-group-item" style="font-weight: bold; text-align: center; line-height: 16px;">
+					<i class="fi fi-sr-list"></i> 토론방 목록
+				</li>
+				<c:forEach items="${drlist}" var="dr">
+					<a href="<c:url value="/discussion?dr_num=${dr.dr_num}"/>" class="list-group-item list-group-item-action">
+						${dr.dr_topic}
+					</a>
+				</c:forEach>
+				<c:if test="${drlist.size() eq 0}">
+					<li class="list-group-item" style="font-weight: bold; text-align: center;">
+						등록된 토론방이 없습니다.
+					</li>
 				</c:if>
 			</ul>
 			<hr>
 			<ul class="list-group">
-				<li class="list-group-item" style="font-weight: bold;">의견 내용</li>
+				<li class="list-group-item" style="font-weight: bold; text-align: center;">의견 내용</li>
 			</ul>
 		</div>
 	</div>

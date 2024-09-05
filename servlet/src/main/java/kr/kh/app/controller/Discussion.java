@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
-
 import kr.kh.app.model.vo.CommentVO;
 import kr.kh.app.model.vo.DiscussionRoomVO;
 import kr.kh.app.model.vo.MemberVO;
