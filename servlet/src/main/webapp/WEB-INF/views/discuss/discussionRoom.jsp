@@ -9,13 +9,13 @@
 <title>토론방</title>
 	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
 	<style type="text/css">
-		.container{padding: 70px 110px;}
+		.container{padding: 50px 120px;}
 		.container-comment, .container-dr{
-			box-sizing:border-box; height: 800px;
+			box-sizing:border-box; height: 650px;
 			border: 1px solid gray; border-radius: 5px;
 		}
-		.container-comment{width: 60%; border-right: 0;}
-		.container-dr{width: 40%;}
+		.container-comment{width: 55%; border-right: 0;}
+		.container-dr{width: 45%;}
 		.comment-list{height:100%; overflow-y: auto;}
 		.comment{
 			max-width: 150px; color:black; padding: 8px; 
@@ -56,7 +56,7 @@
 					<c:if test="${colist ne null}">
 						<c:forEach items="${colist}" var="co">
 							<c:if test="${co.co_me_id != user.me_id}">
-								<div class="list-group-item border border-0 p-0 mt-2">
+								<div class="list-group-item border border-0 p-0 mt-3">
 									<div>
 										${co.co_me_id}<c:if test="${co.co_te_result ne null}">(${co.co_te_result})</c:if>
 									</div>
@@ -66,7 +66,7 @@
 								</div>
 							</c:if>
 							<c:if test="${co.co_me_id == user.me_id}">
-								<div class="list-group-item border border-0 p-0 mt-2 d-flex justify-content-end">
+								<div class="list-group-item border border-0 p-0 mt-3 d-flex justify-content-end">
 									<div class="comment comment-mine">
 										${co.co_content}
 									</div>
@@ -103,7 +103,9 @@
 				</c:if>
 			</ul>
 			<hr>
-			<div style="font-weight: bold;">의견 내용</div>
+			<ul class="list-group">
+				<li class="list-group-item" style="font-weight: bold;">의견 내용</li>
+			</ul>
 		</div>
 	</div>
 	
@@ -129,6 +131,30 @@
 			// 입력값이 없으면 전송 안되게
 			
 			
+		});
+	</script>
+	
+	<script type="text/javascript">
+		$('.test-create').click(function(){
+			if('${user.me_id}' == ''){
+				if(confirm('검사는 회원만 진행가능합니다.\n로그인 하시겠습니까?')){
+					location.href = '<c:url value="/login"/>';
+				}
+				return;
+			}
+			$.ajax({
+				async : false,
+				url : '<c:url value="/test/create"/>',
+				method : "get",
+				success : function(data){
+					var te_num = data.te_num;
+					var url = "<c:url value="/test/list?te_num="/>"+te_num;
+					location.href = url;
+				},
+				error : function(xhr){
+					console.log(xhr);
+				}
+			});
 		});
 	</script>
 </body>
