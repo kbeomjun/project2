@@ -11,7 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.kh.app.dao.DiscussionDAO;
 import kr.kh.app.model.vo.CommentVO;
-import kr.kh.app.model.vo.DiscussionVO;
+import kr.kh.app.model.vo.DiscussionRoomVO;
 
 public class DiscussionServiceImp implements DiscussionService {
 	private DiscussionDAO discussionDao;
@@ -31,7 +31,7 @@ public class DiscussionServiceImp implements DiscussionService {
 	}
 	
 	@Override
-	public List<DiscussionVO> getDiscussionList(){
+	public List<DiscussionRoomVO> getDiscussionList(){
 		return discussionDao.selectDiscussionList();
 	}
 
@@ -44,5 +44,21 @@ public class DiscussionServiceImp implements DiscussionService {
 			return false;
 		}
 		return discussionDao.insertComment(comment);
+	}
+
+	@Override
+	public DiscussionRoomVO getDiscussionRoom(String dr_num) {
+		if(dr_num == null) {
+			return null;
+		}
+		return discussionDao.selectDiscussionRoom(Integer.parseInt(dr_num));
+	}
+
+	@Override
+	public List<CommentVO> getCommentList(DiscussionRoomVO dr) {
+		if(dr == null) {
+			return null;
+		}
+		return discussionDao.selectCommentList(dr);
 	}
 }

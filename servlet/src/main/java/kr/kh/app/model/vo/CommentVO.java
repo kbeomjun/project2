@@ -13,6 +13,7 @@ public class CommentVO {
 	private String co_content;
 	private String co_me_id;
 	private int co_dr_num;
+	private String co_te_result;
 	
 	public CommentVO(String co_content, String co_me_id, int co_dr_num) {
 		this.co_content = co_content;
