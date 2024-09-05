@@ -124,7 +124,11 @@
 	
 	<script type="text/javascript">
 		$('#form').submit(function(){
-						
+			// 회원만 가능하게
+			
+			// 입력값이 없으면 전송 안되게
+			
+			
 		});
 	</script>
 </body>
