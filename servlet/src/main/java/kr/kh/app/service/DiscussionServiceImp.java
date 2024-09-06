@@ -2,6 +2,7 @@ package kr.kh.app.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -43,6 +44,24 @@ public class DiscussionServiceImp implements DiscussionService {
 		if(comment.getCo_content() == null || comment.getCo_content().trim().length() == 0) {
 			return false;
 		}
+		// 단어가 24개 이상일때 말풍선 밖으로 넘어가는 현상 수정
+		String[] arr = comment.getCo_content().split("");
+		String co_content = "";
+		int count = 0;
+		for(int i = 0; i < arr.length; i++) {
+			if(!arr[i].equals(" ")) {
+				count++;
+			}else {
+				count = 1;
+			}
+			if(count == 24) {
+				count = 1;
+				co_content += " ";
+			}
+			co_content += arr[i];
+		}
+		comment.setCo_content(co_content);
+		
 		return discussionDao.insertComment(comment);
 	}
 

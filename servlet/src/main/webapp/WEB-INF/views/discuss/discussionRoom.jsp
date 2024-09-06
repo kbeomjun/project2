@@ -18,7 +18,7 @@
 		.container-dr{width: 45%;}
 		.comment-list{height:100%; overflow: auto;}
 		.comment{
-			max-width: fit-content; color:black; padding: 8px;
+			max-width: 45%; color:black; padding: 8px;
 			display: inline-block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9;
 			text-decoration:none; margin: 0px 0px 3px 0px; word-break:keep-all;
 		}
@@ -34,8 +34,6 @@
 			
 		</div>
 	</div>
-	<!-- ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 24개 -->
-	<!-- $("div.demo").scrollTop(300); -->
 	
 	<svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.dev/svgjs" width="100%" height="40" preserveAspectRatio="none" viewBox="0 0 1440 560">
 		<g mask="url(&quot;#SvgjsMask1091&quot;)" fill="none">
@@ -66,7 +64,6 @@
 									</div>
 									<div class="comment comment-other">
 										${co.co_content}
-										
 									</div>
 								</div>
 							</c:if>
@@ -91,7 +88,7 @@
 					    		<i class="fi fi-sr-comment-alt"></i>
 				    		</span>
 					    </div>
-				    	<input type="text" class="form-control" name="co_content">
+				    	<input type="text" class="form-control comment-input" name="co_content">
 				    	<div class="input-group-append">
 				      		<button class="btn btn-outline-success" type="submit" style="line-height: 16px;">
 				      			<i class="fi fi-sr-paper-plane"></i>
@@ -154,6 +151,11 @@
 				return false;
 			}
 		});
+		
+		$(document).ready(function(){
+			$('.comment-list').scrollTop($('.comment-list')[0].scrollHeight);
+			$('.comment-input').focus();
+	    });
 	</script>
 	
 	<script type="text/javascript">
