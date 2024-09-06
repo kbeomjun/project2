@@ -26,7 +26,7 @@
 		.sub-title{color: blue; }
 		#btn-update-pt{margin: 10px 0; display: none;}
 		.btn-qu{width: 47px;}
-		.btn-icon{line-height: 16px;}
+		.btn-icon{line-height: 16px; width: 42px; height: 38px;}
 		
 		.description{
 	        margin: 0 auto;         
