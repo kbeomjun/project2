@@ -23,13 +23,13 @@ public class TestCreate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberVO user = (MemberVO)request.getSession().getAttribute("user");
 		TestVO test = testService.createTest(user);
+
+		JSONObject jobj = new JSONObject();
 		if(test != null) {
-			JSONObject jobj = new JSONObject();
 			jobj.put("te_num", test.getTe_num());
-			response.setContentType("application/json; charset=utf-8");
-			response.getWriter().print(jobj);
-		}else {
-			
 		}
+		
+		response.setContentType("application/json; charset=utf-8");
+		response.getWriter().print(jobj);
 	}
 }

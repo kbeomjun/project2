@@ -18,9 +18,6 @@ import kr.kh.app.service.MemberServiceImp;
 public class MyPageManageQuDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService memberService = new MemberServiceImp();
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String qu_num = request.getParameter("qu_num");
@@ -35,5 +32,4 @@ public class MyPageManageQuDelete extends HttpServlet {
 		response.setContentType("application/json; charset=utf-8");
 		response.getWriter().print(jobj);
 	}
-
 }

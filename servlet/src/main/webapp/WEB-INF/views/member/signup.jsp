@@ -12,6 +12,7 @@
 		.form-group{margin-bottom: 0;}
 		.container-body{padding: 30px; margin-top: 30px;}
 		.form-group, .form-control{height: 50px};
+		.icon{line-height: 16px;}
 	</style>
 </head>
 <body>
@@ -25,7 +26,7 @@
 			<div style="min-height: calc(100vh - 300px)">
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-			        	<span class="input-group-text">
+			        	<span class="input-group-text icon">
 			        		<i class="fi fi-sr-user"></i>
 			        	</span>
 			      	</div>
@@ -34,7 +35,7 @@
 				<div class="error error-id"></div>
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-			        	<span class="input-group-text">
+			        	<span class="input-group-text icon">
 			        		<i class="fi fi-sr-lock"></i>
 		        		</span>
 			      	</div>
@@ -43,7 +44,7 @@
 				<div class="error error-pw"></div>
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-			        	<span class="input-group-text">
+			        	<span class="input-group-text icon">
 			        		<i class="fi fi-sr-lock"></i>
 		        		</span>
 			      	</div>
@@ -52,7 +53,7 @@
 				<div class="error error-pw2"></div>
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-			        	<span class="input-group-text">
+			        	<span class="input-group-text icon">
 			        		<i class="fi fi-sr-envelope"></i>
 		        		</span>
 			      	</div>

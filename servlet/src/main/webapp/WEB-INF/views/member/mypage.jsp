@@ -26,6 +26,7 @@
 		.sub-title{color: blue; }
 		#btn-update-pt{margin: 10px 0; display: none;}
 		.btn-qu{width: 47px;}
+		.btn-icon{line-height: 16px; width: 42px; height: 38px;}
 		
 		.description{
 	        margin: 0 auto;         
@@ -128,26 +129,36 @@
 			    <div class="container-item update" style="display: block;">
 			    	<div class="input-group">
 						<div class="input-group-prepend">
-				        	<span class="input-group-text">아이디</span>
+				        	<span class="input-group-text justify-content-center btn-icon">
+				        		<i class="fi fi-sr-user"></i>
+			        		</span>
 				      	</div>
 						<span class="form-control" id="me_id">${user.me_id}</span>		      	
 					</div>
 					<div class="input-group">
 						<div class="input-group-prepend input-group-prepend-pw">
-				        	<span class="input-group-text">비밀번호</span>
+				        	<span class="input-group-text justify-content-center btn-icon">
+				        		<i class="fi fi-sr-lock"></i>
+			        		</span>
 				      	</div>
 						<span class="form-control input-group-pw input-pw" data-num="${user.me_pw}" id="me_pw">${user.me_pw}</span>
 						<div class="input-group-append input-group-pw">
-				        	<button class="btn btn-outline-info btn-pw">변경</button>
+				        	<button class="btn btn-outline-info btn-pw btn-icon">
+				        		<i class="fi fi-br-edit-message"></i>
+			        		</button>
 				      	</div>
 					</div>
 					<div class="input-group">
 						<div class="input-group-prepend input-group-prepend-email">
-				        	<span class="input-group-text">이메일</span>
+				        	<span class="input-group-text justify-content-center btn-icon">
+				        		<i class="fi fi-sr-envelope"></i>
+				        	</span>
 				      	</div>
 						<span class="form-control input-group-email" id="me_email">${user.me_email}</span>
 						<div class="input-group-append input-group-email">
-				        	<button class="btn btn-outline-info btn-email">변경</button>
+				        	<button class="btn btn-outline-info btn-email btn-icon">
+				        		<i class="fi fi-br-edit-message"></i>
+			        		</button>
 				      	</div>
 					</div>
 					<div class="input-group d-flex justify-content-end mt-3">
@@ -199,7 +210,9 @@
 						<div class="pt-content-text" id="pt-content"></div>
 						<div class="pt-content-text" id="pt-content-update"></div>
 					</div>
-					<button class="btn btn-outline-info update-pt" id="btn-update-pt">수정</button>
+					<button class="btn btn-outline-info update-pt btn-icon" id="btn-update-pt">
+						<i class="fi fi-br-edit-message"></i>
+					</button>
 			    </div>
 			    <!-- 질문 -->
 			    <div class="container-item question">
@@ -216,15 +229,15 @@
 									<span>${qu.qu_content}</span>
 								    <span>
 								    	<c:if test="${qu.qu_answerCount != 0}">
-									    	<button class="btn btn-outline-info btn-update-qu" 
+									    	<button class="btn btn-outline-info btn-update-qu btn-icon" 
 												data-num="${qu.qu_num}" data-type="${qu.qu_type}" data-content="${qu.qu_content}">
-												수정
+												<i class="fi fi-br-edit-message"></i>
 											</button>
 								    	</c:if>
 								    	<c:if test="${qu.qu_answerCount == 0}">
-									    	<button class="btn btn-outline-danger btn-del-qu" 
+									    	<button class="btn btn-outline-danger btn-del-qu btn-icon" 
 												data-num="${qu.qu_num}" data-type="${qu.qu_type}">
-												삭제
+												<i class="fi fi-rs-trash"></i>
 											</button>
 								    	</c:if>
 								    </span>
@@ -245,7 +258,9 @@
 							</div>
 							<input type="text" class="form-control" placeholder="등록할 질문" name="qu_content">
 							<div class="input-group-append">
-								<button class="btn btn-outline-success" id="insert-qu">등록</button>
+								<button class="btn btn-outline-success btn-icon" id="insert-qu">
+									<i class="fi fi-bs-plus"></i>
+								</button>
 							</div>
 						</div>
 					</div>
@@ -260,7 +275,9 @@
 	                    <div class="input-group">
 	                        <input type="text" id="new-topic" class="form-control" placeholder="등록할 토론 주제" required>
 	                        <div class="input-group-append">
-	                            <button class="btn btn-outline-success" type="submit">등록</button>
+	                            <button class="btn btn-outline-success btn-icon" type="submit">
+	                            	<i class="fi fi-bs-plus"></i>
+                            	</button>
 	                        </div>
 	                    </div>
 	                </form>
@@ -299,16 +316,16 @@
 						var btn = '';
 						if(qu.qu_answerCount == 0){
 							btn = `
-								<button class="btn btn-outline-danger btn-del-qu" 
+								<button class="btn btn-outline-danger btn-del-qu btn-icon" 
 									data-num="\${qu.qu_num}" data-type="\${qu.qu_type}">
-									삭제
+									<i class="fi fi-rs-trash"></i>
 								</button>
 							`;
 						}else{
 							btn = `
-								<button class="btn btn-outline-info btn-update-qu" 
+								<button class="btn btn-outline-info btn-update-qu btn-icon" 
 									data-num="\${qu.qu_num}" data-type="\${qu.qu_type}" data-content="\${qu.qu_content}">
-									수정
+									<i class="fi fi-br-edit-message"></i>
 								</button>
 							`;
 						}
@@ -385,7 +402,9 @@
 				</div>
 				<input type="text" class="form-control" placeholder="수정할 질문" name="qu_content" value="\${qu_content}">
 				<div class="input-group-append">
-					<button class="btn btn-outline-info" id="update-qu" data-num="\${qu_num}">수정</button>
+					<button class="btn btn-outline-success btn-icon" id="update-qu" data-num="\${qu_num}">
+						<i class="fi fi-bs-check"></i>
+					</button>
 				</div>
 			`;
 			$('.input-box').children().remove();
@@ -426,7 +445,9 @@
 							</div>
 							<input type="text" class="form-control" placeholder="등록할 질문" name="qu_content">
 							<div class="input-group-append">
-								<button class="btn btn-outline-success" id="insert-qu">등록</button>
+								<button class="btn btn-outline-success btn-icon" id="insert-qu">
+									<i class="fi fi-bs-plus"></i>
+								</button>
 							</div>
 						`;
 						$('.input-box').children().remove();
@@ -493,7 +514,9 @@
 			  minHeight: 300
 			});
 			var btnStr = `
-				<button class="btn btn-outline-success mt-3 update-pt" id="btn-update-c-pt" data-code="\${pt_code}">확인</button>
+				<button class="btn btn-outline-success mt-3 update-pt btn-icon" id="btn-update-c-pt" data-code="\${pt_code}">
+					<i class="fi fi-bs-check"></i>
+				</button>
 			`;
 			$('#btn-update-pt').hide();
 			$('#btn-update-pt').after(btnStr);
@@ -609,7 +632,9 @@
 			var str = `
 		      	<input type="text" class="form-control input-pw" id="me_pw" name="me_pw" value="${user.me_pw}">
 				<div class="input-group-append input-group-pw">
-		        	<button class="btn btn-outline-success btn-update-pw">확인</button>
+		        	<button class="btn btn-outline-success btn-update-pw btn-icon">
+		        		<i class="fi fi-bs-check"></i>
+	        		</button>
 		      	</div>
 			`;
 			$('.input-group-prepend-pw').after(str);
@@ -656,7 +681,9 @@
 			var str = `
 		      	<input type="text" class="form-control input-group-email input-email" id="me_email" name="me_email" value="${user.me_email}">
 				<div class="input-group-append input-group-email">
-		        	<button class="btn btn-outline-success btn-update-email">확인</button>
+		        	<button class="btn btn-outline-success btn-update-email btn-icon">
+		        		<i class="fi fi-bs-check"></i>
+	        		</button>
 		      	</div>
 			`;
 			$('.input-group-prepend-email').after(str);
@@ -777,11 +804,13 @@
 	            	for(dr of list){
 	            		str += `
 	            			<li class="list-group-item d-flex justify-content-between align-items-center">
-							    <span>\${dr.dr_topic}</span>
 							    <span>
+								    <span>\${dr.dr_topic}</span>
 								    <span class="badge badge-primary badge-pill">\${dr.commentCount}</span>
-								    <button class="btn btn-outline-danger btn-delete-topic" data-num=\${dr.dr_num}>삭제</button>
 							    </span>
+							    <button class="btn btn-outline-danger btn-delete-topic btn-icon" data-num=\${dr.dr_num}>
+							    	<i class="fi fi-rs-trash"></i>
+						    	</button>
 						  	</li>
 	    		        `;
 	            	}
