@@ -804,13 +804,13 @@
 	            	for(dr of list){
 	            		str += `
 	            			<li class="list-group-item d-flex justify-content-between align-items-center">
-							    <span>\${dr.dr_topic}</span>
 							    <span>
+								    <span>\${dr.dr_topic}</span>
 								    <span class="badge badge-primary badge-pill">\${dr.commentCount}</span>
-								    <button class="btn btn-outline-danger btn-delete-topic btn-icon" data-num=\${dr.dr_num}>
-								    	<i class="fi fi-rs-trash"></i>
-							    	</button>
 							    </span>
+							    <button class="btn btn-outline-danger btn-delete-topic btn-icon" data-num=\${dr.dr_num}>
+							    	<i class="fi fi-rs-trash"></i>
+						    	</button>
 						  	</li>
 	    		        `;
 	            	}

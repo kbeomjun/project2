@@ -66,7 +66,8 @@
 	</update>
 	
 	<select id="selectDiscussionRoomList" resultType="DiscussionRoomVO">
-        select discussion_room.*, count(co_dr_num) as commentCount from discussion_room
+        select discussion_room.*, count(co_dr_num) as commentCount 
+        from discussion_room
 		left join comment on co_dr_num = dr_num
 		group by dr_num
 		order by dr_num;

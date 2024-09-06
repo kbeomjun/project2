@@ -17,13 +17,21 @@
 		.container-comment{width: 55%; border-right: 0;}
 		.container-dr{width: 45%;}
 		.comment-list{height:100%; overflow: auto;}
+		#topic, .topic-group{background-color: #FFF0F0;}
+		.dr-group{background-color: #FFF0F0;}
 		.comment{
 			max-width: 45%; color:black; padding: 8px;
 			display: inline-block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9;
-			text-decoration:none; margin: 0px 0px 3px 0px; word-break:keep-all;
+			text-decoration:none; margin: 0px 0px 3px 0px;
+			word-wrap: break-word; word-break: break-all;
 		}
-		.comment-other{background: white; border-radius: 0px 15px 15px 15px; text-align:right;}
-		.comment-mine{background: #FFEB33; border-radius: 15px 0px 15px 15px; text-align:left;}
+		.comment-other{background: rgba(255, 210, 210, 1); border-radius: 0px 15px 15px 15px;}
+		.comment-mine{background: #FFF0F0; border-radius: 15px 0px 15px 15px;}
+		.comment-name{font-weight: bold;}
+		#topic{
+			font-weight: bold; border: 0; text-align: center; 
+			font-size:20px; color: black; 
+		}
 	</style>
 </head>
 <body>
@@ -49,9 +57,16 @@
 	<div class="container d-flex col-12">
 		<div class="container-comment">
 			<div class="list-group" style="height: 100%;">
-				<div class="list-group-item form-group pb-0">
-			    	<label for="topic" style="font-weight: bold;">토론 주제:</label>
-			      	<div class="form-control p-0" id="topic" style="font-weight: bold; border: 0;">${dr.dr_topic}</div>
+				<div class="list-group-item form-group pb-0 topic-group" style="position: relative; margin-bottom: 5px;">
+					<a href="<c:url value="/discussion"/>">
+				    	<i class="fi fi-br-arrow-left" style="position:absolute; left:12px; top:10px; color:gray; font-size:24px;"></i>
+					</a>
+			    	<div style="font-weight: bold; text-align: center; font-size:20px;">
+			    		토론 주제
+		    		</div>
+			      	<div class="form-control" id="topic">
+			      		${dr.dr_topic}
+		      		</div>
 			    </div>
 				<div class="" ></div>
 				<div class="list-group list-group-item comment-list">
@@ -59,7 +74,7 @@
 						<c:forEach items="${colist}" var="co">
 							<c:if test="${co.co_me_id != user.me_id}">
 								<div class="list-group-item border border-0 p-0 mt-3">
-									<div>
+									<div class="comment-name">
 										${co.co_me_id}<c:if test="${co.co_te_result ne null}">(${co.co_te_result})</c:if>
 									</div>
 									<div class="comment comment-other">
@@ -99,13 +114,19 @@
 			</div>
 		</div>
 		<div class="container-dr">
-			<ul class="list-group">
-				<li class="list-group-item" style="font-weight: bold; text-align: center; line-height: 16px;">
-					<i class="fi fi-sr-list"></i> 토론방 목록
+			<ul class="list-group form-group pb-0">
+		    	<li class="list-group-item dr-group" style="font-weight: bold; text-align: center; line-height: 20px; position:relative;">
+					<span style="position:absolute; left:12px; top:12px;">
+						<i class="fi fi-sr-list" style="font-size:20px;"></i>
+					</span>
+					<span style="font-size:20px;"> 토론방 목록</span>
 				</li>
+		    </ul>
+			<ul class="list-group dr-list">
 				<c:forEach items="${drlist}" var="dr">
 					<a href="<c:url value="/discussion?dr_num=${dr.dr_num}"/>" class="list-group-item list-group-item-action">
-						${dr.dr_topic}
+						<span>${dr.dr_topic}</span>
+						<span class="badge badge-primary badge-pill">${dr.commentCount}</span>
 					</a>
 				</c:forEach>
 				<c:if test="${drlist.size() eq 0}">
@@ -113,10 +134,6 @@
 						등록된 토론방이 없습니다.
 					</li>
 				</c:if>
-			</ul>
-			<hr>
-			<ul class="list-group">
-				<li class="list-group-item" style="font-weight: bold; text-align: center;">의견 내용</li>
 			</ul>
 		</div>
 	</div>
@@ -144,10 +161,15 @@
 				}
 				return false;
 			}
-			var content = $('.input-comment-insert').val();
+			var dr_num = '${dr.dr_num}';
+			if(dr_num == ''){
+				alert('토론방을 선택하세요.');
+				return false;
+			}
+			var content = $('.comment-input').val();
 			if(content.trim() == ''){
-				alert('채팅을 입력하세요');
-				$('.input-comment-insert').focus();
+				alert('채팅을 입력하세요.');
+				$('.comment-input').focus();
 				return false;
 			}
 		});
