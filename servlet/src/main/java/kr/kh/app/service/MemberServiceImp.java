@@ -96,15 +96,15 @@ public class MemberServiceImp implements MemberService {
 		if(!user2.getMe_pw().equals(user.getMe_pw())) {
 			memberDao.updateMemberFail(user2, 1);
 			int fail = user2.getMe_fail() + 1;
-			if(fail < 5) {
-				res = "비밀번호가 틀렸습니다. 5회 이상 틀릴시 계정이 잠깁니다.("+fail+"/5)";
+			if(fail < 3) {
+				res = "비밀번호가 틀렸습니다. 3회 이상 틀릴시 계정이 잠깁니다.("+fail+"/3)";
 			}else {
 				int time = 60 * 30;
 				Date stopdate = new Date(System.currentTimeMillis() + time * 1000);
 				user2.setMe_stopdate(stopdate);
 				user2.setMe_ms_name("기간 정지");
 				memberDao.updateMemberStop(user2);
-				res = "비밀번호가 틀렸습니다. 5회 이상 틀려서 계정이 30분동안 잠깁니다.("+fail+"/5)";
+				res = "비밀번호가 틀렸습니다. 3회 이상 틀려서 계정이 30분동안 잠깁니다.("+fail+"/3)";
 			}
 			return res;
 		}
