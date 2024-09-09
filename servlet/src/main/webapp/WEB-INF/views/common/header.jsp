@@ -50,10 +50,10 @@
 		#nav-center li ~ li::before{
 			content: '';
 			position: absolute;
-			width: 1px;
+			width: 2px;
 			height: 16px;
 			background-color: gray;
-			left: -11px; top: 12px;
+			left: -15px; top: 12px;
 		}
 		
 		#circle{
