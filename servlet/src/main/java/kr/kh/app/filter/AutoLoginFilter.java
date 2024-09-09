@@ -21,6 +21,7 @@ import kr.kh.app.service.MemberServiceImp;
 
 @WebFilter("/*")
 public class AutoLoginFilter extends HttpFilter implements Filter {
+	private static final long serialVersionUID = 1L;
 	private MemberService memberService = new MemberServiceImp();
     
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

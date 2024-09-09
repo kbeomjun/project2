@@ -1,7 +1,6 @@
 package kr.kh.app.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.kh.app.model.vo.CommentVO;
-import kr.kh.app.model.vo.DiscussionRoomVO;
-import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.service.DiscussionService;
 import kr.kh.app.service.DiscussionServiceImp;
 
