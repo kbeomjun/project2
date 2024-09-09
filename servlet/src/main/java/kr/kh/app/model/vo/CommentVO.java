@@ -20,4 +20,8 @@ public class CommentVO {
 		this.co_me_id = co_me_id;
 		this.co_dr_num = co_dr_num;
 	}
+
+	public CommentVO(int co_num) {
+		this.co_num = co_num;
+	}
 }

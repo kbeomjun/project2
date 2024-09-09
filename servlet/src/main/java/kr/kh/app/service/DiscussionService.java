@@ -13,4 +13,6 @@ public interface DiscussionService {
 	DiscussionRoomVO getDiscussionRoom(String dr_num);
 
 	List<CommentVO> getCommentList(DiscussionRoomVO dr);
+
+	boolean deleteComment(CommentVO comment);
 }
