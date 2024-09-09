@@ -69,7 +69,7 @@
 		      		</div>
 			    </div>
 				<div class="" ></div>
-				<div class="list-group list-group-item comment-list">
+				<div class="list-group list-group-item comment-list" >
 					<c:if test="${colist ne null}">
 						<c:forEach items="${colist}" var="co">
 							<c:if test="${co.co_me_id != user.me_id}">
@@ -83,7 +83,16 @@
 								</div>
 							</c:if>
 							<c:if test="${co.co_me_id == user.me_id}">
-								<div class="list-group-item border border-0 p-0 mt-3 d-flex justify-content-end">
+								<div class="list-group-item border border-0 p-0 mt-3 d-flex justify-content-end align-items-end">
+									<div>
+										<c:url var="url" value="/discussion/comment/delete">
+											<c:param name="dr_num" value="${co.co_dr_num}"/>
+											<c:param name="co_num" value="${co.co_num}"/>
+										</c:url>
+										<a class="delete-comment" href="${url}" style="color: red; font-size: 12px;">
+											삭제
+										</a>
+									</div>
 									<div class="comment comment-mine">
 										${co.co_content}
 									</div>
@@ -178,6 +187,14 @@
 			$('.comment-list').scrollTop($('.comment-list')[0].scrollHeight);
 			$('.comment-input').focus();
 	    });
+		
+		$('.delete-comment').click(function(e){
+			if(confirm("정말 삭제하시겠습니까?")){
+				
+			}else{
+				e.preventDefault();
+			}
+		});
 	</script>
 	
 	<script type="text/javascript">

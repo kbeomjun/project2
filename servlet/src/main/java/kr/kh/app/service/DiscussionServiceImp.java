@@ -62,4 +62,9 @@ public class DiscussionServiceImp implements DiscussionService {
 		}
 		return discussionDao.selectCommentList(dr);
 	}
+
+	@Override
+	public boolean deleteComment(CommentVO comment) {
+		return discussionDao.deleteComment(comment);
+	}
 }

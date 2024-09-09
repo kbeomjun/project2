@@ -15,4 +15,6 @@ public interface DiscussionDAO {
 	DiscussionRoomVO selectDiscussionRoom(@Param("dr_num")int dr_num);
 
 	List<CommentVO> selectCommentList(@Param("dr")DiscussionRoomVO dr);
+
+	boolean deleteComment(@Param("co")CommentVO comment);
 }
