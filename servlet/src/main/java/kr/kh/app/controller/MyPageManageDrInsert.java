@@ -1,6 +1,7 @@
 package kr.kh.app.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,9 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import kr.kh.app.model.vo.DiscussionRoomVO;
 import kr.kh.app.service.MemberService;
 import kr.kh.app.service.MemberServiceImp;
 

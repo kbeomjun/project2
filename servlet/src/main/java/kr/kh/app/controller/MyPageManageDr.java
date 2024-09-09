@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import kr.kh.app.model.vo.DiscussionRoomVO;
 import kr.kh.app.service.MemberService;
 import kr.kh.app.service.MemberServiceImp;

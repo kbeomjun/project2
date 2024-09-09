@@ -17,7 +17,8 @@ import kr.kh.app.model.vo.MemberVO;
 
 @WebFilter("/*")
 public class RedirectFilter extends HttpFilter implements Filter {
-       
+	private static final long serialVersionUID = 1L;
+
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest hrequest = (HttpServletRequest)request;
 		HttpSession session = hrequest.getSession();

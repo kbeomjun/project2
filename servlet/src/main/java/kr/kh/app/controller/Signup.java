@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.javassist.compiler.ast.Member;
-
 import kr.kh.app.model.vo.MemberVO;
 import kr.kh.app.service.MemberService;
 import kr.kh.app.service.MemberServiceImp;
