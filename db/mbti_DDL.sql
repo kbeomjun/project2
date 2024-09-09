@@ -126,3 +126,11 @@ ADD CONSTRAINT `FK_member_TO_comment_1`
   FOREIGN KEY (`co_me_id`)
   REFERENCES `mbti`.`member` (`me_id`)
   ON DELETE CASCADE;
+  
+  ALTER TABLE `mbti`.`question_answer` 
+DROP FOREIGN KEY `FK_test_TO_question_answer_1`;
+ALTER TABLE `mbti`.`question_answer` 
+ADD CONSTRAINT `FK_test_TO_question_answer_1`
+  FOREIGN KEY (`qa_te_num`)
+  REFERENCES `mbti`.`test` (`te_num`)
+  ON DELETE CASCADE;
