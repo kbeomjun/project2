@@ -27,6 +27,7 @@
 		#btn-update-pt{margin: 10px 0; display: none;}
 		.btn-qu{width: 47px;}
 		.btn-icon{line-height: 16px; width: 42px; height: 38px;}
+		.question-list, .discussion-list, .pt-content{max-height:800px; overflow: auto;}
 		
 		.description{
 	        margin: 0 auto;         
