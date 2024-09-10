@@ -11,6 +11,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
+	
 	<div style="width: 90%; justify-content: center; margin: 0 auto;">
 		<div style="height: 500px;">
 			<div class="container" 
@@ -24,7 +25,6 @@
 					<button type="button" class="btn btn-primary test-create"
 							style="background-color: #77baca; border-color: #77baca; vertical-align: middle; align-items: center; font-weight: bolder; color: white; 
 			   						width: 200px; height: 100px; padding: 10px 30px; border: 1px solid transparent; border-radius: 60px; font-size: 25px;">
-		  					
 						검사 실시
 			  		</button>
 				</div>
@@ -44,7 +44,6 @@
 					<button type="button" class="btn btn-primary personality_type" onclick="location.href='/project2/personality_type'"
 							style="background-color: #77baca; border-color: #77baca; vertical-align: middle; align-items: center; font-weight: bolder; color: white; 
 			   						width: 200px; height: 100px; padding: 10px 30px; border: 1px solid transparent; border-radius: 60px; font-size: 25px;">
-		  					
 						성격 유형 보러 가기
 			  		</button>
 				</div>
@@ -141,7 +140,6 @@
 					</svg>
 				</div>
 			</div>
-			
 		</div>
 		
 		<hr>
@@ -156,7 +154,6 @@
 				<button type="button" class="btn btn-primary discuss" onclick="location.href='/project2/discussion'"
 						style="background-color: #77baca; border-color: #77baca; vertical-align: middle; align-items: center; font-weight: bolder; color: white; 
 		   						width: 250px; height: 80px; padding: 10px 30px; border: 1px solid transparent; border-radius: 60px; font-size: 25px;">
-	  					
 					토론에 참여하기
 		  		</button>
 			</div>
