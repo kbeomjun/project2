@@ -17,8 +17,8 @@
 		.container-comment{width: 55%; border-right: 0;}
 		.container-dr{width: 45%;}
 		.comment-list{height:100%; overflow: auto;}
-		#topic, .topic-group{background-color: #77baca;}
-		.dr-group{background-color: #77baca;}
+		#topic, .topic-group{background-color: #77baca; color: white;}
+		.dr-group{background-color: #77baca; color: white;}
 		.comment{
 			max-width: 45%; padding: 8px;
 			display: inline-block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9;
@@ -42,12 +42,12 @@
 			<div class="list-group" style="height: 100%;">
 				<div class="list-group-item form-group pb-0 topic-group" style="position: relative; margin-bottom: 5px;">
 					<a href="<c:url value="/discussion"/>">
-				    	<i class="fi fi-br-arrow-left" style="position:absolute; left:12px; top:10px; color:gray; font-size:24px;"></i>
+				    	<i class="fi fi-br-arrow-left" style="position:absolute; left:12px; top:10px; color:white; font-size:24px;"></i>
 					</a>
 			    	<div style="font-weight: bold; text-align: center; font-size:20px;">
 			    		토론 주제
 		    		</div>
-			      	<div class="form-control" id="topic">
+			      	<div class="form-control" id="topic" style="color:white;">
 			      		${dr.dr_topic}
 		      		</div>
 			    </div>

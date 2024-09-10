@@ -8,12 +8,16 @@
 <meta charset="UTF-8">
 	<style type="text/css">
 		#jumbotron{
-			background-color: white; border-top: 1px solid #c8c8c8; color: #324448;
-			margin-top: 20px;
+			background-color: #e2f2f7; color: #324448;
 		}
 	</style>
 </head>
 <body>
+
+	<svg aria-hidden="true" viewBox="0 0 1920 155" preserveAspectRatio="none" class="background" style="color: #c4eaf2; margin-top:30px;">
+		<polygon style="fill: #e2f2f7;" points="1920 420 0 720 0 0 400 152 735 41 1574 149 1920 20 1920 600" class="c1"></polygon>
+	</svg>
+	
 	<div class="jumbotron jumbotron-fluid mb-0" id="jumbotron">
 	  	<div class="container">
 	    	<h4>Team 1 Project MBTI Test</h4>

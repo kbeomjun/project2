@@ -19,7 +19,7 @@
 			left: 0;
 			width: 100%;
 			height: 80px;
-			background-color: #c4eaf2;
+			background-color: #e2f2f7;
 			padding: 20px;
 			/* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
 			z-index: 1000; /* 페이지의 다른 요소들 위에 보이도록 설정 */
