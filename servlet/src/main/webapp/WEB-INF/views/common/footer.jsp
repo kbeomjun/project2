@@ -7,17 +7,18 @@
 <meta charset="UTF-8">
 	<style type="text/css">
 		#jumbotron{
-			background-color: white; border-top: 1px solid #c8c8c8; 
+			background-color: white; border-top: 1px solid #c8c8c8; color: #324448;
+			margin-top: 20px;
 		}
 	</style>
 </head>
 <body>
-<div class="jumbotron jumbotron-fluid mb-0" id="jumbotron">
-  <div class="container">
-    <h4>Team 1 Project MBTI Test</h4>
-    <p>Team leader</p><p>KIMBEOMJUN</p>
-    <p>Team member</p><p>OHJAEYEONG, LEEHYEOGWON, KIMHYEONJUNG, CHOIYEONU</p>
-  </div>
-</div>
+	<div class="jumbotron jumbotron-fluid mb-0" id="jumbotron">
+	  	<div class="container">
+	    	<h4>Team 1 Project MBTI Test</h4>
+	    	<p>Team leader</p><p>KIMBEOMJUN</p>
+	    	<p>Team member</p><p>OHJAEYEONG, LEEHYEOGWON, KIMHYEONJUNG, CHOIYEONU</p>
+		</div>
+	</div>
 </body>
 </html>

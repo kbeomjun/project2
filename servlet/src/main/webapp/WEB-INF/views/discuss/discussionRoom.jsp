@@ -17,16 +17,16 @@
 		.container-comment{width: 55%; border-right: 0;}
 		.container-dr{width: 45%;}
 		.comment-list{height:100%; overflow: auto;}
-		#topic, .topic-group{background-color: #FFF0F0;}
-		.dr-group{background-color: #FFF0F0;}
+		#topic, .topic-group{background-color: #77baca;}
+		.dr-group{background-color: #77baca;}
 		.comment{
-			max-width: 45%; color:black; padding: 8px;
+			max-width: 45%; padding: 8px;
 			display: inline-block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9;
 			text-decoration:none; margin: 0px 0px 3px 0px;
 			word-wrap: break-word; word-break: break-all;
 		}
-		.comment-other{background: rgba(255, 210, 210, 1); border-radius: 0px 15px 15px 15px;}
-		.comment-mine{background: #FFF0F0; border-radius: 15px 0px 15px 15px;}
+		.comment-other{background: #cadff1; color: #324448; border-radius: 0px 15px 15px 15px;}
+		.comment-mine{background: #617c92; color: white; border-radius: 15px 0px 15px 15px;}
 		.comment-name{font-weight: bold;}
 		#topic{
 			font-weight: bold; border: 0; text-align: center; 
@@ -37,23 +37,6 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-	<div style="background-color: #FFE6E6; padding: 30px;">
-		<div style="align-items: center; text-align:center;">
-			
-		</div>
-	</div>
-	
-	<svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.dev/svgjs" width="100%" height="40" preserveAspectRatio="none" viewBox="0 0 1440 560">
-		<g mask="url(&quot;#SvgjsMask1091&quot;)" fill="none">
-			<rect width="1440" height="560" x="0" y="0" fill="#FFE6E6" />
-			<path d="M 0,405 C 57.6,424.6 172.8,510.4 288,503 C 403.2,495.6 460.8,374.4 576,368 C 691.2,361.6 748.8,463.6 864,471 C 979.2,478.4 1036.8,409.8 1152,405 C 1267.2,400.2 1382.4,438.6 1440,447L1440 560L0 560z" fill="#ffffff"/>
-		<defs>
-			<mask id="SvgjsMask1091">
-				<rect width="1440" height="560" fill="#FFE6E6"/>
-			</mask>
-		</defs>
-	</svg>
-	
 	<div class="container d-flex col-12">
 		<div class="container-comment">
 			<div class="list-group" style="height: 100%;">
@@ -148,18 +131,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.dev/svgjs" width="100%" height="200" preserveAspectRatio="none" viewBox="0 0 1440 560">
-		<g mask="url(&quot;#SvgjsMask1091&quot;)" fill="none">
-			<rect width="1440" height="560" x="0" y="0" fill="rgba(255, 255, 255, 1)" />
-			<path d="M 0,158 C 96,142.4 288,74.2 480,80 C 672,85.8 768,185.2 960,187 C 1152,188.8 1344,108.6 1440,89L1440 560L0 560z" fill="rgba(255, 230, 230, 1)"/>
-		</g>
-		<defs>
-			<mask id="SvgjsMask1091">
-				<rect width="1440" height="560" fill="#ffffff"/>
-			</mask>
-		</defs>
-	</svg>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	

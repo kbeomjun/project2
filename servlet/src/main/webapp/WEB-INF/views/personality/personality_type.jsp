@@ -15,7 +15,7 @@
 
 	<main class="q-tl">
         <div class="hero">
-            <h1>성격 유형</h1>
+            <h1 style="font-size: 80px; color: #324448; font-weight: bold;">성격 유형</h1>
         </div>
         <div class="type-group analysts">
             <svg class="background" aria-hidden="true" viewBox="0 0 1920 155" preserveAspectRatio="none"><polygon class="c1" points="1920 823 0 823 0 0 396 101 835 31 1574 149 1920 17 1920 823"></polygon></svg>

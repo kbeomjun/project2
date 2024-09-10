@@ -11,107 +11,90 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
-
-	<svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.dev/svgjs" width="100%" height="80" preserveAspectRatio="none" viewBox="0 0 1440 560">
-		<g mask="url(&quot;#SvgjsMask1091&quot;)" fill="none">
-			<rect width="1440" height="560" x="0" y="0" fill="rgba(255, 255, 255, 1)" />
-			<path d="M 0,158 C 96,142.4 288,74.2 480,80 C 672,85.8 768,185.2 960,187 C 1152,188.8 1344,108.6 1440,89L1440 560L0 560z" fill="rgba(255, 210, 210, 1)"/>
-			<path d="M 0,405 C 57.6,424.6 172.8,510.4 288,503 C 403.2,495.6 460.8,374.4 576,368 C 691.2,361.6 748.8,463.6 864,471 C 979.2,478.4 1036.8,409.8 1152,405 C 1267.2,400.2 1382.4,438.6 1440,447L1440 560L0 560z" fill="rgba(255, 230, 230, 1)"/>
-		</g>
-		<defs>
-			<mask id="SvgjsMask1091">
-				<rect width="1440" height="560" fill="#ffffff"/>
-			</mask>
-		</defs>
-	</svg>
 	
-	<div style="background: #FFE6E6; height: 350px;">
-		<div class="container" 
-			style="min-height: calc(100vh - 240px); padding: 60px 20px; display:flex; 
+	<div style="width: 90%; justify-content: center; margin: 0 auto;">
+		<div style="height: 500px;">
+			<div class="container" 
+				style="min-height: calc(100vh - 240px); padding: 100px 20px; display:flex; 
+					flex-direction: column; align-items: center; text-align:center;">
+				<div class="textArea">
+					<h3 class="mb-3" style="color: #324448; font-weight: bold;">이제는 대부분 들어본 그 질문</h3>
+					<h1 class="mb-3" style="font-weight: bold; color: #77baca;">"MBTI가 어떻게 되세요?"</h1>
+					<p class="mb-3" style="color: #324448; font-weight: bold;">성격 테스트를 통해 자신의 성향과 행동에 대한 정확한 분석 결과를 확인해보세요.</p>
+					<br>
+					<button type="button" class="btn btn-primary test-create"
+							style="background-color: #77baca; border-color: #77baca; vertical-align: middle; align-items: center; font-weight: bolder; color: white; 
+			   						width: 200px; height: 100px; padding: 10px 30px; border: 1px solid transparent; border-radius: 60px; font-size: 25px;">
+						검사 실시
+			  		</button>
+				</div>
+			</div>
+		</div>
+		
+		<hr>
+		
+		<div style="height: 450px;">
+			<div class="container" 
+				style="min-height: calc(100vh - 240px); padding: 100px 20px; display: flex; box-sizing: border-box; position: absolute; right: 0%;
 				flex-direction: column; align-items: center; text-align:center;">
-			<h3 class="mb-3">이제는 대부분 들어본 그 질문</h3>
-			<h1 class="mb-3" style="font-weight: bold">"MBTI가 어떻게 되세요?"</h1>
-			<p class="mb-3">성격 테스트를 통해 자신의 성향과 행동에 대한 정확한 분석 결과를 확인해보세요.</p>
-			<br>
-			<button type="button" class="btn btn-primary test-create"
-					style="background-color: #D0A9F5; border-color: #D0A9F5; vertical-align: middle; align-items: center; font-weight: bolder; color: white; 
-	   						width: 200px; height: 100px; padding: 15px 40px; border: 1px solid transparent; border-radius: 60px; font-size: 27px;">
-  					
-				검사 실시
-	  		</button>
+				<div class="textArea">
+					<h1 class="mb-3" style="font-weight: bold; color: #77baca;">MBTI의 유형이 궁금하다면?</h1>
+					<p class="mb-3" style="color: #324448; font-weight: bold;">성격 분석 결과를 확인해 자신과 친구들의 성향을 확인해보세요.</p>
+					<br>
+					<button type="button" class="btn btn-primary personality_type" onclick="location.href='/project2/personality_type'"
+							style="background-color: #77baca; border-color: #77baca; vertical-align: middle; align-items: center; font-weight: bolder; color: white; 
+			   						width: 200px; height: 100px; padding: 10px 30px; border: 1px solid transparent; border-radius: 60px; font-size: 25px;">
+						성격 유형 보러 가기
+			  		</button>
+				</div>
+				<div class="imgArea">
+				</div>
+			</div>
+		</div>
+		
+		<hr>
+		
+		<div style="height: 450px; justify-content: center; align-items: center;">
+			<div class="container" 
+				style="min-height: calc(100vh - 240px); padding: 100px 20px; display: flex; box-sizing: border-box; position: absolute; left: 0%;
+				flex-direction: column; align-items: center; text-align:center; width: 60%;">
+				<h1 class="mb-3" style="font-weight: bold; color: #77baca;">다른 MBTI들과 대화하고 싶다면?</h1>
+				<p class="mb-3" style="color: #324448; font-weight: bold;">토론방에 모여서 함께 얘기를 나눠봐요.</p>
+				<br>
+				<button type="button" class="btn btn-primary discuss"
+						style="background-color: #77baca; border-color: #77baca; vertical-align: middle; align-items: center; font-weight: bolder; color: white; 
+		   						width: 250px; height: 80px; padding: 10px 30px; border: 1px solid transparent; border-radius: 60px; font-size: 25px;">
+					토론에 참여하기
+		  		</button>
+			</div>
+			<div class="imgArea" style="display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; position: absolute; right: 15%; margin: 100px 0;">
+				<div style="max-width: 200px; color: #324448; background: #cadff1; border-radius: 0px 15px 15px 15px; padding: 8px; display: block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9; text-decoration:none; margin: 0; word-break:keep-all;">깻잎 떼어주는 건 안 되지</div>
+				<div style="max-width: 200px; color: white; background: #617c92; align-items: center; border-radius: 15px 0px 15px 15px; padding: 8px; display: block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9; text-decoration:none; margin: 40px 80px; word-break:keep-all;">아니 왜? 그럴 수 있는 거 아니야?</div>
+				<div style="max-width: 200px; color: #324448; background: #cadff1; border-radius: 0px 15px 15px 15px; padding: 8px; display: block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9; text-decoration:none; word-break:keep-all;">그거 생각할 시간에 이미 하나 더 먹었음ㅋㅋ</div>
+			</div>
+			<div class="imgArea" style="display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; position: absolute; right: 30%; margin: 0 30px;">
+				<div style="max-width: 200px; color: #324448; background: #ecf2f8; border-radius: 0px 15px 15px 15px; padding: 8px; display: block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9; text-decoration:none; margin: 0px; word-break:keep-all;">장기자랑 10분이 뭐가 어려운데</div>
+				<div style="max-width: 200px; color: white; background: #c1d2e1; align-items: center; border-radius: 15px 0px 15px 15px; padding: 8px; display: block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9; text-decoration:none; margin: 30px 80px; word-break:keep-all;">나였으면 친구 안 만남</div>
+				<div style="max-width: 200px; color: #324448; background: #ecf2f8; border-radius: 0px 15px 15px 15px; padding: 8px; display: block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9; text-decoration:none; word-break:keep-all;">전화나 문자는 된다며</div>
+			</div>
+			<div class="imgArea" style="display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; position: absolute; right: 30%; margin: 370px 200px 0 0;">
+				<div style="max-width: 200px; color: #324448; background: #ecf2f8; border-radius: 0px 15px 15px 15px; padding: 8px; display: block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9; text-decoration:none; margin: 0px; word-break:keep-all;">머리가 뭐가 중요한데</div>
+			</div>
+			<div class="imgArea" style="display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; position: absolute; right: 20%; margin: 250px 300px 0 0;">
+				<div style="max-width: 200px; color: #324448; background: #ecf2f8; border-radius: 0px 15px 15px 15px; padding: 8px; display: block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9; text-decoration:none; margin: 0px; word-break:keep-all;">난 그게 스트레스라고;</div>
+			</div>
+			<div class="imgArea" style="display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; position: absolute; right: -10%; margin: 15px 400px 0 0;">
+				<div style="max-width: 200px; color: white; background: #c1d2e1; align-items: center; border-radius: 15px 0px 15px 15px; padding: 8px; display: block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9; text-decoration:none; margin: 0px; word-break:keep-all;">여행 갈 때 제일 중요한게 계획 아니냐? 너네 어디서 몇 시에 뭐 타고 갈건데?</div>
+			</div>
+			<div class="imgArea" style="display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; position: absolute; right: 5%; margin: 20px 400px 0 0;">
+				<div style="max-width: 200px; color: white; background: #c1d2e1; align-items: center; border-radius: 15px 0px 15px 15px; padding: 8px; display: block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9; text-decoration:none; margin: 0px; word-break:keep-all;">에바임 기각</div>
+			</div>
+			<div class="imgArea" style="display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; position: absolute; right: -10%; margin: 350px 400px 0 0;">
+				<div style="max-width: 200px; color: white; background: #c1d2e1; align-items: center; border-radius: 15px 0px 15px 15px; padding: 8px; display: block; line-height:1.3; box-shadow: 1px 1px 1px 1px #97A9B9; text-decoration:none; margin: 0px; word-break:keep-all;">그럴거면 그냥 다 불러서 같이 놀 거 같은데</div>
+			</div>
 		</div>
 	</div>
-
-	<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="80%" viewBox="0 0 1920 479.99999999999994" preserveAspectRatio="xMaxYMax slice">
-		<g transform="scale(1.7051509769094138)">
-			<rect x="0" y="0" width="1126" height="281.5" fill="#FFE6E6"/>
-			<circle cx="35.185" cy="35.185" r="7.035" fill="#f3e2ab"/>
-			<circle cx="105.565" cy="35.185" r="7.035" fill="#d0f6e3"/>
-			<circle cx="175.935" cy="35.185" r="7.035" fill="#d0f6e3"/>
-			<circle cx="246.315" cy="35.185" r="7.035" fill="#d0f6e3"/>
-			<circle cx="316.685" cy="35.185" r="7.035" fill="#d0f6e3"/>
-			<circle cx="387.065" cy="35.185" r="7.035" fill="#d1f5f4"/>
-			<circle cx="457.435" cy="35.185" r="7.035" fill="#eee1f6"/>
-			<circle cx="527.8149999999999" cy="35.185" r="7.035" fill="#eee1f6"/>
-			<circle cx="598.185" cy="35.185" r="7.035" fill="#f3e2ab"/>
-			<circle cx="668.5649999999999" cy="35.185" r="7.035" fill="#eee1f6"/>
-			<circle cx="738.935" cy="35.185" r="7.035" fill="#eee1f6"/>
-			<circle cx="809.3149999999999" cy="35.185" r="7.035" fill="#d0f6e3"/>
-			<circle cx="879.685" cy="35.185" r="7.035" fill="#d0f6e3"/>
-			<circle cx="950.0649999999999" cy="35.185" r="7.035" fill="#f3e2ab"/>
-			<circle cx="1020.435" cy="35.185" r="7.035" fill="#eee1f6"/>
-			<circle cx="1090.815" cy="35.185" r="7.035" fill="#d0f6e3"/>
-			<circle cx="35.185" cy="105.565" r="7.035" fill="#d0f6e3"/>
-			<circle cx="105.56" cy="105.56" r="9.57" fill="#f3e2ab"/>
-			<circle cx="175.935" cy="105.565" r="12.105" fill="#eee1f6"/>
-			<circle cx="246.31" cy="105.56" r="14.64" fill="#d1f5f4"/>
-			<circle cx="316.69" cy="105.56" r="17.17" fill="#eee1f6"/>
-			<circle cx="387.065" cy="105.565" r="19.705" fill="#d1f5f4"/>
-			<circle cx="457.44" cy="105.55999999999999" r="22.24" fill="#d1f5f4"/>
-			<circle cx="527.8199999999999" cy="105.57" r="23.93" fill="#eee1f6"/>
-			<circle cx="598.1899999999999" cy="105.57" r="23.93" fill="#d1f5f4"/>
-			<circle cx="668.5699999999999" cy="105.57" r="23.93" fill="#d0f6e3"/>
-			<circle cx="738.94" cy="105.55999999999999" r="22.24" fill="#d0f6e3"/>
-			<circle cx="809.315" cy="105.565" r="19.705" fill="#f3e2ab"/>
-			<circle cx="879.6899999999999" cy="105.56" r="17.17" fill="#d0f6e3"/>
-			<circle cx="950.06" cy="105.56" r="14.64" fill="#d1f5f4"/>
-			<circle cx="1020.4350000000001" cy="105.565" r="12.105" fill="#eee1f6"/>
-			<circle cx="1090.81" cy="105.56" r="9.57" fill="#eee1f6"/>
-			<circle cx="35.185" cy="175.935" r="7.035" fill="#f3e2ab"/>
-			<circle cx="105.56" cy="175.94" r="11.26" fill="#d0f6e3"/>
-			<circle cx="175.94" cy="175.94" r="15.48" fill="#d1f5f4"/>
-			<circle cx="246.315" cy="175.935" r="19.705" fill="#d0f6e3"/>
-			<circle cx="316.69" cy="175.94" r="23.93" fill="#d0f6e3"/>
-			<circle cx="387.06" cy="175.94" r="28.15" fill="#d0f6e3"/>
-			<circle cx="457.44" cy="175.94" r="32.37" fill="#eee1f6"/>
-			<circle cx="527.8199999999999" cy="175.94" r="35.19" fill="#f3e2ab"/>
-			<circle cx="598.19" cy="175.94" r="35.19" fill="#d0f6e3"/>
-			<circle cx="668.5699999999999" cy="175.94" r="35.19" fill="#d1f5f4"/>
-			<circle cx="738.94" cy="175.94" r="32.37" fill="#f3e2ab"/>
-			<circle cx="809.31" cy="175.94" r="28.15" fill="#eee1f6"/>
-			<circle cx="879.6899999999999" cy="175.94" r="23.93" fill="#eee1f6"/>
-			<circle cx="950.065" cy="175.935" r="19.705" fill="#eee1f6"/>
-			<circle cx="1020.44" cy="175.94" r="15.48" fill="#f3e2ab"/>
-			<circle cx="1090.81" cy="175.94" r="11.26" fill="#eee1f6"/>
-			<circle cx="35.185" cy="246.315" r="7.035" fill="#d1f5f4"/>
-			<circle cx="105.56" cy="246.31" r="9.57" fill="#d1f5f4"/>
-			<circle cx="175.935" cy="246.315" r="12.105" fill="#eee1f6"/>
-			<circle cx="246.31" cy="246.31" r="14.64" fill="#d1f5f4"/>
-			<circle cx="316.69" cy="246.31" r="17.17" fill="#d0f6e3"/>
-			<circle cx="387.065" cy="246.315" r="19.705" fill="#eee1f6"/>
-			<circle cx="457.44" cy="246.31" r="22.24" fill="#eee1f6"/>
-			<circle cx="527.8199999999999" cy="246.32" r="23.93" fill="#eee1f6"/>
-			<circle cx="598.1899999999999" cy="246.32" r="23.93" fill="#eee1f6"/>
-			<circle cx="668.5699999999999" cy="246.32" r="23.93" fill="#d0f6e3"/>
-			<circle cx="738.94" cy="246.31" r="22.24" fill="#d1f5f4"/>
-			<circle cx="809.315" cy="246.315" r="19.705" fill="#f3e2ab"/>
-			<circle cx="879.6899999999999" cy="246.31" r="17.17" fill="#f3e2ab"/>
-			<circle cx="950.06" cy="246.31" r="14.64" fill="#f3e2ab"/>
-			<circle cx="1020.4350000000001" cy="246.315" r="12.105" fill="#d1f5f4"/>
-			<circle cx="1090.81" cy="246.31" r="9.57" fill="#eee1f6"/>
-		</g>
-	</svg>
-
+	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	
 	<script type="text/javascript">
@@ -136,6 +119,19 @@
 				}
 			});
 		});
+		
+		$('.discuss').click(function(){
+			if('${user.me_id}' == ''){
+				if(confirm('토론 참여는 회원만 진행가능합니다.\n로그인 하시겠습니까?')){
+					location.href = '<c:url value="/login"/>';
+				}
+				return;
+			}
+			else{
+				location.href = '<c:url value="/discussion"/>';
+			}
+		});
+		
 	</script>
 </body>
 </html>

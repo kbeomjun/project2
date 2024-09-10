@@ -82,23 +82,6 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/header.jsp"/>
 	
-	<div style="background-color: #FFE6E6; padding: 30px;">
-		<div style="align-items: center; text-align:center;">
-			
-		</div>
-	</div>
-	
-	<svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.dev/svgjs" width="100%" height="40" preserveAspectRatio="none" viewBox="0 0 1440 560">
-		<g mask="url(&quot;#SvgjsMask1091&quot;)" fill="none">
-			<rect width="1440" height="560" x="0" y="0" fill="#FFE6E6" />
-			<path d="M 0,405 C 57.6,424.6 172.8,510.4 288,503 C 403.2,495.6 460.8,374.4 576,368 C 691.2,361.6 748.8,463.6 864,471 C 979.2,478.4 1036.8,409.8 1152,405 C 1267.2,400.2 1382.4,438.6 1440,447L1440 560L0 560z" fill="#ffffff"/>
-		<defs>
-			<mask id="SvgjsMask1091">
-				<rect width="1440" height="560" fill="#FFE6E6"/>
-			</mask>
-		</defs>
-	</svg>
-	
 	<div class="container pt-3" style="min-height: calc(100vh - 240px)">
 		<h3 class="title text-center mt-3 mb-4">회원정보</h3>
 		<div class="row">
@@ -286,18 +269,6 @@
 		    </div>
 		</div>
 	</div>
-	
-	<svg xmlns="http://www.w3.org/2000/svg" xmlns:svgjs="http://svgjs.dev/svgjs" width="100%" height="200" preserveAspectRatio="none" viewBox="0 0 1440 560">
-		<g mask="url(&quot;#SvgjsMask1091&quot;)" fill="none">
-			<rect width="1440" height="560" x="0" y="0" fill="rgba(255, 255, 255, 1)" />
-			<path d="M 0,158 C 96,142.4 288,74.2 480,80 C 672,85.8 768,185.2 960,187 C 1152,188.8 1344,108.6 1440,89L1440 560L0 560z" fill="rgba(255, 230, 230, 1)"/>
-		</g>
-		<defs>
-			<mask id="SvgjsMask1091">
-				<rect width="1440" height="560" fill="#ffffff"/>
-			</mask>
-		</defs>
-	</svg>
 	
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 	
@@ -515,7 +486,8 @@
 			  minHeight: 300
 			});
 			var btnStr = `
-				<button class="btn btn-outline-success mt-3 update-pt btn-icon" id="btn-update-c-pt" data-code="\${pt_code}">
+				<button class="btn btn-outline-success mt-3 update-pt btn-icon" id="btn-update-c-pt" data-code="\${pt_code}"
+							style="margin: 10px 0;">
 					<i class="fi fi-bs-check"></i>
 				</button>
 			`;
