@@ -151,7 +151,7 @@
         </div>
     </main>
 
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/common/footer2.jsp"/>
 	
 	<script type="text/javascript">
 		$('.test-create').click(function(){

@@ -10,7 +10,7 @@
 	<jsp:include page="/WEB-INF/views/common/head.jsp"/>
 	<style type="text/css">
 		.progress{width:90%; height:20px; border-radius: 30px;}
-		.progress-bar{height:30px; background-color: #D0A9F5;}
+		.progress-bar{height:30px; background-color: #77baca;}
 	</style>
 </head>
 <body>
