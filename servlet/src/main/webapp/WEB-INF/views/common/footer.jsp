@@ -13,7 +13,6 @@
 	</style>
 </head>
 <body>
-
 	<svg aria-hidden="true" viewBox="0 0 1920 155" preserveAspectRatio="none" class="background" style="color: #c4eaf2; margin-top:30px;">
 		<polygon style="fill: #e2f2f7;" points="1920 420 0 720 0 0 400 152 735 41 1574 149 1920 20 1920 600" class="c1"></polygon>
 	</svg>

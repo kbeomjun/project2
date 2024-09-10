@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 	<style type="text/css">
 		#jumbotron{
-			background-color: white; border-top: 1px solid #c8c8c8; color: #324448;
-			margin-top: 20px;
+			background-color: white; color: #324448; margin-top: 30px;
 		}
 	</style>
 </head>
