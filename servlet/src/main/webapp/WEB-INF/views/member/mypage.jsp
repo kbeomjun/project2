@@ -25,7 +25,8 @@
 		.btn-pt{width: 12%; height: 40px;}
 		.sub-title{color: blue; }
 		#btn-update-pt{margin: 10px 0; display: none;}
-		.btn-qu{width: 47px;}
+		.qu-type{display: flex; justify-content: space-between; flex-wrap: wrap;}
+		.btn-qu{width: 24%;}
 		.btn-icon{line-height: 16px; width: 42px; height: 38px;}
 		.question-list, .discussion-list, .pt-content{max-height:800px; overflow: auto;}
 		
