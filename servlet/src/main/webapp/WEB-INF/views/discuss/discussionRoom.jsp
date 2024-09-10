@@ -25,8 +25,8 @@
 			text-decoration:none; margin: 0px 0px 3px 0px;
 			word-wrap: break-word; word-break: break-all;
 		}
-		.comment-other{background: #cadff1; color: #324448; border-radius: 0px 15px 15px 15px;}
-		.comment-mine{background: #617c92; color: white; border-radius: 15px 0px 15px 15px;}
+		.comment-other{background: #ecf2f8; color: #324448; border-radius: 0px 15px 15px 15px;}
+		.comment-mine{background: #cadff1; color: #324448; border-radius: 15px 0px 15px 15px;}
 		.comment-name{font-weight: bold;}
 		#topic{
 			font-weight: bold; border: 0; text-align: center; 
