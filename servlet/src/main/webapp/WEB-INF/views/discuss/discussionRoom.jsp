@@ -131,19 +131,21 @@
 					<span style="font-size:20px;"> 토론방 목록</span>
 				</li>
 		    </ul>
-			<ul class="list-group dr-list">
-				<c:forEach items="${drlist}" var="dr">
-					<a href="<c:url value="/discussion?dr_num=${dr.dr_num}"/>" class="list-group-item list-group-item-action">
-						<span>${dr.dr_topic}</span>
-						<span class="badge badge-primary badge-pill">${dr.commentCount}</span>
-					</a>
-				</c:forEach>
-				<c:if test="${drlist.size() eq 0}">
-					<li class="list-group-item" style="font-weight: bold; text-align: center;">
-						등록된 토론방이 없습니다.
-					</li>
-				</c:if>
-			</ul>
+		    <div style="overflow: auto; height: 600px;">
+				<ul class="list-group dr-list">
+					<c:forEach items="${drlist}" var="dr">
+						<a href="<c:url value="/discussion?dr_num=${dr.dr_num}"/>" class="list-group-item list-group-item-action">
+							<span>${dr.dr_topic}</span>
+							<span class="badge badge-primary badge-pill">${dr.commentCount}</span>
+						</a>
+					</c:forEach>
+					<c:if test="${drlist.size() eq 0}">
+						<li class="list-group-item" style="font-weight: bold; text-align: center;">
+							등록된 토론방이 없습니다.
+						</li>
+					</c:if>
+				</ul>
+			</div>
 		</div>
 	</div>
 	
